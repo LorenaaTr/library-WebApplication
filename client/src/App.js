@@ -1,13 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import { Home } from './Pages/Home/Home';
-import { Navbar } from './Components/Navbar/Navbar';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar/Navbar';
+import Home from './Pages/Home/Home';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
+    <BrowserRouter>
+      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* Define other routes here */}
+        </Routes>
+      
+    </BrowserRouter>
   );
 }
 

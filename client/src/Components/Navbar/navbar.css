@@ -1,0 +1,52 @@
+/* navbar.css */
+
+.navbar {
+    background-color: #fffefe;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .logo img {
+    height: 50px;
+    width: 200px;
+    object-fit: cover;
+  }
+  
+  .elements ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .elements ul li {
+    margin: 0 20px;
+  }
+  
+  .menubox {
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 5px;
+  }
+  
+  /* Style the links */
+  .elements ul li a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Droid Sans-Bold', Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  /* Style the MENU link */
+  .elements .menubox li a {
+    color: white;
+    font-family: 'Droid Sans-Bold', Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  /* Add more styles as needed */
+  
