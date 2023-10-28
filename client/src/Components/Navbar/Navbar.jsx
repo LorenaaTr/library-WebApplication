@@ -8,9 +8,9 @@ import { useState } from 'react';
 const Navbar = () => {
     const [isSearchVisible, setSearchVisible] = useState(false);
 
-  const toggleSearch = () => {
-    setSearchVisible(!isSearchVisible);
-  };
+//   const toggleSearch = () => {
+//     setSearchVisible(!isSearchVisible);
+//   };
   
   return (
     <div className='navbar'>

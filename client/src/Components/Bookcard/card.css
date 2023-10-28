@@ -1,0 +1,32 @@
+.card {
+    display: flex;
+    width: 300px;
+    /* Add other styling as needed */
+    align-items: center;
+    margin: 95px;
+}
+
+.photo img {
+    width: 200px; /* Set the desired width for the image */
+    height: 200px; /* Set the desired height for the image */
+    object-fit: cover; /* Maintain aspect ratio and cover the box */
+    margin:5px;
+}
+
+.context{
+    margin:5px;
+}
+
+.title{
+    margin-top: -30px;
+}
+
+.description {
+    height: 100px; /* Adjust the height to your preference */
+    overflow:visible;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* The number of lines you want to display */
+    -webkit-box-orient: vertical;
+    margin: 0;
+}

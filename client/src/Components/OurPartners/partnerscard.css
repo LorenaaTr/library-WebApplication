@@ -1,0 +1,37 @@
+.partnerscard {
+    background-color: white;
+    color: black;
+    display: flex;
+    z-index: 2;
+    padding: 10px; /* Reduce the padding to make it smaller */
+    width: 90%; /* Reduce the width to make it smaller */
+    width: 1000px; /* Set a max-width to prevent it from becoming too wide */
+    margin-top: 30px; /* Adjust margin for spacing */
+}
+
+.libraryphoto img{
+    height: 80%;
+    width: 70%;
+    margin-left: 18px;
+    margin-top: 18px;
+}
+
+h5 {
+    font-size: 25px; /* Reduce the heading text size */
+}
+
+p {
+    margin-top: -25px;
+    font-size: 18px; /* Reduce the paragraph text size */
+}
+
+button{
+    background-color: rgb(250, 79, 79);
+    border: none;
+    padding: 10px 15px;
+    color: white;
+}
+
+button:hover{
+    background-color: rgb(201, 33, 33);
+}

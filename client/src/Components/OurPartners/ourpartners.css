@@ -1,0 +1,46 @@
+.ourpartners {
+    background-image: url('../../assets/images/library.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    font-family: "Droid Sans-Bold", Helvetica;
+    padding: 20px; /* Add padding to create space for content */
+    height: 270vh;
+}
+
+.overlay-content h1 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    font-size: 50px;
+    transform: translate(-50%, -50%);
+}
+
+.overlay-content a {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    top: 94%;
+    left: 50%;
+    font-size: 25px;
+    transform: translate(-50%, -50%);
+    
+}
+
+.overlay-content span {
+    position: absolute;
+    top: 95%;
+    left: 48%;
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: red;
+}
+
+.card-wrapper {
+    position: absolute;
+    top: 12%; /* Adjust this as needed to position the card wrapper */
+    left: 15.5%;
+    /* You can remove the 'bottom' property */
+}
