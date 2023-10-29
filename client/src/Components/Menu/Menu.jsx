@@ -18,7 +18,7 @@ const Menu = () => {
   return (
     <div className='menu'>
         <div className='button'>
-            <button><Link to='/home'>MENU</Link></button>
+            <button><Link to='/'>MENU</Link></button>
         </div>
         <div className='contextt' style={{marginTop:'150px', marginLeft:'230px',display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
         <Box sx={{ flexGrow: 1 }}>

@@ -13,7 +13,7 @@ const Home = () => {
         <Navbar/>
         <div className='moto'>
             <p className='lateststories'>LATEST  STORIES</p>
-            <p><Link to='/register'>Register</Link> for full access to read stories from Shelf Share.</p>
+            <p><Link to='/joinasereader'>Register</Link> for full access to read stories from Shelf Share.</p>
             <span className='redline'></span>
         </div>
         <div className='cards-wrapper'>

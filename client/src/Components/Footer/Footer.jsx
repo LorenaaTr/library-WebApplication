@@ -6,6 +6,14 @@ import instagram from '../../assets/icons/instagram.png'
 import linkedin from '../../assets/icons/linkedin.png'
 import twitter from '../../assets/icons/twitter.png'
 const Footer = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    });
+  };
+
   return (
     <div className='footer'>
       <div className='firstpart'>
@@ -36,7 +44,7 @@ const Footer = () => {
       </div>
       <div className='secondpart'>
       <div className='copyright'>
-        <img src={logo} alt="logo" />
+        <Link to='/'><img src={logo} alt="logo" onClick={scrollToTop}/></Link>
         <p>Copyright © 2023 Shelf Share Society | Copyright © 2023 Shelf Share Partners , LLC. All rights reserved</p>
         </div>
       </div>
