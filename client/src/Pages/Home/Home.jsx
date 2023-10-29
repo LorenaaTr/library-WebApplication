@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Card from '../../Components/Bookcard/Card.jsx'
 import OurPartners from '../../Components/OurPartners/OurPartners'
 import BestSellers from '../../Components/Bestsellers/BestSellers'
+import Footer from '../../Components/Footer/Footer'
 
 const Home = () => {
   return (
@@ -61,6 +62,7 @@ const Home = () => {
             <Link to='/signup'><button>SIGN UP</button></Link>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }

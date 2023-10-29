@@ -1,0 +1,37 @@
+.menu{
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    font-family: "Droid Sans-Bold", Helvetica;
+    height: 100vh; /* Set height to 100vh for full viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+
+.menu .button button{
+    background-color: white;
+    color: black;
+    margin: 17px 1388px;
+    border-radius: 30px;
+    padding: 4px 25px;
+}
+
+.button button a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.contextt {
+    display: flex;
+    flex-direction: column;
+}
+
+.contextt p{
+    margin-top: 200px;
+    font-size: 17px;
+    margin-left: -500px;
+    color: grey;
+}

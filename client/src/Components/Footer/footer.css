@@ -1,0 +1,105 @@
+.footer{
+    display: block;
+    margin-top: 100px;
+    font-family: "Droid Sans-Bold", Helvetica;
+}
+
+.firstpart{
+    display: flex;
+}
+
+.firstpart, .legal, 
+.ourservices, .joinus,
+.follow{
+    margin: 10px 85px;
+}
+
+.legal p, 
+.ourservices p, .joinus p,
+.follow p{
+    font-weight: bold;
+    letter-spacing: 5px;
+} 
+
+.legal{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.legal a{
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.ourservices{
+    display: flex;
+    flex-direction: column;
+    margin-top: -22px;
+}
+
+.ourservices a{
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    margin-left: -78px;
+}
+
+.ourservices .read{
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    margin-left: -85px;
+}
+
+.joinus{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.joinus a{
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.follow{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.icons img{
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+
+ .secondpart{
+    background-color: #fffefe;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin-top: 150px;
+}
+
+.copyright{
+    display: flex;
+}
+
+
+.copyright img {
+    margin-top: 3px;
+    height: 50px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.copyright p{
+    color: black;
+    margin: 20px 180px;
+    font-size: 15px;
+} 

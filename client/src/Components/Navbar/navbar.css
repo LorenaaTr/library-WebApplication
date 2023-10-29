@@ -1,24 +1,22 @@
-/* navbar.css */
-
 .navbar {
-    background-color: #fffefe;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 20px;
-  }
+  background-color: #fffefe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+}
   
-  .logo img {
-    height: 50px;
-    width: 200px;
-    object-fit: cover;
-  }
+.logo img {
+  height: 50px;
+  width: 200px;
+  object-fit: cover;
+}
   
-  .elements ul {
+.elements ul {
     list-style: none;
     display: flex;
     align-items: center;
-  }
+}
   
   .elements ul li {
     margin: 0 20px;

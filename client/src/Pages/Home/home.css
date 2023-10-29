@@ -162,10 +162,11 @@
     font-size: 25px;
 }
 
-.overlayedcontext button{
+.overlayedcontext button {
     padding: 10px 90px;
     margin-top: 20px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 
