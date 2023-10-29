@@ -78,6 +78,96 @@
     margin-top: -8px;
 }
 
+.ourservices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+.ourservices h1{
+    font-size: 50px;
+}
+
+.readonline, .learnonline{
+    margin-top: 100px;
+}
+
+.readonline{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.readonline h3{
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.readonline p{
+    margin-top: 30px;
+}
+.learnonline{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.learnonline h3{
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.learnonline p{
+    margin-top: 30px;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    background-color:rgb(241, 46, 46); 
+    border-radius: 50%;
+    color: white; 
+    font-size: 24px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.signup{
+    margin-top: 170px;
+    background-image: url('../../assets/images/library2.jpg');
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 20px; 
+}
+
+.overlayedcontext{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.overlayedcontext .first{
+    font-size: 40px;
+}
+
+.overlayedcontext .second{
+    margin-top: 190px;
+    font-size: 25px;
+}
+
+.overlayedcontext button{
+    padding: 10px 90px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
 
 
 

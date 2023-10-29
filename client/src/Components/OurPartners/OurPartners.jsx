@@ -20,7 +20,6 @@ const OurPartners = () => {
         </div>
         <Link to='/ourpartners'>SEE MORE</Link>
         <span></span>
-          
         </div>
       </div>
     </div>

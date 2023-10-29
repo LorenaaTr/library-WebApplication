@@ -37,6 +37,30 @@ const Home = () => {
         </div>
         <OurPartners/>
         <BestSellers/>
+        <div className='ourservices'>
+          <h1>OUR SERVICES</h1>
+            <div className='readonline'>
+              <div className='circle'>
+                1
+              </div>
+              <h3>READ ONLINE</h3>
+              <p>GET 30% DISCOUNT IN BOOK PRICES USING OUR SERVICE </p>
+            </div>
+            <div className='learnonline'>
+              <div className='circle'>
+                2
+              </div>
+              <h3>LEARN ONLINE</h3>
+              <p>WIN A FREE NEW BOOK EVERYTIME YOU WIN A QUIZ</p>
+            </div>
+        </div>
+        <div className='signup'>
+          <div className='overlayedcontext'>
+            <p className='first'>THE BEST OF SHELF SHARE DELIVERED TO YOU</p>
+            <p className='second'>SIGN UP FOR MORE INSPIRING BOOKS</p>
+            <Link to='/signup'><button>SIGN UP</button></Link>
+          </div>
+        </div>
     </div>
   )
 }
