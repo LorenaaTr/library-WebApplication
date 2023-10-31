@@ -5,6 +5,10 @@
     font-family: "Droid Sans-Bold", Helvetica;
 }
 
+.homewrapper{
+    margin-top: 60px;
+}
+
 .cards-wrapper{
     display: flex;
     margin-top: 100px;
@@ -24,13 +28,13 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 150px;
 }
 
 .lateststories{
     font-weight: bold;
     font-size: 55px;
     letter-spacing: 16px;
+    margin-top: 160px;
 }
 
 .moto p a{

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 const Login = () => {
   return (
         <div className='login'>
-            <Navbar/>
             <div className='loginwrapper'>
                 <h1>LOG IN</h1>
                 <form className='inputs'>
