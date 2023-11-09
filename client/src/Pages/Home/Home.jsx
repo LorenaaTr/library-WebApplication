@@ -1,5 +1,4 @@
 import React from 'react'
-// import Navbar from '../../Components/Navbar/Navbar'
 import './home.css'
 import { Link } from 'react-router-dom'
 import Card from '../../Components/Bookcard/Card.jsx'
