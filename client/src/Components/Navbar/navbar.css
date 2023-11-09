@@ -52,69 +52,38 @@
     font-size: 20px;
     font-weight: 700;
   }
-  
-  /* Add more styles as needed */
 
-  /* Style for the search icon */
-/* Style for the search icon */
- .search-icon { 
-     width: 40px;  /*Adjust the size as needed  */
-    height: 40px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: width 0.3s; /* Add a smooth transition effect */
-    overflow: hidden; /* Hide the input initially */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 5px 50px; /* Increase the top and bottom padding for a thicker navbar */
+    }
+  
+    .logo img {
+      height: 80px; /* Increase the height as needed */
+      width: 200px; /* Increase the width as needed */
+      margin-left: -70px;
+    }
+
+    .elements{
+      margin-left: -1000px;
+    }
+  
+    .elements ul li {
+      margin: 20 30px; /* Increase the margin as needed */
+      font-size: 18px; /* Increase the font size as needed */
+    }
     
-  }
+    .menubox {
+      margin-top: 5px;
+      padding: 3px 5px;
+    }
   
-  .icon-search  {
-    position: relative;
-    width: 50px;
-    height: 24px;
-  }
-
+    .elements ul li a {
+      font-size: 10px; /* Increase the font size as needed */
+    }
   
-  .bar {
-    position: absolute;
-    height: 2px;
-    width: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.2s;
+    .elements .menubox li a {
+      font-size: 10px; /* Increase the font size as needed */
+      margin: 5px 0px;
+    }
   }
-  
- 
-  #searchInput {
-    border: none;
-    display: none;/* Initially hidden */
-    padding: 10px 10px;
-    background: transparent;
-    transition: width 0.3s, padding 0.3s;
-    border-radius: 20px;
-    margin: 0px 10px;
-  }
-  
-  /* Hover effect for the search icon */
-  .search-icon:hover {
-    width: 150px; /* Expand the search bar on hover */
-  }
-
-  .icon{
-    margin-right: 8px;
-  }
-
-  .search-icon:hover  input{
-    margin-left: -100px;
-  }
-  
- 
-  .search-icon:hover  #searchInput {
-    width: 93px; /* Expand the input field */
-    padding: 10px 10px;
-    border-radius: 20px;
-    border: none;
-    display: inline;
-  }
-   

@@ -35,3 +35,29 @@
     margin-left: -500px;
     color: grey;
 }
+
+@media (max-width: 768px) {
+    .button button {
+      margin: 17px 10px;
+      width: 70%; /* Adjust margin as needed for smaller screens */
+    }
+  
+    .contextt {
+      margin-top: 30px;
+      display: flex; /* Adjust top margin as needed for smaller screens */
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .contextt p {
+      text-align: center; /* Center text horizontally */
+    }
+  
+    .contextt a {
+      display: block; /* Display links as block elements */
+      font-size: 16px; /* Set a smaller font size */
+      margin-top: 10px; /* Adjust margin as needed between links */
+    }
+  }
+  
+  

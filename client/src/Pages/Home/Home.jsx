@@ -6,10 +6,12 @@ import Card from '../../Components/Bookcard/Card.jsx'
 import OurPartners from '../../Components/OurPartners/OurPartners'
 import BestSellers from '../../Components/Bestsellers/BestSellers'
 import Footer from '../../Components/Footer/Footer'
+import Navbar from '../../Components/Navbar/Navbar'
 
 const Home = () => {
   return (
     <>
+    <Navbar/>
     <div className='home'>
       <div className='homewrapper'>
           <div className='moto'>

@@ -44,3 +44,22 @@
     left: 15.5%;
     /* You can remove the 'bottom' property */
 }
+@media (max-width: 768px) {
+
+    .ourpartners{
+        height: 120vh;
+    }
+    .overlay-content h1 {
+        font-size: 20px; /* Reduce heading font size */
+    }
+    .overlay-content a {
+        font-size: 15px; /* Reduce link font size */
+    }
+    .overlay-content span {
+        width: 35px;
+        left: 46%;
+    }
+    .card-wrapper > div {
+        min-width: calc(50% - 20px); /* On smaller screens, display 2 cards per row */
+    }
+}

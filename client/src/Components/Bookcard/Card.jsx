@@ -1,7 +1,8 @@
 import React from 'react'
 import './card.css'
 import harry from '../../assets/images/harrypotterbookcover.jpg'
-const Card = () => {
+const Card = (prop) => {
+  const {image, title, description} = prop;
   return (
     <div className='card'>
         <div className='photo'>

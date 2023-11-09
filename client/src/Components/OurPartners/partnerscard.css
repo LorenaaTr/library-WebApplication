@@ -35,3 +35,36 @@ button{
 button:hover{
     background-color: rgb(201, 33, 33);
 }
+@media (max-width: 768px) {
+    .partnerscard {
+        padding: 0px; /* Adjust padding for smaller screens */
+        width: 300px;
+    }
+
+    .library-context{
+        margin-left: -150px;
+        line-height: 5px;
+        margin-top: 10px;
+    }
+
+    .libraryphoto img{
+        height:70%;
+        width: 30%;
+        margin: 15px 20px;
+    }
+
+    h5 {
+        font-size: 13px; /* Reduce heading font size */
+    }
+
+    p {
+        font-size: 10px; /* Reduce paragraph font size */
+        margin-top: -10px; /* Adjust spacing */
+    }
+
+    button {
+        padding: 5px 10px; /* Reduce button padding */
+        font-size: 10px;
+        
+    }
+}

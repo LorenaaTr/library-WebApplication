@@ -1,101 +1,129 @@
-.login{
-    background-color: black;
-    color: white;
-    margin: 0 auto;
-    font-family: "Droid Sans-Bold", Helvetica;
+.login {
+    background-color: white;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Lora', serif;
+    z-index: 0;
+    overflow: hidden;
 }
 
-.loginwrapper {
-    display:  flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 60px;
-    margin-bottom: 200px;
+.login .loginimg {
+    min-width: 100%;
+    max-width: 100%;
+    margin:-80px 50px;
 }
 
-.loginwrapper h1{
-    letter-spacing: 4px;
-    font-size: 50px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+.login .form {
+    margin: 0;
 }
-
-.inputs{
-    display:  flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.inputs input{
-    margin-top: 10px;
-    padding: 10px 50px;
-    background-color: gray;
-    color: white;
-}
-
-.error{
-    font-size: 13px;
-    margin-top: 7px;
-    color: red;
-    margin-left:-230px ;
-}
-
-.acccheck{
-    font-size: 13px;
-    margin-top: 7px;
-    color: white;
-    text-align: center; 
-}
-
-.acccheck span a{
-    color: red;
-    text-decoration: none;
-    margin-left: 5px;
-    cursor: pointer;
-} 
-
-/* .acccheck span a:hover{
-    transform: translateY(-3px);
-}
-
-/* .acccheck span a{
-    display: inline-block;
-    position: relative;
+.MuiInput-input::placeholder {
+    color: white; /* Set the placeholder text color to white */
   }
-.acccheck span::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px; /* Adjust this value to control the movement 
-    bottom: 0;
-    left: 0;
-    background-color: red;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.2s ease;
+
+  .MuiInput-input:hover {
+    color: white; /* Set the hover color to white */
+  }
+.input input {
+    color: white; 
+  }
+
+.input input::placeholder {
+    color: white;
+  }
+
+.input{
+    max-width: 100%;
 }
   
-  .acccheck span:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-  } */
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.inputs input::placeholder{
-    color: rgb(227, 224, 224);
+}
+
+.login .form .form-container {
+    margin: 150px 550px;
+}
+
+.login .form .form-container .login-text {
+    margin-bottom: 50px;
     text-align: center;
+    font-family: 'Nunito', sans-serif;
+    color: rgb(245, 121, 121);
+    margin-left: -10px;
+    font-size: 50px;
 }
 
-.inputs button{
-    background-color: white;
-    color:  rgb(243, 84, 84);
-    margin-top: 20px;
-    padding: 10px 70px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
+.login .form .form-container .submit-button {
+    width: 150px;
+    margin-left: 110px;
+    margin-top: 10px;
 }
 
-.inputs button:hover{
-    background-color: rgb(252, 78, 78);
-    color: white;
+.login .form .form-container p {
+    font-size: 17px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    margin-top: 30px;
+}
+
+.login .form .form-container p a {
+    text-decoration: none;
+    color: #D32F2F;
+    font-family: 'Nunito', sans-serif;
+}
+
+.login .form .form-container p a:hover {
+    text-decoration: underline;
+    color: #D32F2F;
+}
+
+@media (max-width: 768px) {
+    .login .loginimg {
+        max-height: 100%;
+        max-width: 100%;
+        margin: 100px 40px;
+    }
+
+    .login .form {
+        margin-left: 180px;
+    }
+
+    .form-container .input{
+        max-width: 70%;
+        margin-left: -10px;
+    }
+
+    .login{
+        margin-top: 100px;
+        margin-left: 15px;
+    }
+
+   
+    .login .form .form-container {
+        margin: 20px -100px;
+    }
+
+    .login .form .form-container .welcome-text {
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .login .form .form-container .login-text {
+        margin-bottom: 30px;
+        font-size: 20px;
+        margin-left: -140px;
+    }
+
+    .login .form .form-container .submit-button {
+        width: 120px;
+        margin-left:20px;
+    }
+
+    .login .form .form-container .joinus {
+        max-width: 300px;
+        margin-left: -20px;
+    }
 }

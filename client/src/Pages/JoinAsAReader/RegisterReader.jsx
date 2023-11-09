@@ -1,30 +1,111 @@
-import React from 'react'
-import './registerreader.css'
-import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
+import React, { useState } from 'react';
+import { Grid, Paper, TextField, Button, Typography } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import './registerreader.css';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const RegisterReader = () => {
-  return (
-    <div className='register'>
-        <Navbar/>
-        <form className='registerwrapper'>
-            <h1>REGISTER</h1>
-            <div className='fisrtpart'>
-                <input type="text" name="name" placeholder='Name'  />
-                <input type="text" name="surname" placeholder='Surname'/>
-                <input type="text" name="email" placeholder='Email'/>
-                <input type="text" name="city" placeholder='City'/>
-            </div>
-            <div className='secondpart'>
-              <input type="text" name="name" placeholder='Name'  />
-              <input type="text" name="surname" placeholder='Surname'/>
-              <input type="text" name="email" placeholder='Email'/>
-              <input type="text" name="city" placeholder='City'/>
-            </div>
-        </form>
-        <Footer/>
-    </div>
-  )
-}
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-export default RegisterReader
+  const handleLogin = () => {
+    // Check for blank fields and set errors accordingly
+    if (!username || !password) {
+      if (!username) setUsernameError(true);
+      if (!password) setPasswordError(true);
+    //   setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
+    // Your login logic here
+  };
+
+  return (
+    <div className="login">
+    <Navbar/>
+      <Grid container component="main" className="login">
+          <div className="form">
+            <div className="form-container">
+              <Typography component="h1" variant="h5" className="login-text">
+                REGISTER
+              </Typography>
+              <form className="login-form">
+                <TextField
+                  className='input'
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoFocus
+                  value={username}
+                  error={usernameError}
+                  helperText={usernameError ? <Typography
+                    variant="body2"
+                    color="error"
+                    className="error-message"
+                    style={{textAlign:'left', margin:'-15px auto', fontSize:'15px'}}
+                  >
+                    Username is required.
+                  </Typography> : ''}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setUsernameError(false);
+                    setErrorMessage('');
+                  }}
+                />
+                <TextField
+                style={{color:"white"}}
+                  className='input'
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={password}
+                  error={passwordError}
+                  helperText={passwordError ? <Typography
+                    variant="body2"
+                    color="error"
+                    className="error-message"
+                    style={{textAlign:'left', margin:'-15px auto', fontSize:'15px'}}
+                  >
+                    Password is required.
+                  </Typography> : ''}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setPasswordError(false);
+                    setErrorMessage('');
+                  }}
+                />
+                <Button
+                  type="button"
+                  fullWidth
+                  variant="contained"
+                  color="error"
+                  className="submit-button"
+                  onClick={handleLogin}
+                >
+                   Register
+                </Button>
+                <p className='joinus'>
+                  Have an account yet?{' '}
+                  <Link to="/login">Log in here</Link>
+                </p>
+              </form>
+            </div>
+          </div>
+        </Grid>
+    </div>
+  );
+};
+
+export default RegisterReader;
