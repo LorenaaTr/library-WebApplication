@@ -3,7 +3,7 @@
     color: white;
     margin: 0 auto;
     font-family: "Droid Sans-Bold", Helvetica;
-    height: 100vh; /* Set height to 100vh for full viewport height */
+    height: 100vh;
     width: 100%;
     overflow: hidden;
 }
@@ -81,7 +81,7 @@
   color:red ;
 }
 
-.footer p{
+.menufooter p{
   margin-top: 100px;
   font-size: 17px;
   margin-left: -260px;
@@ -97,14 +97,14 @@
 
     .menu button {
       background-color: white;
-      color: black;/* Adjust the margin for smaller screens */
+      color: black;
       border-radius: 30px;
       padding: 4px 25px;
-      width: 70%; /* Adjust the width for smaller screens */
+      width: 70%;
     }
 
     .menu .button button{
-      margin-left:200px; /* Adjust the margin for smaller screens */
+      margin-left:200px; 
         width: 30%; 
         margin-top: 30px;
     }
@@ -141,13 +141,13 @@
       flex-direction: column;
     }
 
-    .footer{
+    .menufooter{
       text-align: center;
       margin-top: 200px;
       margin-left: -320px;
     }
   
-    .footer p {
+    .menufooter p {
       display: inline;
       font-size: 6px;
     }

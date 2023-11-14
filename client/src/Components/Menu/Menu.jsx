@@ -47,7 +47,7 @@ const Menu = () => {
           </div>
         </Box>
       </div>
-      <div className='footer'>
+      <div className='menufooter'>
         <p>Copyright © 2023 Shelf Share Society | Copyright © 2023 Shelf Share Partners, LLC. All rights reserved</p>
       </div>
       </div>
