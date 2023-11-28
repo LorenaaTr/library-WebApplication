@@ -11,6 +11,7 @@ const ourBooks = () => {
          <Navbar/>
         <h1 className="title">OUR BOOKS</h1>
         <p className="description">EXPLORE ALL TYPES OF BOOKS</p>
+
         <ul className="book-list">
           <li className="list-item">FICTION</li>
           <span className='whiteline'></span>

@@ -35,7 +35,7 @@ const Home = () => {
             </div>
           </div>
           <div className='cmore'>
-            <Link to='/ourbooks' className='seemore'>SEE MORE</Link>
+            <Link to='/ourBooks' className='seemore'>SEE MORE</Link>
             <span className='redline2'></span>
           </div>
           <OurPartners/>
