@@ -18,7 +18,7 @@ const OurPartners = () => {
             <PartnersCard />
             <PartnersCard />
         </div>
-        <Link to='/ourpartners'>SEE MORE</Link>
+        <Link to='/ourPartners'>SEE MORE</Link>
         <span></span>
         </div>
       </div>
