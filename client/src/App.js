@@ -6,6 +6,7 @@ import OurPartners from './Components/OurPartners/OurPartners';
 import Menu from './Components/Menu/Menu'
 import Login from './Pages/Login/Login';
 import RegisterReader from './Pages/JoinAsAReader/RegisterReader';
+import Books from './Pages/Books/ourBooks';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/joinasereader" element={<RegisterReader />} />
+          <Route path="/ourBooks" element={<Books />} />
         </Routes>
     </BrowserRouter>
   );
