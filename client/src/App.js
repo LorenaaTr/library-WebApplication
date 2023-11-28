@@ -7,6 +7,7 @@ import Menu from './Components/Menu/Menu'
 import Login from './Pages/Login/Login';
 import RegisterReader from './Pages/JoinAsAReader/RegisterReader';
 import Books from './Pages/Books/ourBooks';
+import Partners from './Pages/OurPartners/OurPartners';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/joinasereader" element={<RegisterReader />} />
           <Route path="/ourBooks" element={<Books />} />
+          <Route path="/ourPartners" element={<Partners />} />
         </Routes>
     </BrowserRouter>
   );
