@@ -6,8 +6,9 @@ import Footer from '../../Components/Footer/Footer'
 
 const ourBooks = () => {
     return (
-      <div className="page-container">
-         <Navbar/>
+     <div className='books-container'>
+       <Navbar/>
+         <div className="page-container">
         <h1 className="title">OUR BOOKS</h1>
         <p className="description">EXPLORE ALL TYPES OF BOOKS</p>
 
@@ -47,8 +48,9 @@ const ourBooks = () => {
           <li className="list-item">MANGA</li>
           <span className='whiteline'></span>
         </ul>
-        <Footer/>
       </div>
+      <Footer/>
+     </div>
     );
   };
   
