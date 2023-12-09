@@ -1,8 +1,6 @@
 .page-container {
   background-color: black;
   color: white;
-  padding: 20px;
-  
 }
 
 .title {
@@ -12,7 +10,6 @@
 }
 
 .description {
-  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -20,7 +17,6 @@
   list-style: none;
   margin-left: 150px;
   margin-right: 150px;
-  margin-bottom: 200px;
 }
 
 .list-item {
@@ -48,6 +44,5 @@
   .book-list {
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 40px;
   }
 }

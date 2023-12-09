@@ -1,8 +1,9 @@
 .footer{
     display: block;
-    margin-top: 100px;
+    margin-top: -10px;
     font-family: "Droid Sans-Bold", Helvetica;
     z-index: 1;
+    background-color: black;
 }
 
 .firstpart{
@@ -20,6 +21,8 @@
 .follow p{
     font-weight: bold;
     letter-spacing: 5px;
+    color: white;
+    margin-top: 60px;
 } 
 
 .legal{
@@ -106,9 +109,7 @@
 } 
 
 @media (max-width: 768px) {
-    .footer {
-      margin-top: 50px;
-    }
+    
   
     .firstpart {
       margin: 10px;

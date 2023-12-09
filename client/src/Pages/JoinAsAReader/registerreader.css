@@ -1,27 +1,19 @@
-.login {
-    background-color: white;
-    overflow: hidden;
-    height: 100vh;
+.register {
+    overflow: auto;
     font-family: 'Lora', serif;
     z-index: 0;
-    overflow: hidden;
 }
 
-.login .loginimg {
-    min-width: 100%;
-    max-width: 100%;
-    margin:-80px 50px;
-}
-
-.login .form {
+.registercontent .form {
     margin: 0;
 }
+
 .MuiInput-input::placeholder {
-    color: white; /* Set the placeholder text color to white */
+    color: white; 
   }
 
   .MuiInput-input:hover {
-    color: white; /* Set the hover color to white */
+    color: white; 
   }
 .input input {
     color: white; 
@@ -42,11 +34,11 @@
 
 }
 
-.login .form .form-container {
+.registercontent .form .form-container {
     margin: 150px 550px;
 }
 
-.login .form .form-container .login-text {
+.registercontent .form .form-container .login-text {
     margin-bottom: 50px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
@@ -55,38 +47,38 @@
     font-size: 50px;
 }
 
-.login .form .form-container .submit-button {
+.registercontent .form .form-container .submit-button {
     width: 150px;
     margin-left: 90px;
     margin-top: 10px;
 }
 
-.login .form .form-container p {
+.registercontent .form .form-container p {
     font-size: 17px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
     margin-top: 30px;
 }
 
-.login .form .form-container p a {
+.registercontent .form .form-container p a {
     text-decoration: none;
     color: #D32F2F;
     font-family: 'Nunito', sans-serif;
 }
 
-.login .form .form-container p a:hover {
+.registercontent .form .form-container p a:hover {
     text-decoration: underline;
     color: #D32F2F;
 }
 
 @media (max-width: 768px) {
-    .login .loginimg {
+    .registercontent .loginimg {
         max-height: 100%;
         max-width: 100%;
         margin: 100px 40px;
     }
 
-    .login .form {
+    .registercontent .form {
         margin-left: 180px;
     }
 
@@ -95,34 +87,34 @@
         margin-left: -10px;
     }
 
-    .login{
+    .register{
         margin-top: 100px;
         margin-left: 15px;
     }
 
    
-    .login .form .form-container {
+    .registercontent .form .form-container {
         margin: 20px -100px;
     }
 
-    .login .form .form-container .welcome-text {
+    .registercontent .form .form-container .welcome-text {
         margin-bottom: 30px;
         font-size: 24px;
         font-weight: bold;
     }
 
-    .login .form .form-container .login-text {
+    .registercontent .form .form-container .login-text {
         margin-bottom: 30px;
         font-size: 20px;
         margin-left: -90px;
     }
 
-    .login .form .form-container .submit-button {
+    .registercontent .form .form-container .submit-button {
         width: 120px;
         margin-left:10px;
     }
 
-    .login .form .form-container .joinus {
+    .registercontent .form .form-container .joinus {
         max-width: 300px;
         margin-left: -10px;
     }

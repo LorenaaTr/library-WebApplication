@@ -5,11 +5,11 @@ import Footer from '../../Components/Footer/Footer'
 
 const OurPartners = () => {
   return (
+    <>
+    <Navbar/>
     <div className="page-container">
-         <Navbar/>
         <h1 className="title">OUR PARTNERS</h1>
         <p className="description">LOYAL SHELF SHARE PARTNERS</p>
-
         <ul className="book-list">
           <li className="list-item">DUKAGJINI BOOKSTORE</li>
           <span className='whiteline'></span>
@@ -32,8 +32,9 @@ const OurPartners = () => {
           <li className="list-item">HOUSE OF BOOKS</li>
           <span className='whiteline'></span>
         </ul>
-        <Footer/>
       </div>
+      <Footer/>
+      </>
   )
 }
 

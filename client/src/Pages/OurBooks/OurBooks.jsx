@@ -1,13 +1,13 @@
 import React from 'react'
-import './ourBooks.css'
+import './ourbooks.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
 
-
-const ourBooks = () => {
+const OurBooks = () => {
     return (
+      <>
+      <Navbar/>
       <div className="page-container">
-         <Navbar/>
         <h1 className="title">OUR BOOKS</h1>
         <p className="description">EXPLORE ALL TYPES OF BOOKS</p>
 
@@ -47,10 +47,11 @@ const ourBooks = () => {
           <li className="list-item">MANGA</li>
           <span className='whiteline'></span>
         </ul>
-        <Footer/>
       </div>
+      <Footer/>
+      </>
     );
   };
   
 
-  export default ourBooks
+  export default OurBooks
