@@ -15,15 +15,11 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = () => {
-    // Check for blank fields and set errors accordingly
     if (!username || !password) {
       if (!username) setUsernameError(true);
       if (!password) setPasswordError(true);
-    //   setErrorMessage('Please fill in all required fields.');
       return;
     }
-
-    // Your login logic here
   };
 
   return (

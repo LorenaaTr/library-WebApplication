@@ -1,55 +1,57 @@
 .card {
-    display: flex;
-    width: 300px;
-    /* Add other styling as needed */
-    align-items: center;
-    margin: 95px;
+  display: flex;
+  width: 300px;
+  
+  align-items: center;
+  margin: 95px;
 }
 
 .photo img {
-    width: 200px; /* Set the desired width for the image */
-    height: 200px; /* Set the desired height for the image */
-    object-fit: cover; /* Maintain aspect ratio and cover the box */
-    margin:5px;
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover; 
+  margin:5px;
 }
 
 .context{
-    margin:5px;
+  margin-top: -190px;
+  margin-left: 5px;
 }
 
 .title{
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
 .description {
-    height: 100px; /* Adjust the height to your preference */
-    overflow:visible;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* The number of lines you want to display */
-    -webkit-box-orient: vertical;
-    margin: 0;
+  height: 100px; 
+  overflow:visible;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  margin: 0;
+
 }
 
 @media (max-width: 768px) {
-    .card {
-      margin: 10px; 
-      width: 100px;
-    }
-  
-    .photo img {
-      width: 100%; 
-      height: 100px;
-      width: 100px;
-    }
-  
-    .title {
-      margin-top: 5px;
-      font-size: 10px;
-    }
-  
-    .description {
-      -webkit-line-clamp: 2; 
-      font-size: 10px;
-    }
+  .card {
+    margin: 10px; 
+    width: 100px;
   }
+
+  .photo img {
+    width: 100%; 
+    height: 100px;
+    width: 100px;
+  }
+
+  .title {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .description {
+    -webkit-line-clamp: 2; 
+    font-size: 10px;
+  }
+}

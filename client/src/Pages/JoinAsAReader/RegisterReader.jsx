@@ -13,7 +13,7 @@ const RegisterReader = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = () => {
-    // Check for blank fields and set errors accordingly
+   
     if (!username || !password) {
       if (!username) setUsernameError(true);
       if (!password) setPasswordError(true);
@@ -21,7 +21,7 @@ const RegisterReader = () => {
       return;
     }
 
-    // Your login logic here
+   
   };
 
   return (

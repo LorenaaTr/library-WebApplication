@@ -8,7 +8,7 @@ const Card = (prop) => {
         <div className='photo'>
             <img src={harry} alt="harry" />
         </div>
-        <div className='context'>
+        <div className='context' style={{ textAlign: 'left' }}>
             <h3 className='title'>ACTION</h3>
             <p className='description'>Lorem ipsum dolor haaaaaaaaa hahahahahahahahah hahaha ahahah , sit amet consectetur adipisicing elit. Fugiat, veritatis!</p>
         </div>

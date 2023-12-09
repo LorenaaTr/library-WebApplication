@@ -61,7 +61,7 @@ const Home = () => {
             <div className='overlayedcontext'>
               <p className='first'>THE BEST OF SHELF SHARE DELIVERED TO YOU</p>
               <p className='second'>SIGN UP FOR MORE INSPIRING BOOKS</p>
-              <Link to='/signup'><button>SIGN UP</button></Link>
+              <Link to='/joinasereader'><button>SIGN UP</button></Link>
             </div>
           </div>
           </div>

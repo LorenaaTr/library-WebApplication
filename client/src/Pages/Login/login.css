@@ -17,11 +17,11 @@
     margin: 0;
 }
 .MuiInput-input::placeholder {
-    color: white; /* Set the placeholder text color to white */
+    color: white; 
   }
 
   .MuiInput-input:hover {
-    color: white; /* Set the hover color to white */
+    color: white; 
   }
 .input input {
     color: white; 
@@ -57,7 +57,7 @@
 
 .login .form .form-container .submit-button {
     width: 150px;
-    margin-left: 110px;
+    margin-left: 130px;
     margin-top: 10px;
 }
 
