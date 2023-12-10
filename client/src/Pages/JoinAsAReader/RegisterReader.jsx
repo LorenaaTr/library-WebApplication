@@ -161,6 +161,7 @@ const RegisterReader = () => {
                 variant="contained"
                 color="primary"
                 className="submit-button"
+                style={{backgroundColor:"#D32F2F"}}
                 onClick={handleRegister}
               >
                 Register
