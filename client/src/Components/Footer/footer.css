@@ -124,8 +124,20 @@
     .ourservices,
     .joinus,
     .follow{
-        margin-top: 70px;
+        margin-top: 40px;
         font-size: 20px;
+    }
+
+    .ourservices p{
+        margin-left: 50px;
+    }
+
+    .follow p{
+        margin-left: 20px;
+    }
+
+    .follow .icons{
+        margin-left: 10px;
     }
 
   
