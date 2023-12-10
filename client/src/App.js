@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home';
 import Menu from './Components/Menu/Menu'
 import Login from './Pages/Login/Login';
 import RegisterReader from './Pages/JoinAsAReader/RegisterReader';
+import RegisterPartner from './Pages/JoinAsPartner/RegisterPartner';
 import OurBooks from './Pages/OurBooks/OurBooks';
 import Partners from './Pages/OurPartners/OurPartners';
 import Services from './Pages/Services/ourServices';
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/joinasereader" element={<RegisterReader />} />
+          <Route path="/joinasapartner" element={<RegisterPartner />} />
           <Route path="/ourBooks" element={<OurBooks />} />
           <Route path="/ourPartners" element={<Partners />} />
           <Route path="/ourServices" element={<Services />} />
