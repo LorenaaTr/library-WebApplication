@@ -1,15 +1,3 @@
-.page-container {
-    .page-container {
-        background-color: black; /* Set background color to black */
-        color: white;
-        padding: 20px;
-        width: 100%; /* Ensure full width */
-        min-height: 100vh; /* Set minimum height to cover the entire viewport */
-        box-sizing: border-box; /* Include padding in the width calculation */
-    }
-    
-}
-
 .register {
     overflow: auto;
     font-family: 'Lora', serif;
@@ -20,56 +8,58 @@
     margin: 0;
 }
 
-/* Adjusted placeholder color */
-.MuiInput-input::placeholder,
-.input input::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Adjusted alpha value */
-}
+.MuiInput-input::placeholder {
+    color: white; 
+  }
 
-/* Adjusted hover color */
-.input input:hover,
-.MuiInput-input:hover {
-    color: #fff; /* Use #fff for white color */
-}
+  .MuiInput-input:hover {
+    color: white; 
+  }
+.input input {
+    color: white; 
+  }
 
 .input input::placeholder {
     color: white;
-}
+  }
 
-.input {
+.input{
     max-width: 100%;
 }
-
-.login-form {
+  
+.login-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centered horizontally */
+
 }
 
 .registercontent .form .form-container {
-    margin: 50px 20px; /* Adjusted margin values for smaller screens */
+    margin: 150px 550px;
 }
 
 .registercontent .form .form-container .login-text {
-    margin-bottom: 20px; /* Adjusted margin */
+    margin-bottom: 50px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
     color: rgb(245, 121, 121);
-    font-size: 100px; /* Adjusted font size */
-    
+    margin-left: -10px;
+    font-size: 20px;
+
 }
 
 .registercontent .form .form-container .submit-button {
-    width: 100%; /* Full width for better responsiveness */
+    width: 150px;
+    margin-left: 90px;
     margin-top: 10px;
+    background-color: #D32F2F;
 }
 
 .registercontent .form .form-container p {
-    font-size: 14px; /* Adjusted font size */
+    font-size: 17px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .registercontent .form .form-container p a {
@@ -80,33 +70,35 @@
 
 .registercontent .form .form-container p a:hover {
     text-decoration: underline;
+    color: #D32F2F;
 }
 
-@media (min-width: 769px) {
+@media (max-width: 768px) {
     .registercontent .loginimg {
+        max-height: 100%;
         max-width: 100%;
-        margin: 100px auto;
+        margin: 100px 40px;
     }
 
     .registercontent .form {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 180px;
     }
 
-    .form-container .input {
+    .form-container .input{
         max-width: 70%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: -10px;
     }
 
-    .register {
+    .register{
         margin-top: 100px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 15px;
     }
-
+.submit-button{
+    background-color: #D32F2F;
+}
+   
     .registercontent .form .form-container {
-        margin: 50px auto;
+        margin: 20px -100px;
     }
 
     .registercontent .form .form-container .welcome-text {
@@ -118,19 +110,17 @@
     .registercontent .form .form-container .login-text {
         margin-bottom: 30px;
         font-size: 20px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: -90px;
     }
 
     .registercontent .form .form-container .submit-button {
         width: 120px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left:10px;
+        background-color: #D32F2F;
     }
 
     .registercontent .form .form-container .joinus {
         max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: -10px;
     }
 }

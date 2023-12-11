@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Button, Typography, RadioGroup,Radio, FormControlLabel, Checkbox } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Grid, TextField, Button, Typography, FormControlLabel, Checkbox } from '@mui/material';
+import {useNavigate } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import './registerpartner.css';
 
 const RegisterPartner = () => {
   const navigate = useNavigate();
-  const [name, setname] = useState('');
-  const [surname, setsurname] = useState('');
+  const [name,] = useState('');
+  const [ceoname, setceoname] = useState('');
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isStudent, setIsStudent] = useState('yes');
+ 
+  const [State, setState] = useState('');
+  const [Sreet, setStreet] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const [usernameError, setUsernameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
+  
 
   const handleRegister = () => {
-    if (!name||!surname || !email || !city || !birthday || !username || !password || !confirmPassword || !isStudent|| !acceptTerms) {
+    if (!name||!ceoname||  !city ||   !username  ||  !acceptTerms) {
       return;
     }
     navigate('/login');
@@ -34,10 +32,12 @@ const RegisterPartner = () => {
     <div className="register">
       <Grid container component="main" className="registercontent">
         <div className="form">
+        
           <div className="form-container">
-            <Typography component="h1" variant="h5" className="login-text" >
-              BECOME A SHELF SHARE PARTNER
-            </Typography>
+          <Typography component="h1" variant="h3" className="login-text" style={{fontWeight : 'bold' ,fontSize : '25px' ,}} >
+  BECOME A SHELF SHARE PARTNER
+</Typography>
+
             <Typography component="h3" variant="h1" className="login-text" >
               JOIN AS A PARTNER
             </Typography>
@@ -53,29 +53,24 @@ const RegisterPartner = () => {
                 autoFocus
                 value={name}
                 error={usernameError}
-                helperText={usernameError ? 'Username is required.' : ''}
+                helperText={usernameError ? 'Library name is required.' : ''}
                 onChange={(e) => {
                   setUsername(e.target.value);
                   setUsernameError(false);
                 }}
               />
-              <TextField
+               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="surname"
-                label="Library's CEO name"
-                name="surname"
-                value={email}
-                error={emailError}
-                helperText={emailError ? 'Invalid email address.' : ''}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError(false);
-                }}
+                id="ceoname"
+                label="Library's Ceo Name"
+                name="ceoname"
+                value={ceoname}
+                onChange={(e) => setceoname(e.target.value)}
               />
-            
+              
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -93,11 +88,11 @@ const RegisterPartner = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="city"
+                id="state"
                 label="State"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                name="state"
+                value={State}
+                onChange={(e) => setState(e.target.value)}
               />
               
               <TextField
@@ -105,11 +100,11 @@ const RegisterPartner = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="city"
+                id="street"
                 label="Street"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                name="street"
+                value={Sreet}
+                onChange={(e) => setStreet(e.target.value)}
               />
               
                <TextField
@@ -117,9 +112,9 @@ const RegisterPartner = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="city"
+                id="zipcode"
                 label="Zip Code"
-                name="city"
+                name="zipcode"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
