@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Server.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Register ApplicationDBContext
+
+builder.Services.AddDbContext<ApplicationDBContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))); 
 
 var app = builder.Build();
 
@@ -22,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Users}/{action=Index}/{id?}");
 
 app.Run();

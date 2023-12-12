@@ -1,24 +1,40 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Server.Models
 {
-    public enum Student
-    {
-        Yes,
-        No
-    }
     public class User
     {
         [Key]
+        public int UserId { get; set; }
 
-        public int ID { get; set; }
+        [Required]
         public string Name { get; set; } = null!;
+
+        [Required]
         public string Surname { get; set; } = null!;
+
+        [Required]
+        [EmailAddress]
         public string Email { get; set; } = null!;
+
+        [Required]
         public string City { get; set; } = null!;
-        public DateTime Birthday { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTimeOffset Birthday { get; set; }
+
+        [Required]
+        public string Username { get; set; } = null!;
+
+        [Required]
         public string Password { get; set; } = null!;
-        public Student isStudent { get; set; } 
-        public bool acceptedterms { get; set; } 
+
+        [Required]
+        public bool IsStudent { get; set; }
+
+        [Required]
+        public bool AcceptTerms { get; set; }
     }
 }
