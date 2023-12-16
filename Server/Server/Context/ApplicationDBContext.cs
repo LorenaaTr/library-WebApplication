@@ -24,8 +24,10 @@ namespace Server.Context
                     )
                     .IsRequired();
             });
+           
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Server.Models.Partners> Partners { get; set; } = default!;
     }
 }

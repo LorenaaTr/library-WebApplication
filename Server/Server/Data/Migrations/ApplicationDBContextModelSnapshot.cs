@@ -22,6 +22,35 @@ namespace Server.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Server.Models.Partners", b =>
+                {
+                    b.Property<string>("BussinessName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CeoName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("integer");
+
+                    b.HasKey("BussinessName");
+
+                    b.ToTable("Partners");
+                });
+
             modelBuilder.Entity("Server.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -33,7 +62,7 @@ namespace Server.Data.Migrations
                     b.Property<bool>("AcceptTerms")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTimeOffset>("Birthday")
+                    b.Property<DateTime>("Birthday")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("City")
