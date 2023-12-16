@@ -11270,19 +11270,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rines\\.nuget\\packages\\": {}
+    "C:\\Users\\bleonitshillova\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rines\\Desktop\\LibraryWebService\\library-WebApplication\\Server\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\bleonitshillova\\Source\\Repos\\library-WebApplication\\Server\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\rines\\Desktop\\LibraryWebService\\library-WebApplication\\Server\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\rines\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rines\\Desktop\\LibraryWebService\\library-WebApplication\\Server\\Server\\obj\\",
+      "projectPath": "C:\\Users\\bleonitshillova\\Source\\Repos\\library-WebApplication\\Server\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\bleonitshillova\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bleonitshillova\\Source\\Repos\\library-WebApplication\\Server\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rines\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bleonitshillova\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
