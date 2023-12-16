@@ -17,79 +17,79 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Server
 build_property.RootNamespace = Server
-build_property.ProjectDir = C:\Users\bleonitshillova\Source\Repos\library-WebApplication\Server\Server\
+build_property.ProjectDir = C:\Users\bleonitshillova\source\repos\library-WebApplication\Server\Server\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\bleonitshillova\Source\Repos\library-WebApplication\Server\Server
+build_property.MSBuildProjectDirectory = C:\Users\bleonitshillova\source\repos\library-WebApplication\Server\Server
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Home/Index.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Home/Privacy.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Partners/Create.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Partners/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Partners/Delete.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Partners/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Partners/Details.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Partners/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Partners/Edit.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Partners/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Partners/Index.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Partners/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Shared/Error.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Users/Create.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Users/Delete.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Users/Details.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Users/Edit.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Users/Index.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/_ViewImports.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/_ViewStart.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bleonitshillova/Source/Repos/library-WebApplication/Server/Server/Views/Shared/_Layout.cshtml]
+[C:/Users/bleonitshillova/source/repos/library-WebApplication/Server/Server/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-r11de1n3kw
