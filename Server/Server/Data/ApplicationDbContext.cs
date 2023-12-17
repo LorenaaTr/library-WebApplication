@@ -10,6 +10,10 @@ namespace Server.Data
             : base(options)
         {
         }
+
         public DbSet<Book> Books { get; set; }  
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Partners> Partners { get; set; }
     }
 }
