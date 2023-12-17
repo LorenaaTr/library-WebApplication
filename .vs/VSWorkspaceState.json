@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Server",
-    "\\Server\\Server",
-    "\\Server\\Server\\Views"
+    ""
   ],
-  "SelectedNode": "\\Server\\Server.sln",
+  "SelectedNode": "\\.idea",
   "PreviewInSolutionExplorer": false
 }
