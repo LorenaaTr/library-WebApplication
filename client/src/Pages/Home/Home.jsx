@@ -41,7 +41,7 @@ const Home = () => {
           <OurPartners/>
           <BestSellers/>
           <div className='ourServices'>
-            <h1>OUR SERVICES</h1>
+            <h1 className='servicesHeader'>OUR SERVICES</h1>
               <div className='readonline'>
                 <div className='circle'>
                   1
