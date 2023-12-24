@@ -1,0 +1,52 @@
+.systemheader{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.search{
+  margin-top: 10px;
+  margin-left: -150px;
+  width: 600px;
+}
+
+.useracc{
+  background-color: grey;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-right: 50px;
+}
+
+.user-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .logo{
+    margin-left: 50px;
+  }
+
+  .search {
+    width: 180px;
+    margin-left: -50px; 
+    margin-right: -20px; 
+    margin-top: 13px;
+  }
+
+  .useracc {
+    margin-top: 13px; 
+    margin-left: 50px;
+    margin-right: 20px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .user-icon{
+    margin-top: 8px;
+  }
+}

@@ -20,6 +20,7 @@ const Login = () => {
       if (!password) setPasswordError(true);
       return;
     }
+    navigate("/system-home-page")
   };
 
   return (

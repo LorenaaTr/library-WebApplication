@@ -1,9 +1,18 @@
 import React from 'react'
+import SystemHeader from '../../Components/SystemHeader/SystemHeader';
+import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
+import './homepage.css'
 
-const HomePage = () => {
+const SystemHomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+    <SystemHeader/>
+    <SystemSidebar/>
+    <div className='home'>
+      HomePage
+    </div>
+    </>
   )
 }
 
-export default HomePage
+export default SystemHomePage;

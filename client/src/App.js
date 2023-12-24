@@ -8,6 +8,7 @@ import RegisterPartner from './Pages/JoinAsPartner/RegisterPartner';
 import OurBooks from './Pages/OurBooks/OurBooks';
 import Partners from './Pages/OurPartners/OurPartners';
 import Services from './Pages/Services/ourServices';
+import SystemHomePage from './Pages/SystemHomePage/HomePage';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/ourBooks" element={<OurBooks />} />
           <Route path="/ourPartners" element={<Partners />} />
           <Route path="/ourServices" element={<Services />} />
+          <Route path="/system-home-page" element={<SystemHomePage />} />
         </Routes>
     </BrowserRouter>
   );
