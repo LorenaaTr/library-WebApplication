@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Server",
+    "\\Server\\Data",
+    "\\Server\\Data\\Migrations",
+    "\\Server\\Models",
+    "\\Server\\Views"
   ],
+  "SelectedNode": "\\Server\\Models\\ErrorViewModel.cs",
   "PreviewInSolutionExplorer": false
 }
