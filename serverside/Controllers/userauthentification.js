@@ -1,20 +1,18 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
 
+const bcrypt = require('bcrypt');
+
 const mongoose = require('mongoose');
 require('../Models/user');
-const User = mongoose.model("UserInfo");
+const User = mongoose.model("Users");
 
 exports.register = async(req, res) =>{
-    const{name, surname, email, city, birthday, isStudent, username, password, confirmpassword, role} = req.body;
+    const{name, surname, email, city, birthday, username, password, confirmpassword, role} = req.body;
   
-    if (!name || !surname || !email || !city || !birthday || !isStudent || !username || !password || !confirmpassword) {
-      return res.status(400).send({ error: "All fields are required." });
-    }
-  
-    if (password !== confirmpassword) {
-      return res.status(400).send({ error: "Passwords do not match." });
-    }
+    // if (password !== confirmpassword) {
+    //   return res.status(400).send({ error: "Passwords do not match." });
+    // }
   
     const isAdmin = email.includes('rinesashelfshare') || email.includes('lorenashelfshare') || email.includes('bleonitshelfshare');
 
@@ -36,10 +34,9 @@ exports.register = async(req, res) =>{
         email,
         city,
         birthday,
-        isStudent,
         username,
         password: encryptedPassword,
-        role: isAdmin ? 'admin' : 'user',
+        role: isAdmin ? "admin" : "user",
       });
 
       res.send({status:"ok"});

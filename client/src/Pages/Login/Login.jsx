@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,11 +16,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = () => {
-    if (!username || !password) {
-      if (!username) setUsernameError(true);
-      if (!password) setPasswordError(true);
-      return;
-    }
+   
     navigate("/system-home-page")
   };
 
