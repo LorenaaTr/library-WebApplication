@@ -9,16 +9,33 @@ import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [dataform, setdataform] = useState({
+    username:"",
+    password:""
+  })
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleLogin = () => {
-   
-    navigate("/system-home-page")
+  const handleLogin = (e) => {
+    e.preventDefault();
+  
+    axios.post("http://localhost:5000/authentification/login",  dataform)
+      .then((res) => {
+        console.log('Response:', res.data);
+        if (res.data.status === 'ok') {
+          navigate('/');
+        } else {
+          console.error('Login failed:', res.data.error);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error.response.data);
+      });
   };
+
+  const changes = (e) => {
+    setdataform({ ...dataform, [e.target.name]: e.target.value });
+  }
 
   return (
     <div className="login">
@@ -30,60 +47,29 @@ const Login = () => {
                 LOG IN
               </Typography>
               <form className="login-form">
-                <TextField
-                  className='input'
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="username"
-                  label="Username"
-                  name="username"
-                  autoFocus
-                  value={username}
-                  error={usernameError}
-                  helperText={usernameError ? <Typography
-                    variant="body2"
-                    color="error"
-                    className="error-message"
-                    style={{textAlign:'left', margin:'-15px auto', fontSize:'15px'}}
-                  >
-                    Username is required.
-                  </Typography> : ''}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                    setUsernameError(false);
-                    setErrorMessage('');
-                  }}
-                />
-                <TextField
-                style={{color:"white"}}
-                  className='input'
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  value={password}
-                  error={passwordError}
-                  helperText={passwordError ? <Typography
-                    variant="body2"
-                    color="error"
-                    className="error-message"
-                    style={{textAlign:'left', margin:'-15px auto', fontSize:'15px'}}
-                  >
-                    Password is required.
-                  </Typography> : ''}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setPasswordError(false);
-                    setErrorMessage('');
-                  }}
-                />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Username"
+                name="username"
+                value={dataform.username}
+                onChange={(e) => changes(e)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                value={dataform.password}
+                onChange={(e) => changes(e)}
+              />
                 <Button
-                  type="button"
+                  type="submit"
                   fullWidth
                   variant="contained"
                   color="error"

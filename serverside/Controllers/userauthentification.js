@@ -10,10 +10,6 @@ const User = mongoose.model("Users");
 exports.register = async(req, res) =>{
     const{name, surname, email, city, birthday, username, password, confirmpassword, role} = req.body;
   
-    // if (password !== confirmpassword) {
-    //   return res.status(400).send({ error: "Passwords do not match." });
-    // }
-  
     const isAdmin = email.includes('rinesashelfshare') || email.includes('lorenashelfshare') || email.includes('bleonitshelfshare');
 
     if (!email.includes('@')) {
@@ -45,22 +41,22 @@ exports.register = async(req, res) =>{
     }
 };
 
-exports.login = async (req, res) =>{
-    const {username, password} = req.body;
-  
-    const user = await User.findOne({username});
-    if(!user){
-      return res.json({error:"User not found"});
+exports.login =  async (req, res) => {
+  const {username, password} = req.body;
+
+  const user = await User.findOne({username});
+  if(!user){
+    return res.json({error:"User not found"});
+  }
+  if(await bcrypt.compare(password, user.password)){
+    const token = jwt.sign({ username: user.username }, JWT_SECRET, {
+      expiresIn: '30m', 
+    });
+    if(res.status(201)){
+      return res.json({status:"ok", data:token});
+    }else{
+      return res.json({error:"error"});
     }
-    if(await bcrypt.compare(password, user.password)){
-      const token = jwt.sign({ username: user.username }, JWT_SECRET, {
-        expiresIn: '30m', 
-      });
-      if(res.status(201)){
-        return res.json({status:"ok", data:token});
-      }else{
-        return res.json({error:"error"});
-      }
-    }
-    res.json({status:"error", error:"Invalid password"});
-}
+  }
+  res.json({status:"error", error:"Invalid password"});
+};
