@@ -4,8 +4,9 @@ import { MdNewReleases, MdLibraryBooks, MdBook, MdFolderOpen, MdThumbUp } from '
 import { NavLink } from 'react-router-dom';
 
 const SystemSidebar = ({ children }) => {
-    const [isopen, setisopen] = useState(false);
-    const toggle = () => setisopen(!isopen);
+  const [isopen, setisopen] = useState(false);
+  const toggle = () => setisopen(!isopen);
+
   const menuItem = [
     {
       path: "/system-home-page",
@@ -36,14 +37,14 @@ const SystemSidebar = ({ children }) => {
 
   return (
     <div className="container">
-      <div className="sidebar" style={{width: isopen ? "300px" :"50px"}}>
-        <div className="links" onClick={toggle}>
-        {menuItem.map((item, index) => (
-          <NavLink to={item.path} key={index} className="link">
-            <div className="icon">{item.icon}</div>
-            <div className="link-text">{item.name}</div>
-          </NavLink>
-        ))}
+      <div className={`sidebar ${isopen ? 'open' : 'notopen'}`}>
+        <div className="links">
+          {menuItem.map((item, index) => (
+            <NavLink to={item.path} key={index} className="link">
+              <div className="icon">{item.icon}</div>
+              <div className="link-text">{item.name}</div>
+            </NavLink>
+          ))}
         </div>
       </div>
       <main>{children}</main>

@@ -2,28 +2,31 @@
   display: flex;
   justify-content: space-between;
   background-color: white;
+  position: fixed;
+  z-index: 100;
 }
 
 .search{
-  margin-top: 10px;
-  margin-left: -150px;
+  margin-top: 5px;
+  margin-left:290px;
   width: 600px;
+  z-index: 10; 
 }
 
-.useracc{
-  background-color: grey;
-  height: 40px;
-  width: 40px;
+#useracc{
+  height: auto;
+  width: 20px;
   border-radius: 50%;
   margin-top: 5px;
-  margin-right: 50px;
+  margin-left: 362px;
+  margin-right: 20px;
 }
 
 .user-icon{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  font-size: 20px;
 }
 
 @media (max-width: 600px) {
@@ -47,6 +50,6 @@
   }
 
   .user-icon{
-    margin-top: 8px;
+    margin-left: 50px;
   }
 }

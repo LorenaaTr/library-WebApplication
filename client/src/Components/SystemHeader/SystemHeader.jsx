@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
 import './systemheader.css';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const SystemHeader = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
+  };
+
+  const handleUserMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -24,36 +35,49 @@ const SystemHeader = () => {
         </Link>
       </div>
       <div className={`search ${isSearchVisible ? 'active' : ''}`}>
-      <TextField
-        sx={{
+        <TextField
+          sx={{
             '& label.Mui-focused': {
-              color: 'red',
+              color: 'black',
             },
             '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'red',
+              borderColor: 'black',
+            },
+            '& .MuiInputBase-input': {
+              color: 'black', 
             },
           }}
-        id="outlined-basic"
-        label="Search"
-        variant="outlined"
-        size="small"
-        fullWidth
-        InputProps={{
-          endAdornment: (
-            <IconButton>
-              <SearchIcon />
-            </IconButton>
-          ),
-        }}
-      />
+          id="outlined-basic"
+          label="Search"
+          variant="outlined"
+          size="small"
+          fullWidth
+          InputProps={{
+            endAdornment: (
+              <IconButton>
+                <SearchIcon />
+              </IconButton>
+            ),
+          }}
+        />
       </div>
-      <div className='useracc'>
-        <Link to='/useraccount'>
-          <div className="user-icon">
-            <FontAwesomeIcon style={{color:"black"}} icon={faUser} />
-          </div>
-        </Link>
-      </div>
+      <Button id='useracc' onClick={handleUserMenuOpen}>
+        <div className="user-icon">
+          <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
+        </div>
+      </Button>
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleUserMenuClose}
+      >
+        <MenuItem onClick={handleUserMenuClose}>
+          <Link to='/useraccount' style={{textDecoration:"none"}}>User Account</Link>
+        </MenuItem>
+        <MenuItem onClick={handleUserMenuClose}>
+          <Link to='/useraccount' style={{textDecoration:"none"}}>Log Out</Link>
+        </MenuItem>
+      </Menu>
     </div>
   );
 }

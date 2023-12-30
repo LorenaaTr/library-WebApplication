@@ -1,0 +1,35 @@
+.map {
+    position: relative;
+    margin-left: 120px;
+    margin-right: 70px;
+    margin-bottom: 100px;
+}
+
+.map p{
+    margin-top: 20px;
+    margin-left: 225px;
+}
+
+.fullscreen-button {
+    position: absolute;
+    top: 90px;
+    left: 1115px;
+    padding: 10px 10px;
+    z-index: 1;
+}
+
+@media (max-width: 1440px) {
+    .fullscreen-button {
+      top: 30px; 
+      left: 900px;
+      padding: 8px 8px; 
+    }
+}
+  
+@media (max-width: 768px) {
+    .fullscreen-button {
+      top: 20px; 
+      left: 650px; 
+      padding: 6px 6px;
+    }
+}

@@ -23,7 +23,7 @@ const Login = () => {
       .then((res) => {
         console.log('Response:', res.data);
         if (res.data.status === 'ok') {
-          navigate('/');
+          navigate('/system-home-page');
         } else {
           console.error('Login failed:', res.data.error);
         }
