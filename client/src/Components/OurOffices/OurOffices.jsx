@@ -14,7 +14,6 @@ const OurOffices = () => {
       document.webkitFullscreenElement ||
       document.msFullscreenElement
     ) {
-      // Exit fullscreen
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -26,7 +25,6 @@ const OurOffices = () => {
       }
       setIsFullScreen(false);
     } else {
-      // Enter fullscreen
       if (mapIframe.requestFullscreen) {
         mapIframe.requestFullscreen();
       } else if (mapIframe.mozRequestFullScreen) {

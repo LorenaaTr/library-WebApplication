@@ -50,7 +50,7 @@ const ContactUs = () => {
           onChange={handleMessageChange}
           style={{backgroundColor:"grey"}}
         />
-        <Button variant='contained' color='primary' className='button' onClick={handleSubmit} style={{backgroundColor:"red"}}>
+        <Button variant='contained' color='primary' className='button' onClick={handleSubmit} style={{backgroundColor:"red", marginTop:"20px"}}>
           Send Complaint
         </Button>
       </div>
