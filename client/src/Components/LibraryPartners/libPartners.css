@@ -1,0 +1,58 @@
+.partners-container{
+    margin-left: 350px;
+}
+
+.library-partner {
+    background-color: #D9D9D9;
+    padding: 20px;
+    margin: 25px;
+    margin-right: 95px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .library-image {
+    width: 200px;
+    height: 180px;
+    margin-right: 20px; /* Add margin to separate the image from the text */
+    border-radius: 10px;
+  }
+  
+  .library-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    flex: 1; /* Take up remaining space in the flex container */
+  }
+  
+  .library-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Add margin between title and button */
+  }
+  
+  .have-a-look-button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 75px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  
+  /* Media query for screens smaller than 600px (adjust as needed) */
+  @media (max-width: 600px) {
+    .partner-container {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .library-details {
+      margin-left: 10px; /* Add space between image and text on larger screens */
+    }
+  }
+  

@@ -11,6 +11,7 @@ import Services from './Pages/Services/ourServices';
 import SystemHomePage from './Pages/SystemHomePage/HomePage';
 import SystemHeader from './Components/SystemHeader/SystemHeader';
 import SystemSidebar from './Components/SystemSidebar/SystemSidebar';
+import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/ourPartners" element={<Partners />} />
           <Route path="/ourServices" element={<Services />} />
           <Route path="/system-home-page" element={<SystemHomePage />} />
+          <Route path="/system-libraries" element={<LibrariesSystem />} />
         </Routes>
     </BrowserRouter>
   );
