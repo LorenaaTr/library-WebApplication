@@ -1,32 +1,51 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Button, Typography, RadioGroup,Radio, FormControlLabel, Checkbox } from '@mui/material';
+import { Grid, TextField, Button, Typography} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import './registerreader.css';
+import axios from 'axios';
 
 const RegisterReader = () => {
   const navigate = useNavigate();
-  const [name, setname] = useState('');
-  const [surname, setsurname] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [city, setCity] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isStudent, setIsStudent] = useState('yes');
-  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [dataform, setdataform] = useState({
+    name:"",
+    surname:"",
+    email:"",
+    city:"",
+    birthday:"",
+    password:""
+  });
+
+  const [confirmpassword, setconfirmpassword] = useState("");
+  
 
   const [usernameError, setUsernameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
 
-  const handleRegister = () => {
-    if (!name||!surname || !email || !city || !birthday || !username || !password || !confirmPassword || !isStudent|| !acceptTerms) {
+  const handleRegister = (e) => {
+    e.preventDefault(); 
+
+    if (dataform.password !== confirmpassword) {
+      alert("Passwords do not match");
       return;
     }
-    navigate('/login');
+
+    axios.post("http://localhost:5000/authentification/register", dataform)
+    .then((res) => {
+      console.log('Response:', res.data);
+      navigate('/login');
+    })
+    .catch((error) => {
+      console.error('Error:', error.response.data);
+    });
+
   };
+
+  const changes = (e) => {
+    setdataform({ ...dataform, [e.target.name]: e.target.value });
+  }
+
 
   return (
     <>
@@ -44,76 +63,72 @@ const RegisterReader = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="name"
                 label="Name"
                 name="name"
                 autoFocus
-                value={name}
-                error={usernameError}
-                helperText={usernameError ? 'Username is required.' : ''}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  setUsernameError(false);
-                }}
+                value={dataform.name}
+                // error={usernameError}
+                // helperText={usernameError ? 'Username is required.' : ''}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="surname"
                 label="Surname"
                 name="surname"
-                value={email}
-                error={emailError}
-                helperText={emailError ? 'Invalid email address.' : ''}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError(false);
-                }}
+                value={dataform.surname}
+                // error={emailError}
+                // helperText={emailError ? 'Invalid email address.' : ''}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="email"
                 label="E-mail"
                 name="email"
                 type="email"
-                value={email}
-                error={emailError}
-                helperText={emailError ? 'Invalid email address.' : ''}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError(false);
-                }}
+                value={dataform.email}
+                // error={emailError}
+                // helperText={emailError ? 'Invalid email address.' : ''}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="city"
                 label="City"
                 name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                value={dataform.city}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="birthday"
                 label="Birthday"
                 name="birthday"
                 type="date"
-                value={birthday}
+                value={dataform.birthday}
                 InputLabelProps={{
                   shrink: true,
                 }}
-                onChange={(e) => setBirthday(e.target.value)}
+                onChange={(e) => changes(e)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Username"
+                name="username"
+                value={dataform.username}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
@@ -123,40 +138,22 @@ const RegisterReader = () => {
                 name="password"
                 label="Password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={dataform.password}
+                onChange={(e) => changes(e)}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                name="confirmPassword"
+                name="confirmpassword"
                 label="Confirm Password"
                 type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <Typography variant="body1" color="textPrimary" style={{textAlign: 'left'}}>
-                Are you a student?
-              </Typography>
-              <RadioGroup
-                row
-                aria-label="position"
-                name="position"
-                defaultValue="yes"
-                value={isStudent}
-                onChange={(e) => setIsStudent(e.target.value)}
-              >
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-              <FormControlLabel
-                control={<Checkbox checked={acceptTerms} onChange={(e) => setAcceptTerms(e.target.checked)} />}
-                label="I accept the terms and conditions"
+                value={confirmpassword}
+                onChange={e => setconfirmpassword(e.target.value)}
               />
               <Button
-                type="button"
+                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"

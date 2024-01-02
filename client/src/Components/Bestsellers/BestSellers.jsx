@@ -2,8 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './bestsellers.css'; // Create a separate CSS file for styling
-
+import './bestsellers.css'; 
 import book1 from '../../assets/images/harrypotterbookcover.jpg';
 import book2 from '../../assets/images/bestseller2.jpg';
 import book3 from '../../assets/images/bestseller3.jpg';

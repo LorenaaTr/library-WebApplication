@@ -1,0 +1,52 @@
+.contactus{
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
+.title{
+    height: auto;
+    max-width: 500px;
+    border-radius: 5px;
+    color: white;
+}
+
+.message{
+    height: auto;
+    max-width: 1050px;
+    border-radius: 5px;
+}
+
+label,
+.MuiOutlinedInput-root {
+  color: rgb(206, 201, 201) !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: rgb(141, 139, 139) !important; 
+}
+  
+  
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(120, 119, 119) !important; 
+}
+
+@media only screen and (max-width: 768px) {
+    .contactus {
+      margin-left: 50px;
+      margin-top: 30px;
+    }
+  
+    .title {
+      width: 100%;
+      max-width: 400px;
+      margin-right: 20px;
+    }
+  
+    .message {
+      width: 100%;
+      max-width: 1100px;
+      margin-right: 20px;
+    }
+  }
+  

@@ -8,10 +8,14 @@ import RegisterPartner from './Pages/JoinAsPartner/RegisterPartner';
 import OurBooks from './Pages/OurBooks/OurBooks';
 import Partners from './Pages/OurPartners/OurPartners';
 import Services from './Pages/Services/ourServices';
+import SystemHomePage from './Pages/SystemHomePage/HomePage';
+import SystemHeader from './Components/SystemHeader/SystemHeader';
+import SystemSidebar from './Components/SystemSidebar/SystemSidebar';
 
 const App = () => {
   return (
     <BrowserRouter>
+    
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -21,6 +25,7 @@ const App = () => {
           <Route path="/ourBooks" element={<OurBooks />} />
           <Route path="/ourPartners" element={<Partners />} />
           <Route path="/ourServices" element={<Services />} />
+          <Route path="/system-home-page" element={<SystemHomePage />} />
         </Routes>
     </BrowserRouter>
   );
