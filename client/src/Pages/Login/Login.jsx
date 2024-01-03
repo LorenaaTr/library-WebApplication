@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Grid, Paper, TextField, Button, Typography } from '@mui/material';
-import logo from '../../assets/images/logo.png';
+import React, { useState,  useContext  } from 'react';
+import { Grid, TextField, Button, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Navbar from '../../Components/Navbar/Navbar';
-import Footer from '../../Components/Footer/Footer';
 import axios from 'axios';
+import { useUsersContext } from '../../Redux/Products/Products';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,23 +15,32 @@ const Login = () => {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
+  const { state, dispatch } = useUsersContext();
+
   const handleLogin = (e) => {
     e.preventDefault();
   
-    axios.post("http://localhost:5000/authentification/login",  dataform)
+    axios.post("http://localhost:5000/authentification/login", dataform)
       .then((res) => {
         console.log('Response:', res.data);
         if (res.data.status === 'ok') {
+          dispatch({
+            type: "USER",
+            payload: { username: dataform.username } // Use payload key
+          });
+          localStorage.setItem("user", dataform.username);
           navigate('/system-home-page');
         } else {
           console.error('Login failed:', res.data.error);
+          // Handle login failure (e.g., show an error message)
         }
       })
       .catch((error) => {
         console.error('Error:', error.response.data);
+        // Handle network or server errors
       });
   };
-
+  
   const changes = (e) => {
     setdataform({ ...dataform, [e.target.name]: e.target.value });
   }

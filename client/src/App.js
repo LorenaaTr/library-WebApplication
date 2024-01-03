@@ -13,25 +13,27 @@ import SystemHeader from './Components/SystemHeader/SystemHeader';
 import SystemSidebar from './Components/SystemSidebar/SystemSidebar';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
+import { UsersProvider } from './Redux/Products/Products';
 
 const App = () => {
   return (
-    <BrowserRouter>
-    
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/joinasereader" element={<RegisterReader />} />
-          <Route path="/joinasapartner" element={<RegisterPartner />} />
-          <Route path="/ourBooks" element={<OurBooks />} />
-          <Route path="/ourPartners" element={<Partners />} />
-          <Route path="/ourServices" element={<Services />} />
-          <Route path="/system-home-page" element={<SystemHomePage />} />
-          <Route path="/system-libraries" element={<LibrariesSystem />} />
-          <Route path="/book-categories" element={<BookCategories />} />
-        </Routes>
-    </BrowserRouter>
+    <UsersProvider>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/joinasereader" element={<RegisterReader />} />
+            <Route path="/joinasapartner" element={<RegisterPartner />} />
+            <Route path="/ourBooks" element={<OurBooks />} />
+            <Route path="/ourPartners" element={<Partners />} />
+            <Route path="/ourServices" element={<Services />} />
+            <Route path="/system-home-page" element={<SystemHomePage />} />
+            <Route path="/system-libraries" element={<LibrariesSystem />} />
+            <Route path="/book-categories" element={<BookCategories />} />
+          </Routes>
+      </BrowserRouter>
+    </UsersProvider>
   );
 }
 
