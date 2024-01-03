@@ -20,7 +20,7 @@ const UsersProvider = ({ children }) => {
   const useUsersContext = () => {
     const context = useContext(Context);
     if (!context) {
-      throw new Error("useProductsContext must be used within a ProductsProvider");
+      throw new Error("useUsersContext must be used within a UsersProvider");
     }
     return context;
   };
