@@ -26,18 +26,16 @@ const Login = () => {
         if (res.data.status === 'ok') {
           dispatch({
             type: "USER",
-            payload: { username: dataform.username } // Use payload key
+            payload: { username: dataform.username }
           });
           localStorage.setItem("user", dataform.username);
           navigate('/system-home-page');
         } else {
           console.error('Login failed:', res.data.error);
-          // Handle login failure (e.g., show an error message)
         }
       })
       .catch((error) => {
         console.error('Error:', error.response.data);
-        // Handle network or server errors
       });
   };
   
