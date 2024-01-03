@@ -24,12 +24,14 @@
     flex-direction: column;
     align-items: flex-start; /* Align text to the left */
     flex: 1; /* Take up remaining space in the flex container */
+    margin-top: -25px;
   }
   
   .library-name {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px; /* Add margin between title and button */
+    color: black;
   }
   
   .have-a-look-button {
