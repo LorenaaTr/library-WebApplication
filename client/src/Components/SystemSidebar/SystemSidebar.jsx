@@ -19,7 +19,7 @@ const SystemSidebar = ({ children }) => {
       icon: <MdLibraryBooks />,
     },
     {
-      path: "/system-books",
+      path: "/book-categories",
       name: "Books",
       icon: <MdBook />,
     },

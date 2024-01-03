@@ -2,11 +2,13 @@ import React from 'react'
 import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
 import './books.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import SystemHeader from '../../Components/SystemHeader/SystemHeader';
 
 
 const BookCategories = () =>{
   return (
     <>
+    <SystemHeader/>
     <SystemSidebar/>
     <div className='books-container'>
     <h1 className='header'>EXPLORE BOOK TYPES</h1>
