@@ -18,12 +18,12 @@
 .category {
   text-align: center;
   margin: 15px;
-  flex-basis: 20%; /* Set the flex basis to 20% to ensure four items per row */
+  flex-basis: 30%; /* Set the flex basis to 20% to ensure four items per row */
   margin-bottom: 90px;
 }
 
 .icon {
-  font-size: 4em;
+  font-size: 5em;
   margin-bottom: 40px;
  
 }
