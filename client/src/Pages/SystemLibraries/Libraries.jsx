@@ -7,6 +7,7 @@ import LibPartners from '../../Components/LibraryPartners/LibPartners';
 const Libraries = () => {
   return (
     <>
+      <SystemHeader/>
      <SystemSidebar/>
      <div className='main-container'>
      <h1 className='header'>EXPLORE THE LIBRARIES</h1>
