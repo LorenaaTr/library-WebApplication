@@ -1,8 +1,5 @@
-.main-container{
-    background-color: black;
-}
-.header{
-    margin-left: 550px;
-    margin-bottom: 100px;
-    color: white;
-}
+.comp h1 {
+    margin-left: 650px;
+    margin-top: 150px;
+    margin-bottom: 80px;
+  }
