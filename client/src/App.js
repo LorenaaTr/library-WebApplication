@@ -14,6 +14,7 @@ import SystemSidebar from './Components/SystemSidebar/SystemSidebar';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
 import { UsersProvider } from './Redux/Products/Products';
+import UserAccount from './Pages/UserAccount/UserAccount';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/system-home-page" element={<SystemHomePage />} />
             <Route path="/system-libraries" element={<LibrariesSystem />} />
             <Route path="/book-categories" element={<BookCategories />} />
+            <Route path='/useraccount' element={<UserAccount/>}/>
           </Routes>
       </BrowserRouter>
     </UsersProvider>

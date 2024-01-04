@@ -71,7 +71,7 @@ const SystemHeader = () => {
       </div>
       <Button id='useracc' onClick={handleUserMenuOpen}>
         <div className="user-icon">
-          <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
+        <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
         </div>
       </Button>
       <Menu
@@ -83,7 +83,7 @@ const SystemHeader = () => {
           <Link to='/useraccount' style={{textDecoration:"none"}}>User Account</Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
-          <Link to='/useraccount' style={{textDecoration:"none"}}>Log Out</Link>
+          <Link to='/login' style={{textDecoration:"none"}}>Log Out</Link>
         </MenuItem>
       </Menu>
     </div>
