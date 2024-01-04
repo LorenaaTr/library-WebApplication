@@ -1,0 +1,55 @@
+
+.book-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+    margin-left: 250px;
+  }
+  
+  .category {
+    text-align: center;
+    margin: 15px;
+    flex-basis: 30%; /* Set the flex basis to 20% to ensure four items per row */
+    margin-bottom: 90px;
+  }
+  
+  .icon {
+    font-size: 5em;
+    margin-bottom: 40px;
+   
+  }
+  .fas{
+    color: burlywood;
+  }
+  .category-title{
+    font-weight: bold;
+  }
+  
+  /* Responsive Styling for Samsung S20 Ultra */
+  @media only screen and (max-width: 1440px) {
+    .icon {
+      font-size: 1.5em;
+    }
+  
+    .book-categories {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .category {
+      flex-basis: 40%; /* Set the flex basis to 40% for smaller screens */
+    }
+  }
+  
+  /* Additional styling for small screens if needed */
+  @media only screen and (max-width: 768px) {
+    .icon {
+      font-size: 1.2em;
+    }
+  
+    .book-categories {
+      margin-left: 0;
+    }
+  }
+  

@@ -27,11 +27,11 @@ const LibPartners  = () => {
           imageUrl: Kombetare,
         },
         {
-          name: 'Gjakova Town Library',
+          name: 'GJAKOVA TOWN LIBRARY',
           imageUrl: Gjakove,
         },
         {
-          name: 'Ferizaj Town Library',
+          name: 'FERIZAJ TOWN LIBRARY',
           imageUrl: Ferizaj,
         },
       ];
