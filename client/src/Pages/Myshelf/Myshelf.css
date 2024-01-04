@@ -1,0 +1,99 @@
+/* General App Styling */
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #000; /* Dark background */
+    color: #fff; /* White text */
+}
+
+/* Header Styling */
+.App-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Book Card Styling */
+.Myshelfbookcard {
+    display: flex;
+    flex-direction: row; /* Change from column to row */
+    justify-content: space-between; /* Add space between the image and the text */
+    align-items: center; /* Vertically align the image and the text */
+    width: 100%; /* Make width 100% for full width on all devices */
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.Myshelfbookcard img {
+    width: 50%; /* Adjust as needed */
+    height: auto;
+    margin-right: 10px; /* Add some space to the right of the image */
+}
+
+.Myshelfbookcard div { /* Add this to wrap the text elements */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align the text to the start (left) */
+}
+
+.Myshelfbookcard h2,
+.Myshelfbookcard p {
+    margin: 5px 0;
+}
+
+/* Myshelf Container Styling */
+.Myshelfcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    background-color: #000;
+}
+
+/* Myshelf Container Header Styling */
+.Myshelfcontainer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    /* Adjust styles for screens with a maximum width of 600px */
+    .App {
+        padding: 10px;
+    }
+
+    .Myshelfbookcard {
+        flex-direction: column; /* Stack the image and text vertically on small screens */
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .Myshelfbookcard img {
+        width: 100%; /* Make the image full width on small screens */
+        margin-right: 0; /* Remove the right margin on small screens */
+    }
+}
+
+@media screen and (max-width: 400px) {
+    /* Adjust styles for screens with a maximum width of 400px */
+    .App {
+        padding: 5px;
+    }
+
+    .Myshelfbookcard {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .Myshelfbookcard img {
+        width: 100%; /* Make the image full width on smaller screens */
+    }
+}
