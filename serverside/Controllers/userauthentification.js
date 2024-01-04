@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const mongoose = require('mongoose');
 require('../Models/user');
