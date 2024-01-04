@@ -13,9 +13,9 @@ import SystemHeader from './Components/SystemHeader/SystemHeader';
 import SystemSidebar from './Components/SystemSidebar/SystemSidebar';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
-import MyShelf from './Pages/Myshelf/Myshelf';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
+import Myshelf from './Pages/Myshelf/Myshelf';
 
 const App = () => {
   return (
@@ -34,6 +34,7 @@ const App = () => {
             <Route path="/system-libraries" element={<LibrariesSystem />} />
             <Route path="/book-categories" element={<BookCategories />} />
             <Route path='/useraccount' element={<UserAccount/>}/>
+            <Route path='/system-myshelf' element={<Myshelf/>}/>
           </Routes>
       </BrowserRouter>
     </UsersProvider>
