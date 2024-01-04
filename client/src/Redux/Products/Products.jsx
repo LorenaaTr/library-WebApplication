@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 import Reducer from "../Reducer/Reducer";
 
 const initialState = {
-  token: localStorage.getItem("token") ,
+    token: localStorage.getItem("token") || null,
 };
 
 const Context = createContext();

@@ -6,6 +6,11 @@ const Reducer = (state, action) => {
                 ...state,
                 username: action.payload.username
             });
+        case "TOKEN": 
+            return {
+                ...state,
+                token: action.payload.token,
+            };
 
         default:
             return state;

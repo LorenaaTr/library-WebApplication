@@ -12,8 +12,7 @@ const Login = () => {
     username:"",
     password:""
   })
-  const [usernameError, setUsernameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+ 
 
   const { state, dispatch } = useUsersContext();
 

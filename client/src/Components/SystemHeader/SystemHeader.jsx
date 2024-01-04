@@ -32,8 +32,6 @@ const SystemHeader = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    localStorage.setItem('loggedIn', false);
     navigate('/login', { replace: true });
   };
 
