@@ -20,22 +20,30 @@ const Login = () => {
     e.preventDefault();
   
     axios.post("http://localhost:5000/authentification/login", dataform)
-      .then((res) => {
-        console.log('Response:', res.data);
-        if (res.data.status === 'ok') {
-          dispatch({
-            type: "USER",
-            payload: { username: dataform.username }
-          });
-          localStorage.setItem("user", dataform.username);
-          navigate('/system-home-page');
-        } else {
-          console.error('Login failed:', res.data.error);
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error.response.data);
-      });
+    .then((res) => {
+      console.log('Response:', res.data);
+      if (res.data.status === 'ok') {
+        dispatch({
+          type: "TOKEN",
+          payload: { token: res.data.data }
+        });
+
+        dispatch({
+          type: "USER",
+          payload: { username: dataform.username }
+        });
+
+        localStorage.setItem("token", res.data.data);
+        localStorage.setItem("user", dataform.username);
+        
+        navigate('/system-home-page');
+      } else {
+        console.error('Login failed:', res.data.error);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error.response.data);
+    });
   };
   
   const changes = (e) => {

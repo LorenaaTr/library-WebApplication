@@ -20,8 +20,10 @@ mongoose.connect(mongoUrl, {
 });
 
 const authuser = require("./Routes/authroutes");
+const user = require("./Routes/userroutes");
 
 app.use('/authentification', authuser);
+app.use('/user', user);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

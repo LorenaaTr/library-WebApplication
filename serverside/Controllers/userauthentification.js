@@ -32,7 +32,7 @@ exports.register = async(req, res) =>{
         birthday,
         username,
         password: encryptedPassword,
-        role: isAdmin ? "admin" : "user",
+        role: isAdmin ? "Admin" : "User",
       });
 
       res.send({status:"ok"});

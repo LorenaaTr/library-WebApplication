@@ -13,11 +13,47 @@
     margin-bottom: 150px;
     background-color: white;
     width: 900px;
+    border-radius: 30px;
   }
 
-  .userdata tr{
-    background-color: #D9D9D9;
+  .userdata .usericon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
   }
+
+  .data{
+    width: 900px;
+    margin-top: 60px;
+    border-color: #666;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .data p{
+    color:#666;
+    margin-top: 20px;
+    margin-left: 100px;
+    font-weight: 600;
+  }
+
+  .editicon{
+    margin-right:100px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+  }
+
+  .editicon .icon{
+    margin-top: -15px;
+    height: auto;
+    max-width: 20px;
+    color:#666;
+  }
+ 
   
   .container {
     display: flex;
@@ -93,7 +129,7 @@
     width: 600px;
     z-index: 300;
   }
-  
+
   #useracc{
     height: auto;
     width: 20px;
@@ -110,47 +146,118 @@
     font-size: 20px;
   }
   
+  
+  
   @media only screen and (max-width: 768px) {
     .sidebar {
-      width: 15%;
+      width: 120px; /* Full width for smaller screens */
+      height: 125vh;
+      margin-top: -5px;
     }
   
     .link .link-text {
-      display: none;
+      display: none; /* Hide link text for smaller screens */
     }
   
     .link .icon {
-      margin-left: auto;
+      margin-left: auto; /* Push icon to the right for smaller screens */
     }
   
     .toggle-button {
-      display: block;
+      display: block; /* Display toggle button for smaller screens */
     }
   }
-  
+   
   
   @media (max-width: 600px) {
-    .logo {
-      margin-left: 50px;
+
+    .systemheader{
+      display: flex;
+      justify-content: space-evenly;
+      background-color: white;
+      position: fixed;     
+      z-index: 100;
+      margin-top: -14px;
+    }
+    .logo{
+      margin-left: 40px;
     }
   
     .search {
-      width: 180px;
-      margin-left: -50px;
-      margin-right: -20px;
+      width: 250px;
+      margin-left: -10px; 
       margin-top: 13px;
     }
   
-    .useracc {
-      margin-top: 13px;
-      margin-left: 50px;
-      margin-right: 20px;
+    #useracc {
+      margin-top: 13px; 
+      margin-left: 76px;
       height: 35px;
       width: 35px;
     }
   
-    .user-icon {
+    .user-icon{
       margin-left: 50px;
+    }
+  }
+
+
+  @media (max-width: 600px)  {
+    /* Apply styles only for screens larger than 600px (adjust the value as needed) */
+    .useracc {
+      background-color: black;
+      height: 127.5vh;
+      width: 480px;
+      justify-content: center;
+    }
+    .acccontainer {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .userdata {
+      margin-top: 150px;
+      margin-left: 80px;
+      margin-bottom: 150px;
+      background-color: white;
+      width: 300px;
+      border-radius: 30px;
+    }
+  
+    .userdata .usericon{
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+    }
+  
+    .data{
+      width: 400px;
+      margin-top: 60px;
+      border-color: #666;
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .data p{
+      color:#666;
+      margin-top: 20px;
+      margin-left: 40px;
+      font-weight: 600;
+    }
+  
+    .editicon{
+      margin-right:140px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+  
+    .editicon .icon{
+      margin-top: -15px;
+      height: auto;
+      max-width: 10px;
+      color:#666;
     }
   }
   

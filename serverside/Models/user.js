@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const books = require('./books');
 const user = new mongoose.Schema({
   name: {type: String, required: true },
   surname: {type: String, required: true },
@@ -9,6 +9,7 @@ const user = new mongoose.Schema({
   username:{type:String, required: true},
   password:String,
   role:String,
+  books: [books]
 },
 {
   collection:"Users"
