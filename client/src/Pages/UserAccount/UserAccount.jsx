@@ -7,10 +7,13 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserAccount = () => {
   const [dataform, setdataform] = useState({});
   const [isadmin, setisadmin] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -26,8 +29,13 @@ const UserAccount = () => {
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
+        if (error.response && error.response.status === 401) {
+          alert("Token expired. Please log in again.");
+          window.localStorage.clear();
+          navigate('/login'); 
+        }
       });
-  }, []);
+  }, [navigate]);
   
   return (
     <>
