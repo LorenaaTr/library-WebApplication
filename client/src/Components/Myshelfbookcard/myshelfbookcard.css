@@ -1,0 +1,41 @@
+.book {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Make width 100% for full width on all devices */
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding-left: 10px;
+}
+
+.book img {
+    width: 50%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.book div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.book h2, .book p {
+    margin: 5px 0;
+    color: #000;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .book {
+        flex-direction: column; /* Stack the image and text vertically on small screens */
+    }
+
+    .book img {
+        width: 100%; /* Make the image full width on small screens */
+        margin-right: 0; /* Remove the right margin on small screens */
+    }
+}

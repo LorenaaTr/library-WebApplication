@@ -1,5 +1,6 @@
 import React from 'react'
 import './categories.css'
+import { Link } from 'react-router-dom'
 
 const Categories = () => {
   return (
@@ -7,10 +8,10 @@ const Categories = () => {
       <div className="book-categories">
         <div className="category">
             <i className="fas fa-book icon fiction-icon"></i>
-            <p className="category-title">FICTION</p>
+            <Link  to='/fictionbooks'>FICTION</Link>
         </div>
 
-        <div className="category">
+        {/* <div className="category">
             <i className="fas fa-history icon non-fiction-icon"></i>
             <p className="category-title">NON-FICTION</p>
         </div>
@@ -63,7 +64,7 @@ const Categories = () => {
         <div className="category">
             <i className="fas fa-gamepad  icon crime-entertainment-icon"></i>
             <p className="category-title">ENTERTAINMENT BOOKS</p>
-        </div>
+        </div> */}
         </div>
     </>
   )

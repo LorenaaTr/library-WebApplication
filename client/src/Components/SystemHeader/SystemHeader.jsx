@@ -10,6 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from 'react-router-dom';
 
 const SystemHeader = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -25,6 +26,13 @@ const SystemHeader = () => {
 
   const handleUserMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -63,7 +71,7 @@ const SystemHeader = () => {
       </div>
       <Button id='useracc' onClick={handleUserMenuOpen}>
         <div className="user-icon">
-          <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
+        <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
         </div>
       </Button>
       <Menu
@@ -74,8 +82,8 @@ const SystemHeader = () => {
         <MenuItem onClick={handleUserMenuClose}>
           <Link to='/useraccount' style={{textDecoration:"none"}}>User Account</Link>
         </MenuItem>
-        <MenuItem onClick={handleUserMenuClose}>
-          <Link to='/useraccount' style={{textDecoration:"none"}}>Log Out</Link>
+        <MenuItem onClick={handleLogout}>
+          <Link to='/login' style={{textDecoration:"none"}}>Log Out</Link>
         </MenuItem>
       </Menu>
     </div>

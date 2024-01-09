@@ -7,14 +7,14 @@ import LibPartners from '../../Components/LibraryPartners/LibPartners';
 const Libraries = () => {
   return (
     <>
-    <SystemHeader/>
-    <SystemSidebar/>
-       <div className="home">
-            <div className="components comp">
-              <h1>EXPLORE THE LIBRARIES</h1>
-              <LibPartners/>
-            </div>
-        </div>
+     <SystemHeader/>
+     <SystemSidebar/>
+     <div className='main-container'>
+     <h1 className='header'>EXPLORE THE LIBRARIES</h1>
+      <div className="libraries-wrapper">
+       <LibPartners/>
+      </div>
+     </div>
     </>
   )
 }
