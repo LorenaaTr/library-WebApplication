@@ -1,0 +1,69 @@
+/* src/components/AddBook.css */
+
+/* Container styling */
+.add-book-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading styling */
+  .add-book-container h1 {
+    font-size: 44px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(245, 121, 121);
+  }
+  
+  /* Form label styling */
+  .add-book-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Input field styling */
+  .add-book-container input, .add-book-container select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Button styling */
+  .add-book-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Back to Book List link styling */
+  .add-book-container a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .add-book-container {
+      padding: 10px;
+    }
+  
+    .add-book-container h1 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  
+    .add-book-container input, .add-book-container select {
+      padding: 6px;
+      margin-bottom: 8px;
+    }
+  
+    .add-book-container button {
+      padding: 8px 16px;
+    }
+  }
+  

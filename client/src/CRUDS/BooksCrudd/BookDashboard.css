@@ -1,0 +1,48 @@
+/* src/components/BookDashboard.css */
+
+/* Container styles */
+.book-dashboard-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+/* Header styles */
+.dashboard-header {
+  color: white;
+}
+
+/* Table styles */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.book-table th, .book-table td {
+  border: 1px solid grey;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Styling for the dropdown menu */
+.book-dropdown {
+  background-color: grey;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* Styling for the links in the Actions column */
+.edit-link, .delete-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* Styling for the image */
+.book-image {
+  border-radius: 5px;
+}
