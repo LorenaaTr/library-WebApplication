@@ -38,11 +38,12 @@ const App = () => {
           <Route path="/system-home-page" element={<SystemHomePage />} />
           <Route path="/system-libraries" element={<LibrariesSystem />} />
           <Route path="/allBooks" element={<DisplayBooks />} />
-            <Route path=":allBooksID" element={<DisplayBooks />} />
+          <Route path="/:allBooksID" element={<DisplayBooks />} />
           <Route path="/book-categories" element={<BookCategories />} />
           <Route path="/book-dashboard" element={<BookCRUD />} />
           <Route path="/add-book" element={<AddBook/>} />
-           <Route path="/edit-book/:id" element={<EditBook/>} />
+          <Route path="/edit-book/:id" element={<EditBook/>} />
+          <Route path='/useraccount' element={<UserAccount/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>
