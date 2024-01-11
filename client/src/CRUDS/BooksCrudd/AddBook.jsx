@@ -1,78 +1,101 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './AddBook.css';
+import { useNavigate } from 'react-router-dom';
 
-const AddBook = () => {
-  const navigate = useNavigate();
-
+const AddBook = ({ onBookAdded }) => {
   const [newBook, setNewBook] = useState({
-    imageUrl: '', // Store the selected file as a base64-encoded string
     title: '',
+    author: '',
     description: '',
     category: '',
-    isFree: true,
     isbn: '',
-    author: '',
-    contentAttribute: '',
+    price: '',
+    imageUrl: null,
   });
 
-  const handleInputChange = (e) => {
-    setNewBook({
-      ...newBook,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const [category, setcategory] = useState('');
 
-  // Handle file input change
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const navigate = useNavigate();
 
-    if (file) {
-      // Read the selected file and convert it to a base64-encoded string
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewBook({
-          ...newBook,
-          imageUrl: reader.result,
-        });
-      };
-      reader.readAsDataURL(file);
+  const categoryOptions = [
+    'Fiction',
+    'Non-Fiction',
+    'Classics',
+    'Children\'s Books',
+    'Cook',
+    'Crime',
+    'Romance',
+    'Philosophy',
+    'Religious and Spiritual',
+  ];
+
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+
+    if (type === 'file') {
+      setNewBook((prevState) => ({
+        ...prevState,
+        [name]: e.target.files[0], 
+      }));
+    } else {
+      setNewBook((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     }
   };
 
-  const handleAddBook = () => {
-    axios.post('http://localhost:5000/api/books', newBook)
-      .then(response => {
-        console.log('Book added:', response.data);
-        navigate('/book-list');
-      })
-      .catch(error => console.error(error));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    axios.post("http://localhost:5000/book/addbook", newBook)
+    .then((res) => {
+      console.log('Response:', res.data);
+      navigate('/home-dashboard');
+    })
+    .catch((error) => {
+      console.error('Error:', error.response.data);
+    });
   };
+
 
   return (
     <div className="add-book-container">
-      <h1>Add New Book</h1>
+      <h1 className="add-book-header">Add New Book</h1>
 
-      <label>Title: <input type="text" name="title" value={newBook.title} onChange={handleInputChange} /></label><br />
-      <label>Description: <input type="text" name="description" value={newBook.description} onChange={handleInputChange} /></label><br />
-      <label>Category: <input type="text" name="category" value={newBook.category} onChange={handleInputChange} /></label><br />
-      <label>Status:
-        <select name="isFree" value={newBook.isFree ? 'Free' : 'Buy'} onChange={handleInputChange}>
-          <option value="true">Free</option>
-          <option value="false">Buy</option>
+      <Link to="/book-dashboard" className="back-to-dashboard-link">Back to Dashboard</Link>
+
+      <form method="post" className="add-book-form" onSubmit={handleSubmit}>
+        <label htmlFor="title">Title:</label>
+        <input type="text" id="title" name="title" value={newBook.title} onChange={handleChange} />
+
+        <label htmlFor="author">Author:</label>
+        <input type="text" id="author" name="author" value={newBook.author} onChange={handleChange} required />
+
+        <label htmlFor="description">Description:</label>
+        <textarea id="description" name="description" value={newBook.description} onChange={handleChange} required />
+
+        <label htmlFor="category">Category:</label>
+        <select id="category" name="category" value={newBook.category} onChange={handleChange} required>
+          <option value="" disabled>Select a Category</option>
+          {categoryOptions.map(category => (
+            <option key={category} value={category}>{category}</option>
+          ))}
         </select>
-      </label><br />
-      <label>ISBN: <input type="text" name="isbn" value={newBook.isbn} onChange={handleInputChange} /></label><br />
-      <label>Author: <input type="text" name="author" value={newBook.author} onChange={handleInputChange} /></label><br />
-      <label>Content Attribute: <input type="text" name="contentAttribute" value={newBook.contentAttribute} onChange={handleInputChange} /></label><br />
-      <label>
-        Image:
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-      </label><br />
-      <button onClick={handleAddBook}>Add Book</button>
-      <br />
-      <Link to="/book-dashboard">Back to Dashboard</Link>
+
+        <label htmlFor="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" value={newBook.isbn} onChange={handleChange} />
+
+        <label htmlFor="price">Price:</label>
+        <input type="number" id="price" name="price" value={newBook.price} onChange={handleChange} required />
+
+        <label htmlFor="imageUrl">Image Upload:</label>
+        <input type="file" id="imageUrl" name="imageUrl" onChange={handleChange} accept="image/*" required />
+
+        <button type="submit" onChange={handleSubmit}>Add Book</button>
+      </form>
     </div>
   );
 };
