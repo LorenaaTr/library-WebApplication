@@ -20,6 +20,13 @@ import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
 import Myshelf from './Pages/Myshelf/Myshelf';
 import FictionBooks from './Pages/FictionBooks/FictionBooks';
+import ChangeUsername from './CRUDS/UsersCrud/UpdateUsername/ChangeUsername';
+import ChangePassword from './CRUDS/UsersCrud/UpdatePassword/ChangePassword';
+import ChangeName from './CRUDS/UsersCrud/UpdateName/ChangeName';
+import ChangeSurname from './CRUDS/UsersCrud/UpdateSurname/ChangeSurname';
+import ChangeBirthday from './CRUDS/UsersCrud/UpdateBirthday/ChangeBirthday';
+import ChangeEmail from './CRUDS/UsersCrud/UpdateEmail/ChangeEmail';
+import ChangeCity from './CRUDS/UsersCrud/UpdateCity/ChangeCity';
 
 
 const App = () => {
@@ -44,6 +51,13 @@ const App = () => {
           <Route path="/add-book" element={<AddBook/>} />
           <Route path="/edit-book/:id" element={<EditBook/>} />
           <Route path='/useraccount' element={<UserAccount/>}/>
+          <Route path='/updateusername' element={<ChangeUsername/>}/>
+          <Route path='/updatepassword' element={<ChangePassword/>}/>
+          <Route path='/updatename' element={<ChangeName/>}/>
+          <Route path='/updatesurname' element={<ChangeSurname/>}/>
+          <Route path='/updatebirthday' element={<ChangeBirthday/>}/>
+          <Route path='/updateemail' element={<ChangeEmail/>}/>
+          <Route path='/updatecity' element={<ChangeCity/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>

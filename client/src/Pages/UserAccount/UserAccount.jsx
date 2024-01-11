@@ -30,7 +30,6 @@ const UserAccount = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
         if (error.response && error.response.status === 401) {
-          alert("Token expired. Please log in again.");
           window.localStorage.clear();
           navigate('/login'); 
         }
