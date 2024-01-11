@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Book = require('../Models/books');
-const multer= reqire('multer')
+const multer= require('multer');
 
 exports.addBook = async (req, res) => {
     try {

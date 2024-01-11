@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const image = new mongooseongoose.Schema({
+const image = new mongoose.Schema({
 
 });
 // Define the books schema
