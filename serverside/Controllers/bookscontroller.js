@@ -1,41 +1,39 @@
 const mongoose = require('mongoose');
-require("../Models/books");
-const Books = mongoose.model("Books");
+const Book = require('../Models/books');
+const multer= reqire('multer')
 
-exports.addbook = async (req, res) =>{
+exports.addBook = async (req, res) => {
     try {
-        const newBook = new Books({
-          title: req.body.title,
-          description: req.body.description,
-          type: req.body.type,
-          image: {
-            url: req.body.image.url,
-            altText: req.body.image.altText,
-          },
-          pdf: {
-            file: {
-              url: req.body.pdf.file.url,
-              altText: req.body.pdf.file.altText,
-            },
-          },
-          amount: req.body.amount
+        const newBook = new Book({
+            imageUrl: req.body.imageUrl,
+            title: req.body.title,
+            description: req.body.description,
+            category: req.body.category,
+            isbn: req.body.isbn,
+            author: req.body.author,
+            // rate: req.body.rate,
+            price: req.body.price,
         });
-    
+
         await newBook.save();
         res.status(201).json({ message: 'Book added successfully.' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        if (error.code === 11000) {
+            res.status(400).json({ error: 'ISBN must be unique' });
+        } else {
+            res.status(500).json({ error: `Error creating book: ${error.message}` });
+        }
     }
-}
+};
 
-exports.getbooksbycategory = async (req, res) =>{
-    const { type } = req.params;
+exports.getBooksByCategory = async (req, res) => {
+    const { category } = req.params;
     try {
-        const booksByType = await Books.find({ 'type.type': type.toLowerCase() });
-        res.status(200).json({ status: 'ok', data: booksByType });
-      } catch (error) {
+        const booksByCategory = await Book.find({ category });
+        res.status(200).json({ status: 'ok', data: booksByCategory });
+    } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
-}
+};

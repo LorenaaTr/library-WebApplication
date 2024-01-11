@@ -8,7 +8,7 @@ const BookDashboard = () => {
 
   useEffect(() => {
     // Fetch the list of books from the server
-    axios.get('http://localhost:5000/api/books')
+    axios.get('http://localhost:5000/book/addBook')
       .then(response => setBooks(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -23,19 +23,25 @@ const BookDashboard = () => {
       <table className="book-table">
         <thead>
           <tr>
-            <th>Image</th>
             <th>Title</th>
             <th>Author</th>
             <th>Description</th>
             <th>Category</th>
-            <th>Is Free</th>
             <th>ISBN</th>
+            <th>Price</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {books.map(book => (
             <tr key={book._id}>
+              <td>{book.title}</td>
+              <td>{book.author}</td>
+              <td>{book.description}</td>
+              <td>{book.category}</td>
+              <td>{book.price} </td>
+              <td>{book.isbn}</td>
               <td>
                 <img
                   src={book.imageUrl}
@@ -43,17 +49,6 @@ const BookDashboard = () => {
                   className="book-image"
                 />
               </td>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.description}</td>
-              <td>{book.category}</td>
-              <td>
-                <select value={book.isFree ? 'Free' : 'Buy'} className="book-dropdown" disabled>
-                  <option value="Free">Free</option>
-                  <option value="Buy">Buy</option>
-                </select>
-              </td>
-              <td>{book.isbn}</td>
               <td>
                 <Link to={`/edit/${book._id}`} className="edit-link">Edit</Link> |{' '}
                 <Link to={`/delete/${book._id}`} className="delete-link">Delete</Link>

@@ -21,11 +21,11 @@ mongoose.connect(mongoUrl, {
 
 const authuser = require("./Routes/authroutes");
 const user = require("./Routes/userroutes");
-const books = require("./Routes/bookroutes");
+const bookRoutes = require("./Routes/bookRoutes");
 
 app.use('/authentification', authuser);
 app.use('/user', user);
-app.use('/book', books);
+app.use('/book', bookRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

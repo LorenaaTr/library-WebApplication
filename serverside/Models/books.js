@@ -1,53 +1,32 @@
 const mongoose = require('mongoose');
-const booktypes = require('./booktypes');
 
-const fileSchema = new mongoose.Schema({
-  url: {
-    type: String,
-    required: true,
-  },
-  altText: {
-    type: String,
-    required: true,
-  },
+const image = new mongooseongoose.Schema({
+
 });
-
-const pdfSchema = new mongoose.Schema({
-  file: {
-    type: fileSchema,
-    required: true,
-  },
-});
-
+// Define the books schema
 const books = new mongoose.Schema({
+  imageUrl: {type:image, required: true},
   title: {
     type: String,
     required: true,
   },
-  description: {
+  description: String,
+  category: String,
+  isbn: {
     type: String,
     required: true,
+    unique: true,
   },
-  type: {
-    type: booktypes,
-    required:true,
+  author: String,
+  rate: {
+    type: Number,
+    min: 0,
+    max: 5,
   },
-  image: {
-    type: fileSchema,
-    required: true,
-  },
-  pdf: {
-    type: pdfSchema,
-    required: true,
-  },
-  amount:{
-    type:Number,
-    required:true   
-  }
+  price: Number,
 },
 {
     collection:"Books"
 });
 
 mongoose.model('Books', books);
-

@@ -58,6 +58,8 @@ const App = () => {
           <Route path='/updatebirthday' element={<ChangeBirthday/>}/>
           <Route path='/updateemail' element={<ChangeEmail/>}/>
           <Route path='/updatecity' element={<ChangeCity/>}/>
+           <Route path="/edit-book/:id" element={<EditBook/>} />
+          <Route path='/useraccount' element={<UserAccount/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>
