@@ -32,3 +32,34 @@ exports.createBook = async (req, res, next) => {
         next(error);
       }
     };
+
+    exports.getBooks = async (req, res, next) => {
+      try {
+        const startIndex = parseInt(req.query.startIndex) || 0;
+        const limit = parseInt(req.query.limit) || 9;
+        const sortDirection = req.query.order === 'asc' ? 1 : -1;
+        const books = await Books.find({
+          ...(req.query.category && {category: req.query.category}),
+          ...(req.query.title && {title: req.query.title}),
+          ...(req.query.slug && {slug: req.query.slug}),
+          ...(req.query.author && {author: req.query.author}),
+          ...(req.query.bookId && {_id: req.query.bookId}),
+          ...(req.query.isbn && {isbn: req.query.isbn}),
+          ...(req.query.searchTerm && {
+            $or: [
+              { title: { $regex: req.query.searchTerm, $options: 'i'} },
+              { description: { $regex: req.query.searchTerm, $options: 'i'} },
+            ],
+          }),
+
+        }).sort({ updatedAt: sortDirection}).skip(startIndex).limit(limit);
+        const totalBooks = await Books.countDocuments(); 
+        res.status(200).json({
+          books,
+          totalBooks,
+        });
+        
+      } catch (error) {
+        next(error);
+      }
+    };
