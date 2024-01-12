@@ -12,9 +12,9 @@ import SystemHomePage from './Pages/SystemHomePage/HomePage';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
 import DisplayBooks from './Pages/DisplayBooks/book';
-import BookCRUD from '../src/CRUDS/BooksCrudd/BookDashboard';
-import AddBook from '../src/CRUDS/BooksCrudd/AddBook';
-import EditBook from '../src/CRUDS/BooksCrudd/EditBook';
+//import BookCRUD from '../src/CRUDS/BooksCrudd/BookDashboard';
+import CreateBook from '../src/CRUDS/BooksCrud/CreateBook';
+//import EditBook from '../src/CRUDS/BooksCrudd/EditBook';
 import Cart from './Pages/ShoppingCart/Cart';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
@@ -47,9 +47,7 @@ const App = () => {
           <Route path="/allBooks" element={<DisplayBooks />} />
           <Route path="/:allBooksID" element={<DisplayBooks />} />
           <Route path="/book-categories" element={<BookCategories />} />
-          <Route path="/book-dashboard" element={<BookCRUD />} />
-          <Route path="/add-book" element={<AddBook/>} />
-          <Route path="/edit-book/:id" element={<EditBook/>} />
+          <Route path="/create-book" element={<CreateBook/>} />
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/updateusername/:id' element={<ChangeUsername/>}/>
           <Route path='/updatepassword/:id' element={<ChangePassword/>}/>
@@ -59,6 +57,13 @@ const App = () => {
           <Route path='/updateemail/:id' element={<ChangeEmail/>}/>
           <Route path='/updatecity/:id' element={<ChangeCity/>}/>
            <Route path="/edit-book/:id" element={<EditBook/>} />
+          <Route path='/updateusername' element={<ChangeUsername/>}/>
+          <Route path='/updatepassword' element={<ChangePassword/>}/>
+          <Route path='/updatename' element={<ChangeName/>}/>
+          <Route path='/updatesurname' element={<ChangeSurname/>}/>
+          <Route path='/updatebirthday' element={<ChangeBirthday/>}/>
+          <Route path='/updateemail' element={<ChangeEmail/>}/>
+          <Route path='/updatecity' element={<ChangeCity/>}/>
           <Route path='/useraccount' element={<UserAccount/>}/>
         </Routes>
         </BrowserRouter>
