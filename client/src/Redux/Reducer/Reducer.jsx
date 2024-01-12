@@ -10,6 +10,11 @@ const Reducer = (state, action) => {
           ...state,
           token: action.payload.token,
         };
+      case "USERNAME_UPDATE":
+        return {
+          ...state,
+          username: action.payload.newUsername
+        };
       default:
         return state;
     }

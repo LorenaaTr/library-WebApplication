@@ -29,6 +29,8 @@ const UserAccount = () => {
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
+        window.localStorage.clear();
+        navigate('/login');
         if (error.response && error.response.status === 401) {
           window.localStorage.clear();
           navigate('/login'); 
@@ -64,13 +66,13 @@ const UserAccount = () => {
                 <p>{dataform.city} </p>
               </div>
               <div className="editicon">
-                <Link to='/updateusername'><EditIcon className='icon' /></Link>
-                <Link to='/updatepassword'><EditIcon className='icon' /></Link>
-                <Link to='/updatename'><EditIcon className='icon' /></Link>
-                <Link to='/updatesurname'><EditIcon className='icon' /></Link>
-                <Link to='/updatebirthday'><EditIcon className='icon' /></Link>
-                <Link to='/updateemail'><EditIcon className='icon' /></Link>
-                <Link to='/updatecity'><EditIcon className='icon' /></Link>
+                <Link to={`/updateusername/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updatepassword/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updatename/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updatesurname/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updatebirthday/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updateemail/${dataform._id}`}><EditIcon className='icon' /></Link>
+                <Link to={`/updatecity/${dataform._id}`}><EditIcon className='icon' /></Link>
               </div>
             </div>
           </div>
