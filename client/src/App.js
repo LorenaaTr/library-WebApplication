@@ -49,6 +49,14 @@ const App = () => {
           <Route path="/book-categories" element={<BookCategories />} />
           <Route path="/create-book" element={<CreateBook/>} />
           <Route path='/useraccount' element={<UserAccount/>}/>
+          <Route path='/updateusername/:id' element={<ChangeUsername/>}/>
+          <Route path='/updatepassword/:id' element={<ChangePassword/>}/>
+          <Route path='/updatename/:id' element={<ChangeName/>}/>
+          <Route path='/updatesurname/:id' element={<ChangeSurname/>}/>
+          <Route path='/updatebirthday/:id' element={<ChangeBirthday/>}/>
+          <Route path='/updateemail/:id' element={<ChangeEmail/>}/>
+          <Route path='/updatecity/:id' element={<ChangeCity/>}/>
+           {/* <Route path="/edit-book/:id" element={<EditBook/>} /> */}
           <Route path='/updateusername' element={<ChangeUsername/>}/>
           <Route path='/updatepassword' element={<ChangePassword/>}/>
           <Route path='/updatename' element={<ChangeName/>}/>
