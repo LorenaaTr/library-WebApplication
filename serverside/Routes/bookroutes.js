@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const booksController = require('../Controllers/bookscontroller');
 
-const bookcontroller = require('../Controllers/bookscontroller');
-const booktypecontroller = require('../Controllers/booktypecontroller');
 
-router.post('/addbook', bookcontroller.addBook); // Corrected the function name
-router.get('/getbook/:type', bookcontroller.getBooksByCategory);  // Assuming you have this function defined in booktypecontroller
+router.post('/createbook', booksController.createBook);
+
 
 module.exports = router;
