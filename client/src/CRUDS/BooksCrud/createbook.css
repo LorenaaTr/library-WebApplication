@@ -1,0 +1,42 @@
+.create-book-form{
+    margin-left: 350px;
+    display: flex;
+}
+.form-group{
+    margin-top: 15px;
+    margin-left: 80px;
+    width: 60%;
+}
+
+.div1{
+    flex: 6;
+    margin-bottom: 150px;
+}
+.div2{
+    flex: 1;
+}
+
+.button-div{
+    margin-top: 50px;
+    margin-left: 80px;
+}
+
+.book-button{
+    width: 67%;
+}
+.upload{
+    width: 22px;
+    height: 22px;
+}
+
+.fileInput{
+    border: 4px dotted darkred;
+    border-radius: 10px;
+    padding: 15px 0px;
+}
+.book-picture{
+    width: 80%;
+    height: 70%;
+    margin-left: -150px;
+    margin-top: 20px;
+}
