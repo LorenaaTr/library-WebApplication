@@ -3,28 +3,50 @@ import { Grid, TextField, Button, Typography, FormControlLabel, Checkbox } from 
 import {useNavigate } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import axios from 'axios';
 import './registerpartner.css';
 
 const RegisterPartner = () => {
   const navigate = useNavigate();
-  const [name,] = useState('');
-  const [ceoname, setceoname] = useState('');
-  const [username, setUsername] = useState('');
-  const [city, setCity] = useState('');
- 
-  const [State, setState] = useState('');
-  const [Sreet, setStreet] = useState('');
-  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [dataform, setdataform] = useState({
+    name:"",
+    ceo:"",
+    city:"",
+    state:"",
+    street:"",
+    zipcode:"",
+    password:""
+  });
 
-  const [usernameError, setUsernameError] = useState(false);
+  const [confirmpassword, setconfirmpassword] = useState("");
   
 
-  const handleRegister = () => {
-    if (!name||!ceoname||  !city ||   !username  ||  !acceptTerms) {
+  const [nameError, setnameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+
+  const handleRegister = (e) => {
+    e.preventDefault(); 
+
+    if (dataform.password !== confirmpassword) {
+      alert("Passwords do not match");
       return;
     }
-    navigate('/login');
+
+    axios.post("http://localhost:5000/partner/registerpartner", dataform)
+    .then((res) => {
+      console.log('Response:', res.data);
+      navigate('/login');
+    })
+    .catch((error) => {
+      console.error('Error:', error.response.data);
+    });
+
   };
+
+  const changes = (e) => {
+    setdataform({ ...dataform, [e.target.name]: e.target.value });
+  }
+
 
   return (
     <>
@@ -43,87 +65,105 @@ const RegisterPartner = () => {
             </Typography>
             <form className="login-form">
               <TextField
-                variant="outlined"
+                ariant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="name"
-                label="Library Bussiness name"
+                label="Library's Bussiness Name"
                 name="name"
                 autoFocus
-                value={name}
-                error={usernameError}
-                helperText={usernameError ? 'Library name is required.' : ''}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  setUsernameError(false);
-                }}
+                value={dataform.name}
+                // error={usernameError}
+                // helperText={usernameError ? 'Username is required.' : ''}
+                onChange={(e) => changes(e)}
               />
                <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="ceoname"
-                label="Library's Ceo Name"
-                name="ceoname"
-                value={ceoname}
-                onChange={(e) => setceoname(e.target.value)}
+                 ariant="outlined"
+                 margin="normal"
+                 required
+                 fullWidth
+                 label="Library's CEO Name"
+                 name="ceo"
+                 autoFocus
+                 value={dataform.ceo}
+                 // error={usernameError}
+                 // helperText={usernameError ? 'Username is required.' : ''}
+                 onChange={(e) => changes(e)}
               />
-              
               <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="city"
-                label="City"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                 ariant="outlined"
+                 margin="normal"
+                 required
+                 fullWidth
+                 label="City"
+                 name="city"
+                 autoFocus
+                 value={dataform.city}
+                 // error={usernameError}
+                 // helperText={usernameError ? 'Username is required.' : ''}
+                 onChange={(e) => changes(e)}
               />
-              
               <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="state"
-                label="State"
-                name="state"
-                value={State}
-                onChange={(e) => setState(e.target.value)}
+                 ariant="outlined"
+                 margin="normal"
+                 required
+                 fullWidth
+                 label="State"
+                 name="state"
+                 autoFocus
+                 value={dataform.state}
+                 // error={usernameError}
+                 // helperText={usernameError ? 'Username is required.' : ''}
+                 onChange={(e) => changes(e)}
               />
-              
               <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="street"
-                label="Street"
-                name="street"
-                value={Sreet}
-                onChange={(e) => setStreet(e.target.value)}
+                 ariant="outlined"
+                 margin="normal"
+                 required
+                 fullWidth
+                 label="Street"
+                 name="street"
+                 autoFocus
+                 value={dataform.street}
+                 // error={usernameError}
+                 // helperText={usernameError ? 'Username is required.' : ''}
+                 onChange={(e) => changes(e)}
               />
               
                <TextField
+                 ariant="outlined"
+                 margin="normal"
+                 required
+                 fullWidth
+                 label="Zip Code"
+                 name="zipcode"
+                 autoFocus
+                 value={dataform.zipcode}
+                 // error={usernameError}
+                 // helperText={usernameError ? 'Username is required.' : ''}
+                 onChange={(e) => changes(e)}
+              />
+              <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="zipcode"
-                label="Zip Code"
-                name="zipcode"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                name="password"
+                label="Password"
+                type="password"
+                value={dataform.password}
+                onChange={(e) => changes(e)}
               />
-              
-              
-              
-              <FormControlLabel
-                control={<Checkbox checked={acceptTerms} onChange={(e) => setAcceptTerms(e.target.checked)} />}
-                label="I accept the terms and conditions"
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="confirmpassword"
+                label="Confirm Password"
+                type="password"
+                value={confirmpassword}
+                onChange={e => setconfirmpassword(e.target.value)}
               />
               <Button
                 type="button"

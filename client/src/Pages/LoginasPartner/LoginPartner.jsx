@@ -6,7 +6,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
 import { useUsersContext } from '../../Redux/Products/Products';
 
-const Login = () => {
+const LoginPartner = () => {
   const navigate = useNavigate();
   const [dataform, setdataform] = useState({
     username:"",
@@ -19,7 +19,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
   
-    axios.post("http://localhost:5000/authentification/login", dataform)
+    axios.post("http://localhost:5000/partner/loginpartner", dataform)
     .then((res) => {
       console.log('Response:', res.data);
       if (res.data.status === 'ok') {
@@ -36,7 +36,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.data);
         localStorage.setItem("user", dataform.username);
         
-        navigate('/system-home-page');
+        navigate('/partner-home-page');
       } else {
         console.error('Login failed:', res.data.error);
       }
@@ -65,7 +65,7 @@ const Login = () => {
                 margin="normal"
                 required
                 fullWidth
-                label="Username"
+                label="Library's Username"
                 name="username"
                 value={dataform.username}
                 onChange={(e) => changes(e)}
@@ -92,12 +92,12 @@ const Login = () => {
                   Log In
                 </Button>
                 <p className='joinus'>
-                  You're a Partner?
-                  <Link to="/loginpartner">Log in here</Link>
+                  You're a User?
+                  <Link to="/login">Log in here</Link>
                 </p>
                 <p className='joinus'>
-                  Don't have an account yet?
-                  <Link to="/joinasereader">Sign up here</Link>
+                  Not a partner yet?
+                  <Link to="/joinasapartner">Sign up here</Link>
                 </p>
               </form>
             </div>
@@ -107,4 +107,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPartner;

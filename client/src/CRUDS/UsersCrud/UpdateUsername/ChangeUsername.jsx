@@ -22,11 +22,11 @@ const ChangeUsername = () => {
     e.preventDefault();
     console.log('Button Clicked');
     console.log('Request Payload:', dataForm); 
-    axios.put(`http://localhost:5000/user/updateUsername/${id}`, dataForm) // Use the id from useParams
+    axios.put(`http://localhost:5000/user/updateUsername/${id}`, dataForm) 
       .then((res) => {
         console.log('res', res);
-        alert("Username changed succesfully")
-        navigate('/useraccount'); 
+        alert("Username changed succesfully. Log in again please!")
+        navigate('/login'); 
       })
       .catch((error) => {
         console.error('Error:', error);
