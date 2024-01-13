@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './BookDashboard.css';
+import ErrorIcon from '@mui/icons-material/Error';
 import SystemHeader from '../../Components/SystemHeader/SystemHeader';
 import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
@@ -107,9 +108,10 @@ const BookDashboard = () => {
         </div>
       </div>
 
-      {/* Delete Book Modal */}
+      
       <Dialog open={isDeleteModalOpen} onClose={handleCancelDelete}>
-        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogTitle className='title-del'>Confirm Deletion</DialogTitle>
+        <ErrorIcon className='error-icon' style={{ fontSize: '60px' }} />
         <DialogContent>
           <DialogContentText>
             Are you sure you want to delete this book?
@@ -117,7 +119,7 @@ const BookDashboard = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCancelDelete}>No, Cancel</Button>
-          <Button onClick={handleConfirmDelete} color='secondary' autoFocus>
+          <Button onClick={handleConfirmDelete}  style={{ color: 'red' }} autoFocus>
             Yes, I'm sure
           </Button>
         </DialogActions>
