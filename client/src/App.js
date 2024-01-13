@@ -27,8 +27,7 @@ import ChangeSurname from './CRUDS/UsersCrud/UpdateSurname/ChangeSurname';
 import ChangeBirthday from './CRUDS/UsersCrud/UpdateBirthday/ChangeBirthday';
 import ChangeEmail from './CRUDS/UsersCrud/UpdateEmail/ChangeEmail';
 import ChangeCity from './CRUDS/UsersCrud/UpdateCity/ChangeCity';
-
-
+import LoginPartner from './Pages/LoginasPartner/LoginPartner';
 const App = () => {
   return (
     <UsersProvider>
@@ -65,6 +64,7 @@ const App = () => {
           <Route path='/updateemail' element={<ChangeEmail/>}/>
           <Route path='/updatecity' element={<ChangeCity/>}/>
           <Route path='/useraccount' element={<UserAccount/>}/>
+          <Route path='/loginpartner' element={<LoginPartner/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>
