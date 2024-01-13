@@ -63,3 +63,12 @@ exports.createBook = async (req, res, next) => {
         next(error);
       }
     };
+
+    exports.deleteBook = async (req, res, next) => {
+      try {
+        await Books.findByIdAndDelete(req.params.bookId);
+        res.status(200).json('The post has been deleted!');
+      } catch (error) {
+        next(error);
+      }
+    }
