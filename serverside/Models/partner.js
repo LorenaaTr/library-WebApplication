@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const books = require('./books');
+const Bookschema = require('./books');
 const partner =  new mongoose.Schema({
     username:{type:String, required:true},
     name: {type: String, required: true },
@@ -10,7 +10,7 @@ const partner =  new mongoose.Schema({
     zipcode:{type:Number, required: true},
     password:String,
     role:String,
-    books: [books]
+    books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Books' }]
 },
 {
     collection:"Partners"
