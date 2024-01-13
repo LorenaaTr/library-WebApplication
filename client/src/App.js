@@ -28,6 +28,7 @@ import ChangeBirthday from './CRUDS/UsersCrud/UpdateBirthday/ChangeBirthday';
 import ChangeEmail from './CRUDS/UsersCrud/UpdateEmail/ChangeEmail';
 import ChangeCity from './CRUDS/UsersCrud/UpdateCity/ChangeCity';
 import LoginPartner from './Pages/LoginasPartner/LoginPartner';
+import BookstorePage from './Pages/PartnerWeb/BookstorePage/BookstorePage';
 const App = () => {
   return (
     <UsersProvider>
@@ -66,6 +67,7 @@ const App = () => {
           <Route path='/updatecity' element={<ChangeCity/>}/>
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/loginpartner' element={<LoginPartner/>}/>
+          <Route path='/partner-home-page' element={<BookstorePage/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>

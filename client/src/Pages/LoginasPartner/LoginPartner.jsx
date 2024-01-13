@@ -36,7 +36,7 @@ const LoginPartner = () => {
         localStorage.setItem("token", res.data.data);
         localStorage.setItem("user", dataform.username);
         
-        navigate('/system-home-page');
+        navigate('/partner-home-page');
       } else {
         console.error('Login failed:', res.data.error);
       }
