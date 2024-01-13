@@ -90,8 +90,61 @@ export default function CreateBook() {
           <div className="create-book-form">
             <div className="div1">
               <form onSubmit={handleSubmit}>
-                {/* Your form fields */}
-                {/* ... */}
+              <div className="form-group">
+                <TextField
+                  id="title"
+                  name="title"
+                  label="Book Title"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="author"
+                  label="Author"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="description"
+                  label="Description"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="category"
+                  label="Category"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="isbn"
+                  label="ISBN"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="price"
+                  label="Price"
+                  type="number"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
                 <div className="form-group fileInput">
                   <Input
                     type="file"

@@ -64,26 +64,20 @@ const BookDashboard = () => {
             <table className="book-table">
               <thead>
                 <tr>
+                  <th>Image</th>
                   <th>Title</th>
                   <th>Author</th>
                   <th>Description</th>
                   <th>Category</th>
                   <th>Price</th>
                   <th>ISBN</th>
-                  <th>Image</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {books.map(book => (
                   <tr key={book._id}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.description}</td>
-                    <td>{book.category}</td>
-                    <td>{book.price} </td>
-                    <td>{book.isbn}</td>
-                    <td>
+                     <td>
                       <Link to={`/book/${book.slug}`}>
                         <img
                           src={book.image}
@@ -92,6 +86,12 @@ const BookDashboard = () => {
                         />
                       </Link>
                     </td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.description}</td>
+                    <td>{book.category}</td>
+                    <td>{book.price} </td>
+                    <td>{book.isbn}</td>
                     <td>
                       <Link to={`/edit-book/${book._id}`} className="edit-link">Edit</Link> |{' '}
                       <Link to="#" className="delete-link">

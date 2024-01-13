@@ -1,67 +1,158 @@
-// src/components/EditBook.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import SystemHeader from '../../Components/SystemHeader/SystemHeader';
+import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
+import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
+import './createbook.css';
+import { Alert, Button } from '@mui/material';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { app } from '../../firebase';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate, useParams } from 'react-router';
 
+export default function EditBook() {
+  const [file, setFile] = useState(null);
+  const [imageUploadProgress, setImageUploadProgress] = useState(null);
+  const [imageUploadError, setImageUploadError] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [publishError, setPublishError] = useState(null);
 
-const EditBook = ({ match }) => {
   const navigate = useNavigate();
 
-
-  const [book, setBook] = useState({
-    imageUrl: '',
-    title: '',
-    description: '',
-    category: '',
-    isFree: false,
-    isbn: '',
-    author: '',
-    contentAttribute: '',
-  });
-
-  useEffect(() => {
-    axios.get(`http://localhost:5000/api/books/${match.params.id}`)
-      .then(response => setBook(response.data))
-      .catch(error => console.error(error));
-  }, [match.params.id]);
-
-  const handleInputChange = (e) => {
-    setBook({
-      ...book,
-      [e.target.name]: e.target.value,
-    });
+  const handleUploadImage = async () => {
+    try {
+      if (!file) {
+        setImageUploadError('Please select an image!');
+        return;
+      }
+      setImageUploadError(null);
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + '-' + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setImageUploadProgress(progress.toFixed(0));
+        },
+        (error) => {
+          setImageUploadError('Image upload failed!');
+          setImageUploadProgress(null);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageUploadProgress(null);
+            setImageUploadError(null);
+            setFormData({ ...formData, image: downloadURL });
+          });
+        }
+      );
+    } catch (error) {
+      setImageUploadError('Image upload failed!');
+      setImageUploadProgress(null);
+      console.error(error);
+    }
   };
 
-  const handleCheckboxChange = (e) => {
-    setBook({
-      ...book,
-      [e.target.name]: e.target.checked,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('api/book/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+        return;
+      }
+      if (res.ok) {
+        setPublishError(null);
+        //navigate(`/book/${data}`)
+      }
+    } catch (error) {
+      setPublishError('Something went wrong!');
+      console.error(error);
+    }
   };
 
-  const handleEditBook = () => {
-    axios.put(`http://localhost:5000/api/books/${match.params.id}`, book)
-      .then(response => {
-        console.log('Book edited:', response.data);
-        navigate('/book-list');
-      })
-      .catch(error => console.error(error));
-  };
-  
   return (
-    <div>
-      <h1>Edit Book</h1>
-      <label>Image URL: <input type="text" name="imageUrl" value={book.imageUrl} onChange={handleInputChange} /></label><br />
-      <label>Title: <input type="text" name="title" value={book.title} onChange={handleInputChange} /></label><br />
-      <label>Description: <input type="text" name="description" value={book.description} onChange={handleInputChange} /></label><br />
-      <label>Category: <input type="text" name="category" value={book.category} onChange={handleInputChange} /></label><br />
-      <label>Is Free: <input type="checkbox" name="isFree" checked={book.isFree} onChange={handleCheckboxChange} /></label><br />
-      <label>ISBN: <input type="text" name="isbn" value={book.isbn} onChange={handleInputChange} /></label><br />
-      <label>Author: <input type="text" name="author" value={book.author} onChange={handleInputChange} /></label><br />
-      <label>Content Attribute: <input type="text" name="contentAttribute" value={book.contentAttribute} onChange={handleInputChange} /></label><br />
-      <button onClick={handleEditBook}>Save Changes</button>
-    </div>
-  );
-};
+    <>
+      <SystemHeader />
+      <SystemSidebar />
+      <div className="home">
+        <div className="components comp">
+          <h1>Create BOOK</h1>
+          <div className="create-book-form">
+            <div className="div1">
+              <form onSubmit={handleSubmit}>
+                {/* Your form fields */}
+                {/* ... */}
+                <div className="form-group fileInput">
+                  <Input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                  <label htmlFor="image">
+                    <Button
+                      variant="contained"
+                      component="span"
+                      onClick={handleUploadImage}
+                      disabled={imageUploadProgress}
+                      className="upload-btn"
+                    >
+                      {imageUploadProgress ? (
+                        <div className="upload">
+                          <CircularProgress
+                            value={imageUploadProgress}
+                            text={`${imageUploadProgress || 0}%`}
+                          />
+                        </div>
+                      ) : (
+                        'Upload Image'
+                      )}
+                    </Button>
+                  </label>
+                </div>
 
-export default EditBook;
+                <div className="button-div">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="error"
+                    className="book-button"
+                  >
+                    Create Book
+                  </Button>
+                  <br />
+                  {publishError && <Alert color="failure">{publishError}</Alert>}
+                </div>
+              </form>
+            </div>
+
+            <div className="div2">
+              {imageUploadError && (
+                <Alert severity="error" className="erro">
+                  {imageUploadError}
+                </Alert>
+              )}
+              {formData.image && (
+                <img
+                  src={formData.image}
+                  alt="upload"
+                  className="book-picture"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
