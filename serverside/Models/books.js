@@ -1,32 +1,41 @@
 const mongoose = require('mongoose');
 
-const image = new mongoose.Schema({
-
-});
-// Define the books schema
-const books = new mongoose.Schema({
-  imageUrl: {type:image, required: true},
+const booksSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  description: String,
-  category: String,
+  author: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
   isbn: {
     type: String,
     required: true,
     unique: true,
   },
-  author: String,
-  rate: {
-    type: Number,
-    min: 0,
-    max: 5,
+  slug: {
+    type: String,
+    required: true,
   },
-  price: Number,
-},
-{
-    collection:"Books"
-});
+  price: {
+    type: Number, 
+    required: true,
+  },
+  image: {
+    type: String,
+    default: "gs://shelfshare-3835c.appspot.com/1705068521443-cover.jpg",
+  }
+}, { timestamps: true });
 
-mongoose.model('Books', books);
+const Books = mongoose.model('Books', booksSchema);
+
+module.exports = Books;

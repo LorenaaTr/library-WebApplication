@@ -1,39 +1,65 @@
 const mongoose = require('mongoose');
-const Book = require('../Models/books');
-const multer= require('multer');
+const Books = require('../Models/books'); 
 
-exports.addBook = async (req, res) => {
+
+const errorHandler = (statusCode, message) => {
+    const error = new Error(message);
+    error.statusCode = statusCode;
+    return error;
+};
+
+exports.createBook = async (req, res, next) => {
+  
+    if (!req.body.title || !req.body.category || !req.body.author || !req.body.isbn || !req.body.description || !req.body.price) {
+        return next(errorHandler(400, 'Please provide all required fields'));
+      }
+
+      const slug = req.body.title
+      .split(' ')
+      .join('-')
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9-]/g, '');
+
+    const newBook = new Books({
+      ...req.body,
+      slug,
+    });
+    
     try {
-        const newBook = new Book({
-            imageUrl: req.body.imageUrl,
-            title: req.body.title,
-            description: req.body.description,
-            category: req.body.category,
-            isbn: req.body.isbn,
-            author: req.body.author,
-            // rate: req.body.rate,
-            price: req.body.price,
+        const savedBook = await newBook.save();
+        res.status(201).json(savedBook);
+      } catch (error) {
+        next(error);
+      }
+    };
+
+    exports.getBooks = async (req, res, next) => {
+      try {
+        const startIndex = parseInt(req.query.startIndex) || 0;
+        const limit = parseInt(req.query.limit) || 9;
+        const sortDirection = req.query.order === 'asc' ? 1 : -1;
+        const books = await Books.find({
+          ...(req.query.category && {category: req.query.category}),
+          ...(req.query.title && {title: req.query.title}),
+          ...(req.query.slug && {slug: req.query.slug}),
+          ...(req.query.author && {author: req.query.author}),
+          ...(req.query.bookId && {_id: req.query.bookId}),
+          ...(req.query.isbn && {isbn: req.query.isbn}),
+          ...(req.query.searchTerm && {
+            $or: [
+              { title: { $regex: req.query.searchTerm, $options: 'i'} },
+              { description: { $regex: req.query.searchTerm, $options: 'i'} },
+            ],
+          }),
+
+        }).sort({ updatedAt: sortDirection}).skip(startIndex).limit(limit);
+        const totalBooks = await Books.countDocuments(); 
+        res.status(200).json({
+          books,
+          totalBooks,
         });
-
-        await newBook.save();
-        res.status(201).json({ message: 'Book added successfully.' });
-    } catch (error) {
-        console.error(error);
-        if (error.code === 11000) {
-            res.status(400).json({ error: 'ISBN must be unique' });
-        } else {
-            res.status(500).json({ error: `Error creating book: ${error.message}` });
-        }
-    }
-};
-
-exports.getBooksByCategory = async (req, res) => {
-    const { category } = req.params;
-    try {
-        const booksByCategory = await Book.find({ category });
-        res.status(200).json({ status: 'ok', data: booksByCategory });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }
-};
+        
+      } catch (error) {
+        next(error);
+      }
+    };

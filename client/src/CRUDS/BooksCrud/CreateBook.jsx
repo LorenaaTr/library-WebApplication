@@ -8,6 +8,7 @@ import { Alert, Button } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router';
 
 
 
@@ -16,7 +17,10 @@ export default function CreateBook() {
   const[imageUploadProgress, setImageUploadProgress] = useState(null);
   const[imageUploadError, setImageUploadError] = useState(null);
   const[formData, setFormData] = useState({});
+  const[publishError, setPublishError] = useState(null);
   
+  const navigate = useNavigate();
+
   const handleUploadImage = async () => {
     try {
       if(!file){
@@ -30,7 +34,7 @@ export default function CreateBook() {
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         'state_changed',
-        (snapshot) =>{
+        (snapshot) => {
           const progress = 
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setImageUploadProgress(progress.toFixed(0));
@@ -51,6 +55,31 @@ export default function CreateBook() {
       setImageUploadProgress(null);
       console.log(error);
     }
+  };
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch('api/book/create', {
+          method : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        if(!res.ok){
+          setPublishError(data.message);
+          return;
+        }
+        if(res.ok){
+          setPublishError(null);
+          //navigate(`/book/${data}`)
+        }
+        
+      } catch (error) {
+        setPublishError('Something went wrong!');
+      }
   }
   return (
     <>
@@ -61,7 +90,7 @@ export default function CreateBook() {
           <h1>Create BOOK</h1>
           <div className="create-book-form">
             <div className="div1">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <TextField
                   id="title"
@@ -69,6 +98,9 @@ export default function CreateBook() {
                   label="Book Title"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, title: e.target.value})
+                  }
                 />
               </div>
 
@@ -78,6 +110,9 @@ export default function CreateBook() {
                   label="Author"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, author: e.target.value})
+                  }
                 />
               </div>
 
@@ -87,6 +122,9 @@ export default function CreateBook() {
                   label="Description"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, description: e.target.value})
+                  }
                 />
               </div>
 
@@ -96,6 +134,9 @@ export default function CreateBook() {
                   label="Category"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, category: e.target.value})
+                  }
                 />
               </div>
 
@@ -105,6 +146,9 @@ export default function CreateBook() {
                   label="ISBN"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, isbn: e.target.value})
+                  }
                 />
               </div>
 
@@ -115,21 +159,24 @@ export default function CreateBook() {
                   type="number"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) => 
+                    setFormData({...formData, price: e.target.value})
+                  }
                 />
               </div>
               <div className="form-group fileInput">
                 <Input
                   type="file"
                   id="image"
-                  inputProps={{ accept: 'image/*' }}
+                  accept='image/*'
                   onChange={(e) => setFile(e.target.files[0]) }
                 />
                 <label htmlFor="image">
-                  <Button variant="contained" component="span" onClick={handleUploadImage} disabled={imageUploadError}>
+                  <Button variant="contained" component="span" onClick={handleUploadImage} disabled={imageUploadProgress} className='upload-btn'>
                     {
                       imageUploadProgress ? (
                       <div className="upload">
-                        <CircularProgress value={imageUploadProgress} text={`${imageUploadProgress || 0}%`}/>
+                        <CircularProgress value={imageUploadProgress} text={`${imageUploadProgress || 0}%`} />
                       </div>
                       ) : ( 
                         'Upload Image'
@@ -144,13 +191,15 @@ export default function CreateBook() {
                     color="error"
                     className="book-button">Create Book
             </Button>
+            <br />
+            {publishError && <Alert color='failure'>{publishError}</Alert>}
            </div>
             </div>
 
             <div className="div2">
               {
                   imageUploadError && (
-                    <Alert severity='error'>
+                    <Alert severity='error' className='erro'>
                       {imageUploadError}
                     </Alert>
                   )

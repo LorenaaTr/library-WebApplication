@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const books = require('./books');
-const user = new mongoose.Schema({
-  name: {type: String, required: true },
-  surname: {type: String, required: true },
-  email: {type: String, required: true },
-  city: {type: String, required: true },
-  birthday:{type: String, required: true},
-  username:{type:String, required: true},
-  password:String,
-  role:String,
-  books: [books]
-},
-{
-  collection:"Users"
+const booksSchema = require('./books'); 
+
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  surname: { type: String, required: true },
+  email: { type: String, required: true },
+  city: { type: String, required: true },
+  birthday: { type: String, required: true },
+  username: { type: String, required: true },
+  password: String,
+  role: String,
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Books' }] 
+}, {
+  collection: "Users"
 });
 
-mongoose.model('Users', user);
+mongoose.model('Users', userSchema);

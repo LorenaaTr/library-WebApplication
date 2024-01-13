@@ -12,9 +12,9 @@ import SystemHomePage from './Pages/SystemHomePage/HomePage';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
 import DisplayBooks from './Pages/DisplayBooks/book';
-//import BookCRUD from '../src/CRUDS/BooksCrudd/BookDashboard';
+import BookCRUD from '../src/CRUDS/BooksCrud/BookDashboard';
 import CreateBook from '../src/CRUDS/BooksCrud/CreateBook';
-//import EditBook from '../src/CRUDS/BooksCrudd/EditBook';
+import EditBook from '../src/CRUDS/BooksCrud/EditBook';
 import Cart from './Pages/ShoppingCart/Cart';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
@@ -47,6 +47,7 @@ const App = () => {
           <Route path="/:allBooksID" element={<DisplayBooks />} />
           <Route path="/book-categories" element={<BookCategories />} />
           <Route path="/create-book" element={<CreateBook/>} />
+          <Route path="/dashboard-books" element={<BookCRUD/>} />
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/updateusername/:id' element={<ChangeUsername/>}/>
           <Route path='/updatepassword/:id' element={<ChangePassword/>}/>
@@ -55,7 +56,7 @@ const App = () => {
           <Route path='/updatebirthday/:id' element={<ChangeBirthday/>}/>
           <Route path='/updateemail/:id' element={<ChangeEmail/>}/>
           <Route path='/updatecity/:id' element={<ChangeCity/>}/>
-           {/* <Route path="/edit-book/:id" element={<EditBook/>} /> */}
+          <Route path="/edit-book/:id" element={<EditBook/>} /> 
           <Route path='/updateusername' element={<ChangeUsername/>}/>
           <Route path='/updatepassword' element={<ChangePassword/>}/>
           <Route path='/updatename' element={<ChangeName/>}/>

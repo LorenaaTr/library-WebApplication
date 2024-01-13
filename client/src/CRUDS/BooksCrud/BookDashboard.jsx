@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './BookDashboard.css'; // Import the CSS file
+import { Link } from 'react-router-dom'; 
+import './BookDashboard.css'; 
+import SystemHeader from '../../Components/SystemHeader/SystemHeader';
+import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
+import { Button } from '@mui/material';
 
 const BookDashboard = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    // Fetch the list of books from the server
-    axios.get('http://localhost:5000/book/addBook')
-      .then(response => setBooks(response.data))
+    axios.get('http://localhost:5000/book/getBooks')
+      .then(response => setBooks(response.data.books))  // Assuming the data is an object with a books property
       .catch(error => console.error(error));
   }, []);
 
   return (
-    <div className="book-dashboard-container">
-      <h1 className="dashboard-header">Book Dashboard</h1>
+  <>
+    <SystemHeader />
+    <SystemSidebar />
+    <div className="home">
+        <div className="components comp">
+          <div className="book-dashboard-container">
+          <h1 className="dashboard-header">Book Dashboard</h1>
 
-      {/* Add Book button */}
-      <Link to="/add-book" className="add-book-button">Add Book</Link>
+          <Link to="/create-book" className="add-book-button">
+            <Button className='link1'>Add New Book</Button>
+          </Link>
 
       <table className="book-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>ISBN</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>ISBN</th>
+                  <th>Image</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
         <tbody>
           {books.map(book => (
             <tr key={book._id}>
@@ -43,21 +51,27 @@ const BookDashboard = () => {
               <td>{book.price} </td>
               <td>{book.isbn}</td>
               <td>
-                <img
-                  src={book.imageUrl}
-                  alt={`Cover of ${book.title}`}
-                  className="book-image"
-                />
+                <Link to={`/book/${book.slug}`}>
+                  <img
+                    src={book.image}
+                    alt={book.title}
+                    className="book-image"
+                  />
+                </Link>
               </td>
               <td>
-                <Link to={`/edit/${book._id}`} className="edit-link">Edit</Link> |{' '}
-                <Link to={`/delete/${book._id}`} className="delete-link">Delete</Link>
+                <Link to={`/edit-book/${book._id}`} className="edit-link">Edit</Link> |{' '}
+                <Link to={`/delete-book/${book._id}`} className="delete-link">Delete</Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+          </div>
+    </div>
+  
+  </>
   );
 };
 
