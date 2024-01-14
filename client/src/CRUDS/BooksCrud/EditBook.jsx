@@ -25,7 +25,7 @@ export default function EditBook() {
   useEffect(() => {
     try {
       const fetchBook = async () =>{
-      const res = await fetch(`/book/getbooks?bookId=${formData._Id}`);
+      const res = await fetch(`/book/getbooks?bookId=${bookId}`);
       const data = await res.json();
       if(!res.ok){
         console.log(data.message);
