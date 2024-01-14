@@ -7,8 +7,9 @@ import './createbook.css';
 import { Alert, Button } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default function CreateBook() {
   const [file, setFile] = useState(null);
@@ -40,12 +41,18 @@ export default function CreateBook() {
           setImageUploadError('Image upload failed!');
           setImageUploadProgress(null);
         },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        async () => {
+          try {
+            // Get download URL after successful upload
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
             setFormData({ ...formData, image: downloadURL });
-          });
+          } catch (urlError) {
+            console.error('Error getting download URL:', urlError);
+            setImageUploadError('Image upload failed!');
+            setImageUploadProgress(null);
+          }
         }
       );
     } catch (error) {
@@ -58,7 +65,7 @@ export default function CreateBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('api/book/create', {
+      const res = await fetch('/book/createbook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +83,6 @@ export default function CreateBook() {
       }
     } catch (error) {
       setPublishError('Something went wrong!');
-      console.error(error);
     }
   };
 
@@ -97,6 +103,9 @@ export default function CreateBook() {
                   label="Book Title"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
                 />
               </div>
 
@@ -106,6 +115,9 @@ export default function CreateBook() {
                   label="Author"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, author: e.target.value })
+                  }
                 />
               </div>
 
@@ -115,6 +127,9 @@ export default function CreateBook() {
                   label="Description"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                 />
               </div>
 
@@ -124,6 +139,9 @@ export default function CreateBook() {
                   label="Category"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, category: e.target.value })
+                  }
                 />
               </div>
 
@@ -133,6 +151,9 @@ export default function CreateBook() {
                   label="ISBN"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, isbn: e.target.value })
+                  }
                 />
               </div>
 
@@ -143,6 +164,9 @@ export default function CreateBook() {
                   type="number"
                   variant="outlined"
                   fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, price: Number(e.target.value) })
+                  }
                 />
               </div>
                 <div className="form-group fileInput">
@@ -157,12 +181,12 @@ export default function CreateBook() {
                       variant="contained"
                       component="span"
                       onClick={handleUploadImage}
-                      disabled={imageUploadProgress}
+                      disabled={imageUploadProgress ? true : false}
                       className="upload-btn"
                     >
                       {imageUploadProgress ? (
                         <div className="upload">
-                          <CircularProgress
+                          <CircularProgressbar
                             value={imageUploadProgress}
                             text={`${imageUploadProgress || 0}%`}
                           />
@@ -184,7 +208,7 @@ export default function CreateBook() {
                     Create Book
                   </Button>
                   <br />
-                  {publishError && <Alert color="failure">{publishError}</Alert>}
+                  {publishError && <Alert color="error">{publishError}</Alert>}
                 </div>
               </form>
             </div>

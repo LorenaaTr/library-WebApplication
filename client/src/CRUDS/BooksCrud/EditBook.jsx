@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SystemHeader from '../../Components/SystemHeader/SystemHeader';
 import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
 import TextField from '@mui/material/TextField';
@@ -16,8 +16,30 @@ export default function EditBook() {
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
+  const { bookId } = useParams();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    try {
+      const fetchBook = async () =>{
+      const res = await fetch(`/book/getbooks?bookId=${bookId}`);
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message);
+        setPublishError(data.message);
+        return;
+      }
+      if(res.ok){
+        setPublishError(null);
+        setFormData(data.books[0]);
+      }
+      };
+      fetchBook();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [bookId]);
 
   const handleUploadImage = async () => {
     try {
@@ -76,7 +98,6 @@ export default function EditBook() {
       }
     } catch (error) {
       setPublishError('Something went wrong!');
-      console.error(error);
     }
   };
 
@@ -86,12 +107,90 @@ export default function EditBook() {
       <SystemSidebar />
       <div className="home">
         <div className="components comp">
-          <h1>Create BOOK</h1>
+          <h1>Update BOOK</h1>
           <div className="create-book-form">
             <div className="div1">
               <form onSubmit={handleSubmit}>
-                {/* Your form fields */}
-                {/* ... */}
+              <div className="form-group">
+                <TextField
+                  id="title"
+                  name="title"
+                  label="Book Title"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
+                  value={formData.title}
+                />
+              </div>
+
+
+              <div className="form-group">
+                <TextField
+                  id="author"
+                  label="Author"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, author: e.target.value })
+                  }
+                  value={formData.author}
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="description"
+                  label="Description"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
+                  value={formData.description}
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="category"
+                  label="Category"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, category: e.target.value })
+                  }
+                  value={formData.category}
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="isbn"
+                  label="ISBN"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, isbn: e.target.value })
+                    }
+                    value={formData.isbn}
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="price"
+                  label="Price"
+                  type="number"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, price: e.target.value })
+                    }
+                    value={formData.price}
+                />
+              </div>
                 <div className="form-group fileInput">
                   <Input
                     type="file"
@@ -128,7 +227,7 @@ export default function EditBook() {
                     color="error"
                     className="book-button"
                   >
-                    Create Book
+                    Update Book
                   </Button>
                   <br />
                   {publishError && <Alert color="failure">{publishError}</Alert>}
