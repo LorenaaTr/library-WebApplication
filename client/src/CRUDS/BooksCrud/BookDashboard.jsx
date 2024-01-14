@@ -1,13 +1,24 @@
-// BookDashboard.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, Navigate } from 'react-router-dom';
-import './BookDashboard.css';
+import './BookDashboard.css'
+import { Link } from 'react-router-dom';
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
-import SystemHeader from '../../Components/SystemHeader/SystemHeader';
-import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
-import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
+import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
+
 
 const BookDashboard = () => {
   const [books, setBooks] = useState([]);
@@ -29,10 +40,10 @@ const BookDashboard = () => {
     try {
       // Make an API request to delete the book
       await axios.delete(`http://localhost:5000/book/deletebook/${selectedBook._id}`);
-      
+
       // Update the books list after deletion
       setBooks(prevBooks => prevBooks.filter(b => b._id !== selectedBook._id));
-  
+
       console.log('Book deleted successfully');
     } catch (error) {
       console.error('Error deleting book:', error);
@@ -41,83 +52,76 @@ const BookDashboard = () => {
       setDeleteModalOpen(false);
     }
   };
-  
 
   const handleCancelDelete = () => {
     // Close the delete modal without deleting the book
     setDeleteModalOpen(false);
   };
 
-  
-
   return (
     <>
-      <SystemHeader />
-      <SystemSidebar />
+      <PartnerWebHeader />
+      <PartnerSidebar />
       <div className="home">
         <div className="components comp">
           <div className="book-dashboard-container">
             <h1 className="dashboard-header">Book Dashboard</h1>
 
             <Link to="/create-book" className="add-book-button">
-              <Button className='link1'>Add New Book</Button>
+              <Button className="link1">Add New Book</Button>
             </Link>
 
-            <table className="book-table">
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>ISBN</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
+          <div className="book-table-container">
+          <Table className=' book-table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Image</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Author</TableCell>
+                  <TableCell>Description</TableCell>
+                  <TableCell>Category</TableCell>
+                  <TableCell>Price</TableCell>
+                  <TableCell>ISBN</TableCell>
+                  <TableCell>Library</TableCell>
+                  <TableCell>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
                 {books.map(book => (
-                  <tr key={book._id}>
-                     <td>
+                  <TableRow key={book._id}>
+                    <TableCell>
                       <Link to={`/book/${book.slug}`}>
-                        <img
-                          src={book.image}
-                          alt={book.title}
-                          className="book-image"
-                        />
+                        <img src={book.image} alt={book.title} className="book-image" />
                       </Link>
-                    </td>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.description}</td>
-                    <td>{book.category}</td>
-                    <td>{book.price} </td>
-                    <td>{book.isbn}</td>
-                    <td>
-                      <Link to='#' className="edit-link">
-                        <span >
-                          Edit
-                          </span>
-                      </Link> |{' '}
+                    </TableCell>
+                    <TableCell>{book.title}</TableCell>
+                    <TableCell>{book.author}</TableCell>
+                    <TableCell>{book.description}</TableCell>
+                    <TableCell>{book.category}</TableCell>
+                    <TableCell>{book.price}</TableCell>
+                    <TableCell>{book.isbn}</TableCell>
+                    <TableCell>{book.libraryName}</TableCell>
+                    <TableCell>
+                      <Link to="#" className="edit-link">
+                        <span>Edit</span>
+                      </Link>{' '}
+                      |{' '}
                       <Link to="#" className="delete-link">
-                        <span onClick={() => handleDeleteClick(book)}>
-                          Delete
-                        </span>
+                        <span onClick={() => handleDeleteClick(book)}>Delete</span>
                       </Link>
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
+          </div>
           </div>
         </div>
       </div>
 
-      
       <Dialog open={isDeleteModalOpen} onClose={handleCancelDelete}>
-        <DialogTitle className='title-del'>Confirm Deletion</DialogTitle>
-        <ErrorIcon className='error-icon' style={{ fontSize: '60px' }} />
+        <DialogTitle className="title-del">Confirm Deletion</DialogTitle>
+        <ErrorIcon className="error-icon" style={{ fontSize: '60px' }} />
         <DialogContent>
           <DialogContentText>
             Are you sure you want to delete this book?
@@ -125,7 +129,7 @@ const BookDashboard = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCancelDelete}>No, Cancel</Button>
-          <Button onClick={handleConfirmDelete}  style={{ color: 'red' }} autoFocus>
+          <Button onClick={handleConfirmDelete} style={{ color: 'red' }} autoFocus>
             Yes, I'm sure
           </Button>
         </DialogActions>

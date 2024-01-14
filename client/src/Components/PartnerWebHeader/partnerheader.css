@@ -28,7 +28,11 @@
     align-items: center;
     font-size: 20px;
   }
-  
+ 
+  .logo{
+    margin-right: 880px;
+  }
+
   @media (max-width: 600px) {
     .logo{
       margin-left: 50px;

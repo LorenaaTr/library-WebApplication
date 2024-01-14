@@ -14,7 +14,7 @@ const PartnerSidebar = ({ children }) => {
       icon: <MdNewReleases />,
     },
     {
-      path: "/libraries-books",
+      path: "/dashboard-books",
       name: "Books",
       icon: <MdLibraryBooks />,
     },
