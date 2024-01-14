@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './BookDashboard.css';
 import ErrorIcon from '@mui/icons-material/Error';
 import SystemHeader from '../../Components/SystemHeader/SystemHeader';
@@ -47,6 +47,8 @@ const BookDashboard = () => {
     // Close the delete modal without deleting the book
     setDeleteModalOpen(false);
   };
+
+  
 
   return (
     <>
@@ -93,7 +95,11 @@ const BookDashboard = () => {
                     <td>{book.price} </td>
                     <td>{book.isbn}</td>
                     <td>
-                      <Link to={`/edit-book/:bookId`} className="edit-link">Edit</Link> |{' '}
+                      <Link to='#' className="edit-link">
+                        <span >
+                          Edit
+                          </span>
+                      </Link> |{' '}
                       <Link to="#" className="delete-link">
                         <span onClick={() => handleDeleteClick(book)}>
                           Delete

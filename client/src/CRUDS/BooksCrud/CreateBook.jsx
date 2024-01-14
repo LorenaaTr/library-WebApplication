@@ -79,7 +79,7 @@ export default function CreateBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        //navigate(`/book/${data}`)
+        navigate('/dashboard-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -212,6 +212,7 @@ export default function CreateBook() {
                 </div>
               </form>
             </div>
+            <br />
 
             <div className="div2">
               {imageUploadError && (
