@@ -60,3 +60,45 @@ exports.login =  async (req, res) => {
   }
   res.json({status:"error", error:"Invalid password"});
 };
+
+exports.partnerData = async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const partner = jwt.verify(token, JWT_SECRET);
+
+    if (Date.now() >= partner.exp * 1000) {
+      return res.status(401).json({ status: 'error', data: 'token expired' });
+    }
+
+    const partnerusername = partner.username;
+    console.log('User Username:', partnerusername);
+
+    try {
+      const data = await Partner.findOne({ username: partnerusername });
+
+      if (!data) {
+        return res.status(404).json({ status: 'error', data: 'user not found' });
+      }
+
+      const partnerData = {
+        _id: data._id,
+        username: data.username,
+        name: data.name,
+        ceo: data.ceo,
+        city: data.city,
+        state: data.state,
+        street: data.street,
+        zipcode: data.zipcode
+      };
+
+      res.status(200).json({ status: 'ok', data: partnerData });
+    } catch (error) {
+      console.error('Error Fetching User Data:', error.message);
+      res.status(500).json({ status: 'error', data: error.message });
+    }
+  } catch (error) {
+    console.error('Error Verifying Token:', error.message);
+    res.status(401).json({ status: 'error', data: 'invalid token' });
+  }
+};
