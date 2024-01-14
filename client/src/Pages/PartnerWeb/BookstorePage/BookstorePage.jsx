@@ -10,6 +10,7 @@ import axios from 'axios'
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import './bookstorepage.css'
 const BookstorePage = () => {
   const [dataform, setdataform] = useState({});
 
