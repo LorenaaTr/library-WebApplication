@@ -68,6 +68,7 @@ const App = () => {
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/loginpartner' element={<LoginPartner/>}/>
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
+          <Route path='/system-myshelf' element={<Myshelf/>}/>
         </Routes>
         </BrowserRouter>
         </UsersProvider>
