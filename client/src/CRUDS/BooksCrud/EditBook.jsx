@@ -7,10 +7,11 @@ import './createbook.css';
 import { Alert, Button } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate, useParams } from 'react-router';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-export default function EditBook() {
+export default function CreateBook() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -62,12 +63,18 @@ export default function EditBook() {
           setImageUploadError('Image upload failed!');
           setImageUploadProgress(null);
         },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        async () => {
+          try {
+            // Get download URL after successful upload
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
             setFormData({ ...formData, image: downloadURL });
-          });
+          } catch (urlError) {
+            console.error('Error getting download URL:', urlError);
+            setImageUploadError('Image upload failed!');
+            setImageUploadProgress(null);
+          }
         }
       );
     } catch (error) {
@@ -80,7 +87,7 @@ export default function EditBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('api/book/create', {
+      const res = await fetch(`http://localhost:5000/book/updatebook/${formData._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +101,7 @@ export default function EditBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        //navigate(`/book/${data}`)
+        navigate('/dashboard-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -124,7 +131,6 @@ export default function EditBook() {
                   value={formData.title}
                 />
               </div>
-
 
               <div className="form-group">
                 <TextField
@@ -173,8 +179,8 @@ export default function EditBook() {
                   fullWidth
                   onChange={(e) =>
                     setFormData({ ...formData, isbn: e.target.value })
-                    }
-                    value={formData.isbn}
+                  }
+                  value={formData.isbn}
                 />
               </div>
 
@@ -186,9 +192,9 @@ export default function EditBook() {
                   variant="outlined"
                   fullWidth
                   onChange={(e) =>
-                    setFormData({ ...formData, price: e.target.value })
-                    }
-                    value={formData.price}
+                    setFormData({ ...formData, price: Number(e.target.value) })
+                  }
+                  value={formData.price}
                 />
               </div>
                 <div className="form-group fileInput">
@@ -203,12 +209,12 @@ export default function EditBook() {
                       variant="contained"
                       component="span"
                       onClick={handleUploadImage}
-                      disabled={imageUploadProgress}
+                      disabled={imageUploadProgress ? true : false}
                       className="upload-btn"
                     >
                       {imageUploadProgress ? (
                         <div className="upload">
-                          <CircularProgress
+                          <CircularProgressbar
                             value={imageUploadProgress}
                             text={`${imageUploadProgress || 0}%`}
                           />
@@ -230,10 +236,11 @@ export default function EditBook() {
                     Update Book
                   </Button>
                   <br />
-                  {publishError && <Alert color="failure">{publishError}</Alert>}
+                  {publishError && <Alert color="error">{publishError}</Alert>}
                 </div>
               </form>
             </div>
+            <br />
 
             <div className="div2">
               {imageUploadError && (

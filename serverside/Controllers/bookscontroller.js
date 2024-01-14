@@ -71,4 +71,25 @@ exports.createBook = async (req, res, next) => {
       } catch (error) {
         next(error);
       }
-    }
+    };
+
+    exports.updateBook = async (req, res, next) => {
+      try {
+        const updatedBook = await Books.findByIdAndUpdate(
+          req.params.bookId,
+          {
+            $set: {
+              title: req.body.title,
+              author: req.body.author,
+              description: req.body.description,
+              price: req.body.price,
+              isbn: req.body.isbn,
+              category: req.body.category,
+              image: req.body.image,
+
+            }}, { new: true})
+            res.status(200).json(updatedBook);
+      } catch (error) {
+        next(error);
+      }
+    };
