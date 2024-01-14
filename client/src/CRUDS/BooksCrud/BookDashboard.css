@@ -23,7 +23,10 @@
   padding: 10px;
   text-align: left;
 }
-
+.title-del{
+  text-align: center;
+  font-weight: bold;
+}
 /* Styling for the dropdown menu */
 .book-dropdown {
   background-color: grey;
@@ -43,9 +46,9 @@
 
 /* Styling for the image */
 .book-image {
-  border-radius: 5px;
-  width: 20px;
-  height: 10px;
+  border-radius: 2px;
+  width: 60px;
+  height: 80px;
 }
 .add-book-button{
   margin-left: 1300px;
@@ -61,4 +64,8 @@
 }
 .delete-link{
   color: rgb(245, 121, 121);
+}
+.error-icon{
+  color: darkred;
+  margin-left: 150px;
 }
