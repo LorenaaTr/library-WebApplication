@@ -30,6 +30,7 @@ import LoginPartner from './Pages/LoginasPartner/LoginPartner';
 import BookstorePage from './Pages/PartnerWeb/BookstorePage/BookstorePage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminHome from './Pages/AdminWeb/AdminHome/AdminHome';
 const App = () => {
   return (
     <UsersProvider>
@@ -68,9 +69,11 @@ const App = () => {
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/loginpartner' element={<LoginPartner/>}/>
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
+          <Route path='/system-myshelf' element={<Myshelf/>}/>
+          <Route path='/admin-home' element={<AdminHome/>}/>
         </Routes>
-        </BrowserRouter>
-        </UsersProvider>
+      </BrowserRouter>
+    </UsersProvider>
   )
 };
 

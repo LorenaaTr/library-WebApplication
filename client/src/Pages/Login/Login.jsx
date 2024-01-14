@@ -20,12 +20,13 @@ const Login = () => {
     e.preventDefault();
   
     axios.post("http://localhost:5000/authentification/login", dataform)
-    .then((res) => {
-      console.log('Response:', res.data);
-      if (res.data.status === 'ok') {
+    .then((response) => {
+      const data = response.data;
+      console.log('Response:', data);
+      if (data.status === 'ok') {
         dispatch({
           type: "TOKEN",
-          payload: { token: res.data.data }
+          payload: { token: data.data }
         });
 
         dispatch({
@@ -33,12 +34,16 @@ const Login = () => {
           payload: { username: dataform.username }
         });
 
-        localStorage.setItem("token", res.data.data);
+        localStorage.setItem("token", data.data);
         localStorage.setItem("user", dataform.username);
         
-        navigate('/system-home-page');
+        if (data.data.role !== "User") {
+          navigate('/admin-home');
+        }else{
+          navigate('/system-home-page')
+        }
       } else {
-        console.error('Login failed:', res.data.error);
+        console.error('Login failed:', data.error);
       }
     })
     .catch((error) => {

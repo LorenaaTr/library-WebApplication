@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import './systemheader.css';
+import './adminheader.css';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,7 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 
-const SystemHeader = () => {
+const AdminHeader = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -32,7 +32,7 @@ const SystemHeader = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    navigate('/login', { replace: true });
+    navigate('/loginpartner');
   };
 
   return (
@@ -42,7 +42,7 @@ const SystemHeader = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      <div className={`search ${isSearchVisible ? 'active' : ''}`}>
+      {/* <div className={`search ${isSearchVisible ? 'active' : ''}`}>
         <TextField
           sx={{
             '& label.Mui-focused': {
@@ -68,8 +68,8 @@ const SystemHeader = () => {
             ),
           }}
         />
-      </div>
-      <Button id='useraccount' onClick={handleUserMenuOpen}>
+      </div> */}
+      <Button id='useracc' onClick={handleUserMenuOpen}>
         <div className="user-icon">
         <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
         </div>
@@ -80,14 +80,14 @@ const SystemHeader = () => {
         onClose={handleUserMenuClose}
       >
         <MenuItem onClick={handleUserMenuClose}>
-          <Link to='/useraccount' style={{textDecoration:"none", color:"black"}}>User Account</Link>
+          <Link to='/partneraccount' style={{textDecoration:"none", color:"black"}}>Library Account</Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
-          <Link to='/login' style={{textDecoration:"none", color:"black"}}>Log Out</Link>
+          <Link to='/loginpartner' style={{textDecoration:"none", color:"black"}}>Log Out</Link>
         </MenuItem>
       </Menu>
     </div>
   );
 }
 
-export default SystemHeader;
+export default AdminHeader;
