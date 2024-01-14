@@ -3,21 +3,69 @@ import './contactus.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 const ContactUs = () => {
-    const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
+  const [dataform, setdataform] = useState({
+      title:"",
+      message:""
+  });
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const decodeToken = (token) => {
+    try {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      return decoded;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return {};
+    }
   };
 
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
+  const notify = (message) => {
+    toast.success(message, {
+      autoClose: 2000, 
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   const handleSubmit = () => {
-    console.log('Title:', title);
-    console.log('Message:', message);
+      const token = localStorage.getItem('token');
+    
+      if (token) {
+        const decodedToken = decodeToken(token);
+        const requestData = {
+          user: {
+            _id: decodedToken.userId,
+            name: decodedToken.username,
+          },
+          title: dataform.title,
+          message: dataform.message,
+        };
+    
+        axios.post("http://localhost:5000/complaint/addcomplaint", requestData)
+          .then((res) => {
+            console.log('res', res);
+            notify("Complaint sent successfully!");
+            setdataform({ title: "", message: "" });
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
+      else {
+        console.error('Token not available');
+      }
+  };
+    
+
+  const handleTitleChange = (e) => {
+    setdataform({ ...dataform, title: e.target.value });
+  };
+
+  const handleMessageChange = (e) => {
+    setdataform({ ...dataform, message: e.target.value });
   };
 
   return (
@@ -34,7 +82,7 @@ const ContactUs = () => {
           variant='outlined'
           fullWidth
           margin='normal'
-          value={title}
+          value={dataform.title}
           onChange={handleTitleChange}
           style={{backgroundColor:"grey"}}
         />
@@ -46,7 +94,7 @@ const ContactUs = () => {
           multiline
           rows={6}
           margin='normal'
-          value={message}
+          value={dataform.message}
           onChange={handleMessageChange}
           style={{backgroundColor:"grey"}}
         />

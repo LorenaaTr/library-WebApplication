@@ -11,7 +11,6 @@ import Services from './Pages/Services/ourServices';
 import SystemHomePage from './Pages/SystemHomePage/HomePage';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
-import DisplayBooks from './Pages/DisplayBooks/book';
 import BookCRUD from '../src/CRUDS/BooksCrud/BookDashboard';
 import CreateBook from '../src/CRUDS/BooksCrud/CreateBook';
 import EditBook from '../src/CRUDS/BooksCrud/EditBook';
@@ -29,10 +28,13 @@ import ChangeEmail from './CRUDS/UsersCrud/UpdateEmail/ChangeEmail';
 import ChangeCity from './CRUDS/UsersCrud/UpdateCity/ChangeCity';
 import LoginPartner from './Pages/LoginasPartner/LoginPartner';
 import BookstorePage from './Pages/PartnerWeb/BookstorePage/BookstorePage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <UsersProvider>
     <BrowserRouter>
+      <ToastContainer/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -44,8 +46,6 @@ const App = () => {
           <Route path="/ourServices" element={<Services />} />
           <Route path="/system-home-page" element={<SystemHomePage />} />
           <Route path="/system-libraries" element={<LibrariesSystem />} />
-          <Route path="/allBooks" element={<DisplayBooks />} />
-          <Route path="/:allBooksID" element={<DisplayBooks />} />
           <Route path="/book-categories" element={<BookCategories />} />
           <Route path="/create-book" element={<CreateBook/>} />
           <Route path="/dashboard-books" element={<BookCRUD/>} />
