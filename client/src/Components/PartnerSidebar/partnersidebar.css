@@ -15,7 +15,7 @@
     height: 100vh;
     width: 500px;
     overflow: hidden;
-    transition: width 0.5s ease; /* Add transition */
+    transition: width 0.5s ease; 
   }
   
   .sidebar.open {

@@ -80,10 +80,10 @@ const PartnerHeader = () => {
         onClose={handleUserMenuClose}
       >
         <MenuItem onClick={handleUserMenuClose}>
-          <Link to='/partneraccount' style={{textDecoration:"none"}}>Library Account</Link>
+          <Link to='/partneraccount' style={{textDecoration:"none", color:"black"}}>Library Account</Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
-          <Link to='/loginpartner' style={{textDecoration:"none"}}>Log Out</Link>
+          <Link to='/loginpartner' style={{textDecoration:"none", color:"black"}}>Log Out</Link>
         </MenuItem>
       </Menu>
     </div>

@@ -80,10 +80,10 @@ const SystemHeader = () => {
         onClose={handleUserMenuClose}
       >
         <MenuItem onClick={handleUserMenuClose}>
-          <Link to='/useraccount' style={{textDecoration:"none"}}>User Account</Link>
+          <Link to='/useraccount' style={{textDecoration:"none", color:"black"}}>User Account</Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
-          <Link to='/login' style={{textDecoration:"none"}}>Log Out</Link>
+          <Link to='/login' style={{textDecoration:"none", color:"black"}}>Log Out</Link>
         </MenuItem>
       </Menu>
     </div>

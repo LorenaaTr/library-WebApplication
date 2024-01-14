@@ -10,7 +10,7 @@ const partner =  new mongoose.Schema({
     zipcode:{type:Number, required: true},
     password:String,
     role:String,
-    books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Books' }]
+    books: [{ type: {Bookschema}}]
 },
 {
     collection:"Partners"

@@ -29,10 +29,13 @@ import ChangeEmail from './CRUDS/UsersCrud/UpdateEmail/ChangeEmail';
 import ChangeCity from './CRUDS/UsersCrud/UpdateCity/ChangeCity';
 import LoginPartner from './Pages/LoginasPartner/LoginPartner';
 import BookstorePage from './Pages/PartnerWeb/BookstorePage/BookstorePage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <UsersProvider>
     <BrowserRouter>
+      <ToastContainer/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />

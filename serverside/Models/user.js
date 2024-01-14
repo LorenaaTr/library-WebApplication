@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: String,
   role: String,
-  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Books' }] 
+  books: [{ type: booksSchema}] 
 }, {
   collection: "Users"
 });

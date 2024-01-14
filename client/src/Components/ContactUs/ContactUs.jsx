@@ -3,21 +3,39 @@ import './contactus.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ContactUs = () => {
-    const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
+    const [dataform, setdataform] = useState({
+      title:"",
+      message:""
+    })
+
+    const notify = (message) => {
+      toast.success(message, {
+        autoClose: 2000, 
+        position: toast.POSITION.TOP_CENTER,
+      });
+    };
+
+  const handleSubmit = () => {
+    axios.post("http://localhost:5000/complaint/addcomplaint", dataform).then((res) => {
+      console.log('res', res);
+      notify("Complaint sent succesfully!")
+      setdataform({ title: "", message: "" });
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
 
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+    setdataform({ ...dataform, title: e.target.value });
   };
 
   const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    console.log('Title:', title);
-    console.log('Message:', message);
+    setdataform({ ...dataform, message: e.target.value });
   };
 
   return (
@@ -34,7 +52,7 @@ const ContactUs = () => {
           variant='outlined'
           fullWidth
           margin='normal'
-          value={title}
+          value={dataform.title}
           onChange={handleTitleChange}
           style={{backgroundColor:"grey"}}
         />
@@ -46,7 +64,7 @@ const ContactUs = () => {
           multiline
           rows={6}
           margin='normal'
-          value={message}
+          value={dataform.message}
           onChange={handleMessageChange}
           style={{backgroundColor:"grey"}}
         />
