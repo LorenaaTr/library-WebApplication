@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import './adminsidebar.css';
-import { MdNewReleases, MdLibraryBooks, MdBook, MdFolderOpen, MdThumbUp } from 'react-icons/md';
+import { MdNewReleases, MdLibraryBooks, MdBook } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import PeopleIcon from '@mui/icons-material/People';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const AdminSidebar = ({ children }) => {
   const [isopen, setisopen] = useState(false);
@@ -11,32 +17,32 @@ const AdminSidebar = ({ children }) => {
     {
       path: "/system-home-page",
       name: "Admin Page",
-      icon: <MdNewReleases />,
+      icon: <AdminPanelSettingsIcon />,
     },
     {
       path: "/system-libraries",
       name: "Partners",
-      icon: <MdLibraryBooks />,
+      icon: <HandshakeIcon />,
     },
     {
       path: "/book-categories",
       name: "Books",
-      icon: <MdBook />,
+      icon: <LocalLibraryIcon />,
     },
     {
       path: "/system-myshelf",
       name: "Users",
-      icon: <MdFolderOpen />,
+      icon: <PeopleIcon />,
     },
     {
       path: "/system-recommendations",
       name: "Orders",
-      icon: <MdThumbUp />,
+      icon: <ShoppingBasketIcon />,
     },
     {
       path: "/system-recommendations",
       name: "Complaints",
-      icon: <MdThumbUp />,
+      icon: <ContactMailIcon />,
     },
   ];
 

@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import './partnersidebar.css';
-import { MdNewReleases, MdLibraryBooks, MdBook, MdFolderOpen, MdThumbUp } from 'react-icons/md';
+import { MdNewReleases, MdLibraryBooks, MdBook,  } from 'react-icons/md';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { NavLink } from 'react-router-dom';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import PeopleIcon from '@mui/icons-material/People';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const PartnerSidebar = ({ children }) => {
   const [isopen, setisopen] = useState(false);
@@ -9,19 +16,19 @@ const PartnerSidebar = ({ children }) => {
 
   const menuItem = [
     {
-      path: "/yourbookstore-page",
+      path: "/partner-home-page",
       name: "Your Bookstore",
-      icon: <MdNewReleases />,
+      icon: <LocalLibraryIcon />,
     },
     {
       path: "/dashboard-books",
       name: "Books",
-      icon: <MdLibraryBooks />,
+      icon: <AutoStoriesIcon />,
     },
     {
-      path: "/orders",
+      path: "/bookstore-order-page",
       name: "Orders",
-      icon: <MdBook />,
+      icon: <ShoppingBasketIcon />,
     }
   ];
 

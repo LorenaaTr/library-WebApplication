@@ -4,9 +4,6 @@ import logo from '../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import './partnerheader.css';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -42,34 +39,7 @@ const PartnerHeader = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      {/* <div className={`search ${isSearchVisible ? 'active' : ''}`}>
-        <TextField
-          sx={{
-            '& label.Mui-focused': {
-              color: 'black',
-            },
-            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'black',
-            },
-            '& .MuiInputBase-input': {
-              color: 'black', 
-            },
-          }}
-          id="outlined-basic"
-          label="Search"
-          variant="outlined"
-          size="small"
-          fullWidth
-          InputProps={{
-            endAdornment: (
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-            ),
-          }}
-        />
-      </div> */}
-      <Button id='useracc' onClick={handleUserMenuOpen}>
+      <Button id='useracco' onClick={handleUserMenuOpen}>
         <div className="user-icon">
         <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
         </div>

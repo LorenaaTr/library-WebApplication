@@ -32,6 +32,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from './Pages/AdminWeb/AdminHome/AdminHome';
 import RecommandedBook from './Pages/RecommandedBook/RecommandedBook';
+import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPage';
 
 
 const App = () => {
@@ -72,6 +73,7 @@ const App = () => {
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/loginpartner' element={<LoginPartner/>}/>
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
+          <Route path='/bookstore-order-page' element={<BookstoreOrdersPage/>}/>
           <Route path='/system-myshelf' element={<Myshelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
           <Route path='/system-recommendations' element={<RecommandedBook/>}/>
