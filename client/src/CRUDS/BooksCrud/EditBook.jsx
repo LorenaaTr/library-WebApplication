@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SystemHeader from '../../Components/SystemHeader/SystemHeader';
-import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
+import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
+import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import './createbook.css';
@@ -11,7 +11,7 @@ import { useNavigate, useParams } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-export default function CreateBook() {
+export default function EditBook() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -21,10 +21,11 @@ export default function CreateBook() {
 
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     try {
       const fetchBook = async () =>{
-      const res = await fetch(`/book/getbooks?bookId=${bookId}`);
+      const res = await fetch(`/book/getbooks?bookId=${formData._Id}`);
       const data = await res.json();
       if(!res.ok){
         console.log(data.message);
@@ -88,7 +89,7 @@ export default function CreateBook() {
     e.preventDefault();
     try {
       const res = await fetch(`http://localhost:5000/book/updatebook/${formData._id}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -101,7 +102,7 @@ export default function CreateBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/dashboard-books')
+        navigate(`/book/${data.slug}`)
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -110,8 +111,8 @@ export default function CreateBook() {
 
   return (
     <>
-      <SystemHeader />
-      <SystemSidebar />
+      <PartnerWebHeader />
+      <PartnerSidebar />
       <div className="home">
         <div className="components comp">
           <h1>Update BOOK</h1>
@@ -129,6 +130,20 @@ export default function CreateBook() {
                     setFormData({ ...formData, title: e.target.value })
                   }
                   value={formData.title}
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="libraryName"
+                  name="libraryName"
+                  label="libraryName"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, libraryName: e.target.value })
+                  }
+                  value={formData.libraryName}
                 />
               </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SystemHeader from '../../Components/SystemHeader/SystemHeader';
-import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
+import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
+import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import './createbook.css';
@@ -88,8 +88,8 @@ export default function CreateBook() {
 
   return (
     <>
-      <SystemHeader />
-      <SystemSidebar />
+      <PartnerWebHeader />
+      <PartnerSidebar />
       <div className="home">
         <div className="components comp">
           <h1>Create BOOK</h1>
@@ -105,6 +105,19 @@ export default function CreateBook() {
                   fullWidth
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="form-group">
+                <TextField
+                  id="libraryName"
+                  name="libraryName"
+                  label="Library Name"
+                  variant="outlined"
+                  fullWidth
+                  onChange={(e) =>
+                    setFormData({ ...formData, libraryName: e.target.value })
                   }
                 />
               </div>

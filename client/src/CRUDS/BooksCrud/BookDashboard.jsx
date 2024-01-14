@@ -102,9 +102,9 @@ const BookDashboard = () => {
                     <TableCell>{book.isbn}</TableCell>
                     <TableCell>{book.libraryName}</TableCell>
                     <TableCell>
-                      <Link to="#" className="edit-link">
-                        <span>Edit</span>
-                      </Link>{' '}
+                    <Link to={`/edit-book/${book._id}`} className="edit-link">
+                       <span>Edit</span>
+                    </Link>{' '}
                       |{' '}
                       <Link to="#" className="delete-link">
                         <span onClick={() => handleDeleteClick(book)}>Delete</span>
