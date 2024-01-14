@@ -31,6 +31,9 @@ import BookstorePage from './Pages/PartnerWeb/BookstorePage/BookstorePage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from './Pages/AdminWeb/AdminHome/AdminHome';
+import RecommandedBook from './Pages/RecommandedBook/RecommandedBook';
+
+
 const App = () => {
   return (
     <UsersProvider>
@@ -71,6 +74,7 @@ const App = () => {
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
           <Route path='/system-myshelf' element={<Myshelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
+          <Route path='/system-recommendations' element={<RecommandedBook/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>
