@@ -4,13 +4,13 @@ const Complaint = mongoose.model("Complaints");
 
 exports.createcomplaint= async (req, res) => {
   try {
-    const { title, message } = req.body;
+    const { title, message, user } = req.body;
 
     if (!title || !message) {
       return res.status(400).send({ error: "All fields is required." });
     }
 
-    const newComplaint = await Complaint.create({ title, message }); 
+    const newComplaint = await Complaint.create({ title, message, user }); 
     res.status(201).json(newComplaint);
   } catch (error) {
     res.status(500).json({ error: error.message });
