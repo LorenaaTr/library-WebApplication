@@ -65,7 +65,7 @@ export default function CreateBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/book/createbook', {
+      const res = await fetch('http://localhost:5000/book/createbook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
