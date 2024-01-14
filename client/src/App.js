@@ -72,8 +72,8 @@ const App = () => {
           <Route path='/system-myshelf' element={<Myshelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
         </Routes>
-        </BrowserRouter>
-        </UsersProvider>
+      </BrowserRouter>
+    </UsersProvider>
   )
 };
 
