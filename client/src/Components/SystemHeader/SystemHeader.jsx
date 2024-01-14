@@ -69,7 +69,7 @@ const SystemHeader = () => {
           }}
         />
       </div>
-      <Button id='useracc' onClick={handleUserMenuOpen}>
+      <Button id='useraccount' onClick={handleUserMenuOpen}>
         <div className="user-icon">
         <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />
         </div>
