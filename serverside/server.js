@@ -24,12 +24,14 @@ const user = require("./Routes/userroutes");
 const bookRoutes = require("./Routes/bookroutes");
 const partners = require("./Routes/partnerroutes");
 const complaints = require("./Routes/complaintroutes");
+const booktype = require("./Routes/booktype");
 
 app.use('/authentification', authuser);
 app.use('/user', user);
 app.use('/book', bookRoutes);
 app.use('/partner', partners);
 app.use('/complaint', complaints);
+app.use('/booktypes', booktype);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
