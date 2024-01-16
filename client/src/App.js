@@ -33,6 +33,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from './Pages/AdminWeb/AdminHome/AdminHome';
 import RecommandedBook from './Pages/RecommandedBook/RecommandedBook';
 import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPage';
+import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 
 
 const App = () => {
@@ -77,6 +78,7 @@ const App = () => {
           <Route path='/system-myshelf' element={<Myshelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
           <Route path='/system-recommendations' element={<RecommandedBook/>}/>
+          <Route path='/admin-complaints' element={<Complaints/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

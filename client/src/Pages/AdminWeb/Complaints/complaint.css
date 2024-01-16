@@ -1,0 +1,271 @@
+.orderspage{
+    background-color: black;
+}
+
+  .acccontainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #tablecontainer{
+    margin-top: 100px;
+    margin-left: 380px;
+    margin-bottom: 100px;
+    height: auto;
+    max-width: 1000px;
+  }
+
+  .userdata {
+    margin-left: 430px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    background-color: white;
+    width: 900px;
+    border-radius: 30px;
+  }
+
+  .userdata .usericon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .data{
+    width: 900px;
+    margin-top: 60px;
+    border-color: #666;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .data p{
+    color:#666;
+    margin-top: 20px;
+    margin-left: 100px;
+    font-weight: 600;
+  }
+
+  .editicon{
+    margin-right:100px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+  }
+
+  .editicon .icon{
+    margin-top: -15px;
+    height: auto;
+    max-width: 20px;
+    color:#666;
+  }
+ 
+  
+  .container {
+    display: flex;
+    position: fixed;
+    margin-top:54px;
+  }
+  
+  main {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    background: #D9D9D9;
+    color: #fff;
+    height: 100vh;
+    width: 500px;
+    overflow: hidden;
+    transition: width 0.5s ease;
+  }
+  
+  .sidebar.open {
+    width: 300px;
+  }
+  
+  .links {
+    margin-top: 100px;
+  }
+  
+  .link {
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .link .icon {
+    margin-left: 5px;
+    font-size: 20px;
+  }
+  
+  .link .link-text {
+    margin-left: 10px;
+  }
+  
+  .link:hover {
+    background-color: white;
+    color: grey;
+    transition: all 0.5s;
+  }
+  
+  .toggle-button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #666;
+    color: #fff;
+    text-align: center;
+  }
+
+  .systemheader{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    position: fixed;
+    margin-top: 0px;
+  }
+  
+  .search{
+    margin-top: 5px;
+    margin-left:290px;
+    width: 600px;
+    z-index: 300;
+  }
+
+  #useracc{
+    height: auto;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 362px;
+    margin-right: 20px;
+  }
+  
+  .user-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  
+  
+  @media only screen and (max-width: 768px) {
+    .sidebar {
+      width: 120px; /* Full width for smaller screens */
+      height: 125vh;
+      margin-top: -5px;
+    }
+  
+    .link .link-text {
+      display: none; /* Hide link text for smaller screens */
+    }
+  
+    .link .icon {
+      margin-left: auto; /* Push icon to the right for smaller screens */
+    }
+  
+    .toggle-button {
+      display: block; /* Display toggle button for smaller screens */
+    }
+  }
+   
+  
+  @media (max-width: 600px) {
+
+    .systemheader{
+      display: flex;
+      justify-content: space-evenly;
+      background-color: white;
+      position: fixed;     
+      z-index: 100;
+      margin-top: -14px;
+    }
+    .logo{
+      margin-left: 40px;
+    }
+  
+    .search {
+      width: 250px;
+      margin-left: -10px; 
+      margin-top: 13px;
+    }
+  
+    #useracc {
+      margin-top: 13px; 
+      margin-left: 76px;
+      height: 35px;
+      width: 35px;
+    }
+  
+    .user-icon{
+      margin-left: 50px;
+    }
+  }
+
+
+  @media (max-width: 600px)  {
+    /* Apply styles only for screens larger than 600px (adjust the value as needed) */
+    .useracc {
+      background-color: black;
+      height: 127.5vh;
+      width: 480px;
+      justify-content: center;
+    }
+    .acccontainer {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .userdata {
+      margin-top: 150px;
+      margin-left: 80px;
+      margin-bottom: 150px;
+      background-color: white;
+      width: 300px;
+      border-radius: 30px;
+    }
+  
+    .userdata .usericon{
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+    }
+  
+    .data{
+      width: 400px;
+      margin-top: 60px;
+      border-color: #666;
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .data p{
+      color:#666;
+      margin-top: 20px;
+      margin-left: 40px;
+      font-weight: 600;
+    }
+  
+    .editicon{
+      margin-right:140px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+  
+    .editicon .icon{
+      margin-top: -15px;
+      height: auto;
+      max-width: 10px;
+      color:#666;
+    }
+  }
+  

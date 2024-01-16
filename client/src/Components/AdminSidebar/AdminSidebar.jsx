@@ -35,12 +35,12 @@ const AdminSidebar = ({ children }) => {
       icon: <PeopleIcon />,
     },
     {
-      path: "/system-recommendations",
+      path: "/admin-orders",
       name: "Orders",
       icon: <ShoppingBasketIcon />,
     },
     {
-      path: "/system-recommendations",
+      path: "/admin-complaints",
       name: "Complaints",
       icon: <ContactMailIcon />,
     },

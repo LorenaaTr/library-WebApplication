@@ -61,10 +61,13 @@ exports.deletecomplaintById = async (req, res) => {
 };
 
 exports.getAllcomplaints = async (req, res) => {
-  try{ 
-    const allComplains = await Complaint.find({});
-    res.send({status:"ok", data:allComplains});
-  }catch(error){
+  try {
+    const allComplaints = await Complaint.find({}).populate('user', 'username');
+    res.send({ status: "ok", data: allComplaints });
+  } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
   }
 }
+
+
