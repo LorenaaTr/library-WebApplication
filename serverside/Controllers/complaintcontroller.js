@@ -40,9 +40,23 @@ exports.getcomplaintById = async (req, res) => {
 
 exports.updatecomplaintById = async (req, res) => {
   try {
+    const { user, title, message } = req.body; 
     const complaintId = req.params.id;
 
-    await Complaint.findByIdAndUpdate(complaintId);
+    if (!user || !title || !message) {
+      return res.status(400).json({ status: 'error', message: 'User, title, and message are required' });
+    }
+
+    const updatedComplaint = await Complaint.findByIdAndUpdate(
+      complaintId,
+      { user, title, message },
+      { new: true } 
+    );
+
+    
+    if (!updatedComplaint) {
+      return res.status(404).json({ status: 'error', message: 'Complaint not found' });
+    }
 
     res.status(200).json({ status: 'ok', message: 'Complaint updated successfully' });
   } catch (error) {
@@ -50,6 +64,7 @@ exports.updatecomplaintById = async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
 
 exports.deletecomplaintById = async (req, res) => {
     try {
