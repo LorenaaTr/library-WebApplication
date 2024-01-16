@@ -38,7 +38,7 @@ exports.getBooks = async (req, res) => {
     const books = await Books.find({
       ...(req.query.category && { category: req.query.category }),
       ...(req.query.title && { title: req.query.title }),
-      ...(req.query.libraryName && { title: req.query.libraryName }),
+      ...(req.query.libraryName && { libraryName: req.query.libraryName }),
       ...(req.query.slug && { slug: req.query.slug }),
       ...(req.query.author && { author: req.query.author }),
       ...(req.query.bookId && { _id: req.query.bookId }),
@@ -52,6 +52,8 @@ exports.getBooks = async (req, res) => {
     }).sort({ updatedAt: sortDirection }).skip(startIndex).limit(limit);
 
     const totalBooks = await Books.countDocuments();
+
+    res.setHeader('Content-Type', 'application/json');
 
     res.status(200).json({
       books,

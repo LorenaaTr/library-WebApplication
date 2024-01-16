@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import './bookpage.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const BookPage = () => {
     const { bookSlug } = useParams();
@@ -17,7 +18,7 @@ const BookPage = () => {
         const fetchPost = async () => {
             try {
                 setLoading(true);
-                const res = await fetch(`/book/getbooks?slug=${bookSlug}`);
+                const res = await axios.get(`http://localhost:5000/book/getbooks?slug=${bookSlug}`);
                 const data = await res.json();
                 if(!res.ok){
                     setError(true);
