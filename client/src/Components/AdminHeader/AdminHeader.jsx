@@ -42,33 +42,6 @@ const AdminHeader = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      {/* <div className={`search ${isSearchVisible ? 'active' : ''}`}>
-        <TextField
-          sx={{
-            '& label.Mui-focused': {
-              color: 'black',
-            },
-            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'black',
-            },
-            '& .MuiInputBase-input': {
-              color: 'black', 
-            },
-          }}
-          id="outlined-basic"
-          label="Search"
-          variant="outlined"
-          size="small"
-          fullWidth
-          InputProps={{
-            endAdornment: (
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-            ),
-          }}
-        />
-      </div> */}
       <Button id='useracc' onClick={handleUserMenuOpen}>
         <div className="user-icon">
         <FontAwesomeIcon style={{ color: "black" }} icon={faUser} />

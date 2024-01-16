@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './systemheader.css';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -42,7 +42,8 @@ const SystemHeader = () => {
           <img src={logo} alt="logo" />
         </Link>
       </div>
-      <div className={`search ${isSearchVisible ? 'active' : ''}`}>
+      <div id='searchitem'>
+      <div className="search">
         <TextField
           sx={{
             '& label.Mui-focused': {
@@ -68,6 +69,7 @@ const SystemHeader = () => {
             ),
           }}
         />
+      </div>
       </div>
       <Button id='useraccount' onClick={handleUserMenuOpen}>
         <div className="user-icon">

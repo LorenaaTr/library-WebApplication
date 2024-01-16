@@ -6,13 +6,6 @@
     z-index: 100;
   }
   
-  .search{
-    margin-top: 5px;
-    margin-left:290px;
-    width: 600px;
-    z-index: 10; 
-  }
-  
   #useracco{
     height: auto;
     width: 20px;
@@ -38,14 +31,7 @@
       margin-left: 50px;
     }
   
-    .search {
-      width: 180px;
-      margin-left: -50px; 
-      margin-right: -20px; 
-      margin-top: 13px;
-    }
-  
-    .useracc {
+    #useracco {
       margin-top: 13px; 
       margin-left: 50px;
       margin-right: 20px;

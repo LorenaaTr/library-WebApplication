@@ -6,9 +6,12 @@
   z-index: 100;
 }
 
+#searchitem{
+  margin-left: -880px;
+}
+
 .search{
   margin-top: 5px;
-  margin-left:290px;
   width: 600px;
   z-index: 10; 
 }
