@@ -38,7 +38,7 @@ const SystemSidebar = ({ children }) => {
   return (
     <div className="container">
       <div className={`sidebar ${isopen ? 'open' : 'notopen'}`}>
-        <div className="links">
+        <div className="linkss">
           {menuItem.map((item, index) => (
             <NavLink to={item.path} key={index} className="link">
               <div className="icon">{item.icon}</div>

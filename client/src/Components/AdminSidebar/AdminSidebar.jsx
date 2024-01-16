@@ -15,22 +15,22 @@ const AdminSidebar = ({ children }) => {
 
   const menuItem = [
     {
-      path: "/system-home-page",
+      path: "/admin-panel",
       name: "Admin Page",
       icon: <AdminPanelSettingsIcon />,
     },
     {
-      path: "/system-libraries",
+      path: "/admin-partners",
       name: "Partners",
       icon: <HandshakeIcon />,
     },
     {
-      path: "/book-categories",
+      path: "/admin-books",
       name: "Books",
       icon: <LocalLibraryIcon />,
     },
     {
-      path: "/system-myshelf",
+      path: "/admin-users",
       name: "Users",
       icon: <PeopleIcon />,
     },
@@ -49,7 +49,7 @@ const AdminSidebar = ({ children }) => {
   return (
     <div className="container">
       <div className={`sidebar ${isopen ? 'open' : 'notopen'}`}>
-        <div className="links">
+        <div id="links">
           {menuItem.map((item, index) => (
             <NavLink to={item.path} key={index} className="link">
               <div className="icon">{item.icon}</div>
