@@ -1,16 +1,81 @@
-.color{
-    color: white;
-    margin-top: 50px;
-    margin-left: 800px;
+.title-book {
+  color: rgb(245, 121, 121);
+  text-align: start;
 }
-.con{
-    padding: 4px;
+
+.category-con {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+
+
+.book-card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .category-btn{
+    border: 1px solid rgb(151, 20, 20);
+  }
+
+  .cover-book {
+    margin-left: 400px;
+     width: 1px;
+     height: 1%;
+     flex: 1;
+     margin-bottom: 150px;
+  }
+  
+  .description-container {
+    flex: 1;
+    padding: 0 20px;
+    margin-top: 90px;
+    margin-left: 130px;
+    margin-right: 200px;
+  }
+  
+  .library-name {
+    text-decoration: underline;
+  }
+  
+  .author {
+    font-weight: bold;
+    color: rgb(245, 121, 121);
+  }
+  
+  .description {
+    border: 2px dotted #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+  }
+  
+  .price-label{
+    margin-bottom: 10px;
+  }
+  .price-btn {
+    margin-top: 15px;
+    font-size: 1.2em;
+  }
+  .libraryName{
     color: white;
+    text-decoration-style: solid;
+    text-decoration: underline rgb(96, 94, 94);
+  }
+
+.buy-button{
+    padding: 7px 165px;
 }
-.h1{
-    color: white;
-    background-color: aliceblue;
-}
+
+  
+  
+  
+
+  
