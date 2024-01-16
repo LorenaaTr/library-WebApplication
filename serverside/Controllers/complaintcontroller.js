@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 require("../Models/complaint.js");
 const Complaint = mongoose.model("Complaints");
 
-const User = mongoose.model("Users");
-
 exports.createcomplaint= async (req, res) => {
   try {
     const { title, message, user } = req.body;
@@ -14,15 +12,6 @@ exports.createcomplaint= async (req, res) => {
 
     const newComplaint = await Complaint.create({ title, message, user }); 
     res.status(201).json(newComplaint);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-exports.getcomplaint = async (req, res) => {
-  try {
-    const complaint = await Complaint.find();
-    res.status(200).json(complaint);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -43,6 +32,19 @@ exports.getcomplaintById = async (req, res) => {
     }
 
     res.status(200).json({ status: 'ok', data: complaint });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+};
+
+exports.updatecomplaintById = async (req, res) => {
+  try {
+    const complaintId = req.params.id;
+
+    await Complaint.findByIdAndUpdate(complaintId);
+
+    res.status(200).json({ status: 'ok', message: 'Complaint updated successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ status: 'error', message: 'Internal server error' });

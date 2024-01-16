@@ -6,7 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+
 const ContactUs = () => {
   const [dataform, setdataform] = useState({
     title:"",
@@ -57,8 +57,7 @@ const handleSubmit = () => {
     else {
       console.error('Token not available');
     }
-};
-    
+  };
 
   const handleTitleChange = (e) => {
     setdataform({ ...dataform, title: e.target.value });
