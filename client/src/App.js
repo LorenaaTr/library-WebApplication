@@ -35,6 +35,7 @@ import RecommandedBook from './Pages/RecommandedBook/RecommandedBook';
 import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPage';
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
+import BookPage from './Components/BookPage/BookPage';
 
 
 const App = () => {
@@ -81,6 +82,7 @@ const App = () => {
           <Route path='/system-recommendations' element={<RecommandedBook/>}/>
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
+          <Route path='/book/:bookSlug' element={<BookPage/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

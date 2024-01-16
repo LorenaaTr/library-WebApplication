@@ -1,0 +1,16 @@
+.color{
+    color: white;
+    margin-top: 50px;
+    margin-left: 800px;
+}
+.con{
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+}
+.h1{
+    color: white;
+    background-color: aliceblue;
+}

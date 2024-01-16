@@ -22,7 +22,6 @@ const DisplayBooks = () => {
       <div className="home">
         <div className="components comp">
         <h1>EXPLORE BOOKS</h1>
-
         <div className="book-list">
         {books.map((book) => (
             <BookComponent key={book._id} book={book}  />

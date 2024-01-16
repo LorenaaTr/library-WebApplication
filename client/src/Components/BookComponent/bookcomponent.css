@@ -1,5 +1,4 @@
-
-.book-card {
+  .book-card {
     width: 200px;
     margin: 10px;
     padding: 10px;
@@ -7,7 +6,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-    margin-left: 150px;
+    margin-left: 100px;
     margin-bottom: 30px;
   }
   
@@ -36,4 +35,16 @@
     color: #666;
     font-size: 14px;
   }
+
+  @media (max-width: 1440px) {
+    .book-card {
+      width: calc(100% - 200px);
+      margin: 10px -1px;
+      padding: 10px;
+      margin-bottom: 30px;
+    }
   
+    .book-card:nth-child(1n) {
+      margin-right: 0;
+    }
+  }
