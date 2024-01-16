@@ -8,7 +8,7 @@ import AdminHeader from '../../../Components/AdminHeader/AdminHeader';
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField  } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router';
@@ -18,6 +18,7 @@ const rowsPerPageOptions = [5, 10, 25];
 const Complaints = () => {
 
     const [complaints, setComplaints] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
  
 
   useEffect(() => {
@@ -37,12 +38,31 @@ const Complaints = () => {
     console.log(`Delete complaint with ID: ${complaintId}`);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredComplaints = complaints.filter((complaint) =>
+    complaint.user && complaint.user.name && complaint.user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
     <>
     <AdminHeader/>
     <AdminSidebar/>
     <div className='orderspage'>
         <div className='acccontainer'>
+        <TextField
+        className='searcher'
+        label="Search"
+        variant="outlined"
+        fullWidth
+        margin="normal"
+        style={{marginTop:100, marginLeft:-130}}
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
         <TableContainer component={Paper} id='tablecontainer'>
             <Table>
                 <TableHead>

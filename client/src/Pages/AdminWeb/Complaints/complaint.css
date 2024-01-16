@@ -5,14 +5,21 @@
   .acccontainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   #tablecontainer{
     margin-top: 100px;
-    margin-left: 380px;
+    margin-left: 260px;
     margin-bottom: 100px;
     height: auto;
     max-width: 1000px;
+  }
+
+  .searcher{
+    max-width: 600px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
   }
 
   .userdata {
