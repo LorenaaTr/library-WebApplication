@@ -19,11 +19,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
   
-    axios.post("http://localhost:5000/authentification/login", dataform, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    axios.post("http://localhost:5000/authentification/login", dataform)
     .then((response) => {
       const data = response.data;
       console.log('Response:', data);
@@ -32,16 +28,23 @@ const Login = () => {
           type: "TOKEN",
           payload: { token: data.data }
         });
-  
+
         dispatch({
           type: "USER",
           payload: { username: dataform.username }
         });
-  
+
         localStorage.setItem("token", data.data);
         localStorage.setItem("user", dataform.username);
         
-        navigate('/system-home-page')
+        if (data.data.role === "Admin") {
+          navigate('/admin-home');
+        } else if (data.data.role === "User") {
+          navigate('/system-home-page');
+        } else {
+          console.error('Invalid user role:', data.data.role);
+        }
+        
       } else {
         console.error('Login failed:', data.error);
       }
@@ -49,7 +52,7 @@ const Login = () => {
     .catch((error) => {
       console.error('Error:', error.response.data);
     });
-  };  
+  };
   
   const changes = (e) => {
     setdataform({ ...dataform, [e.target.name]: e.target.value });
