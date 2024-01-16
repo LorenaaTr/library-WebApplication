@@ -18,20 +18,7 @@ const rowsPerPageOptions = [5, 10, 25];
 const Complaints = () => {
 
     const [complaints, setComplaints] = useState([]);
-
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
-
-    // const navigate 
+ 
 
   useEffect(() => {
     // Fetch complaints data
