@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './systemsidebar.css';
-import { MdNewReleases, MdLibraryBooks, MdBook, MdFolderOpen, MdThumbUp } from 'react-icons/md';
+import { MdNewReleases, MdLibraryBooks, MdBook, MdFolderOpen, MdThumbUp, MdMenuBook } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
 const SystemSidebar = ({ children }) => {
@@ -20,8 +20,13 @@ const SystemSidebar = ({ children }) => {
     },
     {
       path: "/book-categories",
-      name: "Books",
+      name: "Book Categories",
       icon: <MdBook />,
+    },
+    {
+      path: "/all-books",
+      name: "Books",
+      icon: < MdMenuBook/>,
     },
     {
       path: "/system-myshelf",

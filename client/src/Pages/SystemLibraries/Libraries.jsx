@@ -9,11 +9,13 @@ const Libraries = () => {
     <>
      <SystemHeader/>
      <SystemSidebar/>
-     <div className='main-container'>
-     <h1 className='header'>EXPLORE THE LIBRARIES</h1>
-      <div className="libraries-wrapper">
-       <LibPartners/>
-      </div>
+     <div className="home">
+        <div className="components comp">
+          <h1 className='header'>EXPLORE THE LIBRARIES</h1>
+          <div className="libraries-wrapper">
+            <LibPartners/>
+           </div>
+        </div>
      </div>
     </>
   )
