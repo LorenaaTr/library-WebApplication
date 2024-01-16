@@ -33,8 +33,14 @@ const LoginPartner = () => {
           payload: { username: dataform.username }
         });
 
+        dispatch({
+          type: "ROLE",
+          payload: { role: res.data.role },
+        });
+
         localStorage.setItem("token", res.data.data);
         localStorage.setItem("user", dataform.username);
+        localStorage.setItem("role", res.data.role);
         
         navigate('/partner-home-page');
       } else {
