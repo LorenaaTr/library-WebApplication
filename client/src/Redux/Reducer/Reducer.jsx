@@ -15,6 +15,11 @@ const Reducer = (state, action) => {
           ...state,
           username: action.payload.newUsername
         };
+      case "ROLE":
+        return {
+          ...state,
+          role: action.payload.role
+        };
       default:
         return state;
     }

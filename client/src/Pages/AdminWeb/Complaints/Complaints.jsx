@@ -74,7 +74,7 @@ const Complaints = () => {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {complaints.map((complaint) => (
+                {filteredComplaints.map((complaint) => (
                     <TableRow key={complaint._id}>
                     <TableCell> {complaint.user && complaint.user.name ? complaint.user.name : 'N/A'}</TableCell>
                     <TableCell>{complaint.title}</TableCell>

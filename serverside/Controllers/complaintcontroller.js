@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 require("../Models/complaint.js");
 const Complaint = mongoose.model("Complaints");
 
+const User = mongoose.model("Users");
+
 exports.createcomplaint= async (req, res) => {
   try {
     const { title, message, user } = req.body;
