@@ -38,6 +38,8 @@ import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
 import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplaintPage';
 import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
+import Userspage from './Pages/AdminWeb/Users/Userspage';
+import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
 
 
 const App = () => {
@@ -87,6 +89,8 @@ const App = () => {
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
+          <Route path='/admin-users' element={<Userspage/>}/>
+          <Route path='/singleuser/:id' element={<SingleUser/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

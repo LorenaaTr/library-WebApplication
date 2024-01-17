@@ -62,8 +62,8 @@ const Complaints = () => {
     <>
     <AdminHeader/>
     <AdminSidebar/>
-    <div className='orderspage'>
-        <div className='acccontainer'>
+    <div className='complaintspage'>
+        <div className='complaintcontainer'>
         <TextField
         className='searcher'
         label="Search by user, title and message"
@@ -108,7 +108,6 @@ const Complaints = () => {
                 </TableBody>
             </Table>
         </TableContainer>
-    
         </div>
       </div>
     </>

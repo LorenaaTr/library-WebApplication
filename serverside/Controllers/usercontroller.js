@@ -249,5 +249,59 @@ exports.updateBirthdayById = async (req, res) => {
   }
 };
 
+exports.countUsers = async(req, res) =>{
+  try {
+    const userCount = await User.countDocuments({ role: 'user' });
+
+    res.json({ status: 'ok', count: userCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.getUsers = async(req,res) =>{
+  try {
+    const users = await User.find({ role: 'user' });
+
+    res.json({ status: 'ok', data: users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.getuserbyid = async(req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.json({ status: 'ok', data: user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.deleteuserbyid = async(req,res) =>{
+  try {
+    const userId = req.params.id;
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.json({ status: 'ok', message: 'User deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
 
 
