@@ -18,7 +18,7 @@ const PartnerBookDashboard = () => {
 
   useEffect(() => {
     axios.get('http://localhost:5000/book/getbooks')
-      .then(response => setBooks(response.data.data))
+      .then(response => setBooks(response.data.books)) 
       .catch(error => console.error('Error fetching books:', error));
   }, []);
 
@@ -44,6 +44,8 @@ const PartnerBookDashboard = () => {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+
 
   const filteredBooks = books && books.filter((book) =>
     book.title && book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -92,7 +94,7 @@ const PartnerBookDashboard = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-              {filteredBooks.map((book) => (
+              {filteredBooks && filteredBooks.map((book) => (
                   <TableRow key={book._id}>
                     <TableCell> {book.user && book.user.name ? book.user.name : 'N/A'}</TableCell>
                     <TableCell>{book.title}</TableCell>
@@ -102,15 +104,15 @@ const PartnerBookDashboard = () => {
                     <TableCell>{book.description}</TableCell>
                     <TableCell>
                       <IconButton>
-                        <Link to={`/edit-book/${books._id}`}>
+                        <Link to={`/edit-book/${book._id}`}>
                           <EditIcon />
                         </Link>
                       </IconButton>
                       <IconButton>
-                        <DeleteIcon onClick={() => handleDelete(books._id)} />
+                        <DeleteIcon onClick={() => handleDelete(book._id)} />
                       </IconButton>
                       <IconButton>
-                        <Link to={`/singlebook/${books._id}`}>
+                        <Link to={`/singlebook/${book._id}`}>
                           <ArrowForwardIcon />
                         </Link>
                       </IconButton>
