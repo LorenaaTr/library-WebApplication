@@ -8,7 +8,7 @@ import AdminHeader from '../../../Components/AdminHeader/AdminHeader';
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField  } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField} from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { toast } from 'react-toastify';
@@ -74,6 +74,15 @@ const Complaints = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+      <Button
+            id='buttonadd'
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            component={Link}
+            to="/addcomplaint" 
+            style={{ marginTop: 20, marginLeft: -130 }}
+          ></Button>
         <TableContainer component={Paper} id='tablecontainer'>
             <Table>
                 <TableHead>
