@@ -16,3 +16,14 @@ exports.addbooktype = async (req, res) =>{
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }
+
+exports.getbooktypes = async(req, res) =>{
+    try {
+        const bookTypes = await BookTypes.find();
+        res.status(200).json({ data: bookTypes });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+      }
+}
+
