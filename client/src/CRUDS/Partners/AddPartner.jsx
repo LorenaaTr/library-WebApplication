@@ -106,7 +106,7 @@ export default function CreatePartner() {
         category: formData.category,
       };
 
-      axios.post("http://localhost:5000/book/createbook", requestData)
+      axios.post("http://localhost:5000/", requestData)
         .then((res) => {
           console.log('res', res);
           notify("Book created successfully!");
