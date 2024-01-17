@@ -35,7 +35,7 @@ import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPa
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
-import PartnerDashboard from './CRUDS/PartnerBooks/PartnerBookDashboard';
+import PartnerDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
 import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplaintPage';
 import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
 import Userspage from './Pages/AdminWeb/Users/Userspage';
@@ -43,6 +43,8 @@ import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
 import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
 import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
+import AddBook from './CRUDS/BooksCrud/AddBook'
+import AddPartner from './CRUDS/Partners/AddPartner';
 import AddBook from './CRUDS/PartnerBooks/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
@@ -101,6 +103,7 @@ const App = () => {
           <Route path='/addcomplaint' element={<AddComplaintForm/>}/>
           <Route path='/adduser' element={<AddUserForm/>}/>
           <Route path="/add-book" element={<AddBook/>} />
+          <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
         </Routes>
