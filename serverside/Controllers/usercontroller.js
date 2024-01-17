@@ -249,5 +249,84 @@ exports.updateBirthdayById = async (req, res) => {
   }
 };
 
+exports.countUsers = async(req, res) =>{
+  try {
+    const userCount = await User.countDocuments({ role: 'user' });
+
+    res.json({ status: 'ok', count: userCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.getUsers = async(req,res) =>{
+  try {
+    const users = await User.find({ role: 'user' });
+
+    res.json({ status: 'ok', data: users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.getuserbyid = async(req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.json({ status: 'ok', data: user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.deleteuserbyid = async(req,res) =>{
+  try {
+    const userId = req.params.id;
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.json({ status: 'ok', message: 'User deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
+exports.updateUserbyid = async(req, res) =>{
+  try {
+    const userId = req.params.id;
+    
+    const { name, surname, email, city, birthday, username, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { name, surname, email, city, birthday, username, password: hashedPassword},
+      { new: true } 
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.status(200).json({ status: 'ok', data: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
 
 

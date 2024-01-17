@@ -1,17 +1,17 @@
-.complaintspage{
+.singlepage{
     background-color: black;
 }
 
-  .complaintcontainer {
+  .singlepagecontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  #tablecontainer{
-    margin-top: 100px;
+  #box{
+    margin-top: 140px;
     margin-left: 260px;
-    margin-bottom: 100px;
+    margin-bottom: 140px;
     height: auto;
     max-width: 1000px;
   }

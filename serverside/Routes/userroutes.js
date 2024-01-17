@@ -11,6 +11,10 @@ router.put("/updateSurname/:id", usercontroller.updateSurnameById);
 router.put("/updateBirthday/:id", usercontroller.updateBirthdayById);
 router.put("/updateCity/:id", usercontroller.updateCityById);
 router.put("/updateEmail/:id", usercontroller.updateEmailById);
-
+router.get("/usercount", usercontroller.countUsers);
+router.get("/getusers", usercontroller.getUsers);
+router.get("/getUserByid/:id", usercontroller.getuserbyid);
+router.delete("/deleteuser/:id", usercontroller.deleteuserbyid);
+router.put("/updateuser/:id", usercontroller.updateUserbyid);
 
 module.exports = router;

@@ -11,39 +11,50 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField  } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { useNavigate } from 'react-router';
-
-const rowsPerPageOptions = [5, 10, 25];
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Complaints = () => {
 
-    const [complaints, setComplaints] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
+  const [complaints, setComplaints] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
  
 
   useEffect(() => {
-    // Fetch complaints data
     axios.get('http://localhost:5000/complaint/getcomplaints')
       .then(response => setComplaints(response.data.data))
       .catch(error => console.error('Error fetching complaints:', error));
   }, []);
 
-    const handleEdit = (complaintId) => {
-    // Implement edit functionality
-    console.log(`Edit complaint with ID: ${complaintId}`);
-    };
-
-  const handleDelete = (complaintId) => {
-    // Implement delete functionality
-    console.log(`Delete complaint with ID: ${complaintId}`);
+  const notify = (message) => {
+    toast.success(message, {
+      autoClose: 2000, 
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
+  
+
+  const handleDelete = async (complaintId) => {
+    try {
+      await axios.delete(`http://localhost:5000/complaint/deletecomplaint/${complaintId}`);
+      notify('Complaint deleted successfully');
+      axios.get('http://localhost:5000/complaint/getcomplaints')
+        .then(response => setComplaints(response.data.data))
+        .catch(error => console.error('Error fetching complaints:', error));
+    } catch (error) {
+      console.error('Error deleting complaint:', error);
+    }
+  };
+  
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const filteredComplaints = complaints.filter((complaint) =>
-    complaint.user && complaint.user.name && complaint.user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    complaint.user && complaint.user.name && complaint.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    complaint.title && complaint.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    complaint.message && complaint.message.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
 
@@ -51,11 +62,11 @@ const Complaints = () => {
     <>
     <AdminHeader/>
     <AdminSidebar/>
-    <div className='orderspage'>
-        <div className='acccontainer'>
+    <div className='complaintspage'>
+        <div className='complaintcontainer'>
         <TextField
         className='searcher'
-        label="Search"
+        label="Search by user, title and message"
         variant="outlined"
         fullWidth
         margin="normal"
@@ -74,17 +85,19 @@ const Complaints = () => {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {complaints.map((complaint) => (
+                {filteredComplaints.map((complaint) => (
                     <TableRow key={complaint._id}>
                     <TableCell> {complaint.user && complaint.user.name ? complaint.user.name : 'N/A'}</TableCell>
                     <TableCell>{complaint.title}</TableCell>
                     <TableCell>{complaint.message}</TableCell>
                     <TableCell>
-                        <IconButton onClick={() => handleEdit(complaint._id)}>
-                        <EditIcon />
+                        <IconButton >
+                          <Link to={`/updatecomplaint/${complaint._id}`}>
+                            <EditIcon />
+                          </Link>
                         </IconButton>
-                        <IconButton onClick={() => handleDelete(complaint._id)}>
-                        <DeleteIcon />
+                        <IconButton >
+                        <DeleteIcon onClick={() => handleDelete(complaint._id)}/>
                         </IconButton>
                         <IconButton>
                             <Link to={`/singlecomplaint/${complaint._id}`}>
@@ -97,7 +110,6 @@ const Complaints = () => {
                 </TableBody>
             </Table>
         </TableContainer>
-    
         </div>
       </div>
     </>

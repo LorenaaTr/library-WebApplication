@@ -17,15 +17,6 @@ exports.createcomplaint= async (req, res) => {
   }
 };
 
-exports.getcomplaint = async (req, res) => {
-  try {
-    const complaint = await Complaint.find();
-    res.status(200).json(complaint);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 exports.getcomplaintById = async (req, res) => {
   const { id } = req.params;
 
@@ -47,11 +38,42 @@ exports.getcomplaintById = async (req, res) => {
   }
 };
 
+exports.updatecomplaintById = async (req, res) => {
+  try {
+    const { user, title, message } = req.body; 
+    const complaintId = req.params.id;
+
+    if (!user || !title || !message) {
+      return res.status(400).json({ status: 'error', message: 'User, title, and message are required' });
+    }
+
+    const updatedComplaint = await Complaint.findByIdAndUpdate(
+      complaintId,
+      { user, title, message },
+      { new: true } 
+    );
+
+    
+    if (!updatedComplaint) {
+      return res.status(404).json({ status: 'error', message: 'Complaint not found' });
+    }
+
+    res.status(200).json({ status: 'ok', message: 'Complaint updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+};
+
+
 exports.deletecomplaintById = async (req, res) => {
     try {
       const complaintId = req.params.id;
   
-      await Complaint.findByIdAndRemove(complaintId);
+      const deletedComplaint = await Complaint.findByIdAndDelete(complaintId);
+      if (!deletedComplaint) {
+        return res.status(404).json({ status: 'error', message: 'Complaint not found' });
+      }
   
       res.status(200).json({ status: 'ok', message: 'Complaint deleted successfully' });
     } catch (error) {

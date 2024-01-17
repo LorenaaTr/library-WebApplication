@@ -1,8 +1,8 @@
-.complaintspage{
+.userspage{
     background-color: black;
 }
 
-  .complaintcontainer {
+  .userscontainer {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -36,7 +36,15 @@ import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPa
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
+<<<<<<< HEAD
 import PartnerDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
+=======
+import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplaintPage';
+import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
+import Userspage from './Pages/AdminWeb/Users/Userspage';
+import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
+import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
+>>>>>>> 30a275bcc8cecbcd00b741ca800d4a8503c48f87
 
 
 const App = () => {
@@ -85,7 +93,11 @@ const App = () => {
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
           <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
-
+          <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
+          <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
+          <Route path='/admin-users' element={<Userspage/>}/>
+          <Route path='/singleuser/:id' element={<SingleUser/>}/>
+          <Route path='/updateuser/:id' element={<UpdateUserForm/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

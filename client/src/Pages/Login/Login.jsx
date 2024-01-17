@@ -1,4 +1,4 @@
-import React, { useState,  useContext  } from 'react';
+import React, { useState,  useContext , useEffect } from 'react';
 import { Grid, TextField, Button, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
@@ -6,57 +6,65 @@ import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
 import { useUsersContext } from '../../Redux/Products/Products';
 
+
 const Login = () => {
   const navigate = useNavigate();
   const [dataform, setdataform] = useState({
-    username:"",
-    password:""
-  })
- 
+    username: "",
+    password: "",
+  });
 
   const { state, dispatch } = useUsersContext();
 
   const handleLogin = (e) => {
     e.preventDefault();
-  
-    axios.post("http://localhost:5000/authentification/login", dataform)
-    .then((response) => {
-      const data = response.data;
-      console.log('Response:', data);
-      if (data.status === 'ok') {
-        dispatch({
-          type: "TOKEN",
-          payload: { token: data.data }
-        });
 
-        dispatch({
-          type: "USER",
-          payload: { username: dataform.username }
-        });
+    axios
+      .post("http://localhost:5000/authentification/login", dataform)
+      .then((response) => {
+        const data = response.data;
+        console.log('Response:', data);
+        if (data.status === 'ok') {
+          dispatch({
+            type: "TOKEN",
+            payload: { token: data.data.token },
+          });
 
-        localStorage.setItem("token", data.data);
-        localStorage.setItem("user", dataform.username);
-        
-        if (data.data.role === "Admin") {
-          navigate('/admin-home');
-        } else if (data.data.role === "User") {
-          navigate('/system-home-page');
-        } else {
-          console.error('Invalid user role:', data.data.role);
-        }
-        
-      } else {
-        console.error('Login failed:', data.error);
+          dispatch({
+            type: "USER",
+            payload: { username: dataform.username },
+          });
+
+          dispatch({
+            type: "ROLE",
+            payload: { role: data.data.role },
+          });
+
+          localStorage.setItem("token", data.data);
+          localStorage.setItem("user", dataform.username);
+          localStorage.setItem("role", data.role);
+
+          const role = localStorage.getItem("role");
+
+          if (role === "Admin") {
+            navigate('/admin-home');
+          } else if (role === "User") {
+            navigate('/system-home-page');
+          } else {
+            console.error('Invalid user role:', role);
       }
-    })
-    .catch((error) => {
-      console.error('Error:', error.response.data);
-    });
+        } else {
+          console.error('Login failed:', data.error);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error.response.data);
+      });
   };
-  
+
   const changes = (e) => {
     setdataform({ ...dataform, [e.target.name]: e.target.value });
-  }
+  };
 
   return (
     <div className="login">
