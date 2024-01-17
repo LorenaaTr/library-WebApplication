@@ -18,7 +18,7 @@ const PartnerBookDashboard = () => {
 
   useEffect(() => {
     axios.get('http://localhost:5000/book/getbooks')
-      .then(response => setBooks(response.data.books)) // Use response.data.books
+      .then(response => setBooks(response.data.book)) // Use response.data.books
       .catch(error => console.error('Error fetching books:', error));
   }, []);
 
@@ -34,7 +34,7 @@ const PartnerBookDashboard = () => {
       await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
       notify('Book deleted successfully');
       axios.get('http://localhost:5000/book/getbooks')
-        .then(response => setBooks(response.data.data))
+        .then(response => setBooks(response.data.book))
         .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
       console.error('Error deleting book:', error);
@@ -85,6 +85,7 @@ const PartnerBookDashboard = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Library</TableCell>
+                  <TableCell>Image</TableCell>
                   <TableCell>Title</TableCell>
                   <TableCell>Author</TableCell>
                   <TableCell>Category</TableCell>
@@ -97,6 +98,7 @@ const PartnerBookDashboard = () => {
               {filteredBooks && filteredBooks.map((book) => (
                   <TableRow key={book._id}>
                     <TableCell> {book.user && book.user.name ? book.user.name : 'N/A'}</TableCell>
+                    <TableCell>{book.image && <img src={book.image} alt={book.title} style={{ maxWidth: '150px', maxHeight: '150px' }} />}</TableCell>
                     <TableCell>{book.title}</TableCell>
                     <TableCell>{book.author}</TableCell>
                     <TableCell>{book.category}</TableCell>

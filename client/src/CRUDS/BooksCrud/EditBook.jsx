@@ -101,7 +101,7 @@ export default function EditBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/dashboard-books')
+        navigate('/partner-dashboard')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
