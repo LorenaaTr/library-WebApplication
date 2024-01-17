@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import './userspage.css'
 const Userspage = () => {
 
     const [users, setUsers] = useState([]);
@@ -32,11 +33,11 @@ const Userspage = () => {
         });
     };
 
-    const handleDelete = async (complaintId) => {
+    const handleDelete = async (userId) => {
         try {
-          await axios.delete(`http://localhost:5000/complaint/deletecomplaint/${complaintId}`);
+          await axios.delete(`http://localhost:5000/user/deleteuser/${userId}`);
           notify('Complaint deleted successfully');
-          axios.get('http://localhost:5000/complaint/getcomplaints')
+          axios.get('http://localhost:5000/user/getusers')
             .then(response => setUsers(response.data.data))
             .catch(error => console.error('Error fetching complaints:', error));
         } catch (error) {
@@ -44,13 +45,13 @@ const Userspage = () => {
         }
     };
 
-    const filteredUsers = users.filter((users) =>
-        users.username && users.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        users.name && users.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        users.surname && users.surname.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        users.email && users.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        users.city && users.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        users.birthday && users.birthday.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredUsers = users.filter((user) =>
+        user.username && user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.surname && user.surname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.email && user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.city && user.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.birthday && user.birthday.toLowerCase().includes(searchQuery.toLowerCase())
     );
       
     
@@ -58,11 +59,11 @@ const Userspage = () => {
     <>
     <AdminHeader/>
     <AdminSidebar/>
-    <div className='complaintspage'>
-        <div className='complaintcontainer'>
+    <div className='userspage'>
+        <div className='userscontainer'>
         <TextField
         className='searcher'
-        label="Search by user, title and message"
+        label="Search by user"
         variant="outlined"
         fullWidth
         margin="normal"
@@ -96,7 +97,9 @@ const Userspage = () => {
                     <TableCell>{user.birthday}</TableCell>
                     <TableCell>
                         <IconButton >
-                        <EditIcon />
+                        <Link to={`/updateuser/${user._id}`}>
+                            <EditIcon />
+                        </Link>
                         </IconButton>
                         <IconButton >
                         <DeleteIcon onClick={() => handleDelete(user._id)}/>

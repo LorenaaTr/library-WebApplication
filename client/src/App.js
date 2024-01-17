@@ -40,6 +40,7 @@ import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplain
 import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
 import Userspage from './Pages/AdminWeb/Users/Userspage';
 import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
+import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 
 
 const App = () => {
@@ -91,6 +92,7 @@ const App = () => {
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
           <Route path='/admin-users' element={<Userspage/>}/>
           <Route path='/singleuser/:id' element={<SingleUser/>}/>
+          <Route path='/updateuser/:id' element={<UpdateUserForm/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

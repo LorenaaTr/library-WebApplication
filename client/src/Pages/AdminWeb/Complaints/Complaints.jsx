@@ -92,7 +92,9 @@ const Complaints = () => {
                     <TableCell>{complaint.message}</TableCell>
                     <TableCell>
                         <IconButton >
-                        <EditIcon />
+                          <Link to={`/updatecomplaint/${complaint._id}`}>
+                            <EditIcon />
+                          </Link>
                         </IconButton>
                         <IconButton >
                         <DeleteIcon onClick={() => handleDelete(complaint._id)}/>

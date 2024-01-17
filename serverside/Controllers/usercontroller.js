@@ -303,5 +303,30 @@ exports.deleteuserbyid = async(req,res) =>{
   }
 }
 
+exports.updateUserbyid = async(req, res) =>{
+  try {
+    const userId = req.params.id;
+    
+    const { name, surname, email, city, birthday, username, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { name, surname, email, city, birthday, username, password: hashedPassword},
+      { new: true } 
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+
+    res.status(200).json({ status: 'ok', data: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+}
+
 
 
