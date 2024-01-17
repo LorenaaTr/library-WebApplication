@@ -1,198 +1,129 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-import { Link, useParams } from 'react-router-dom';
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-} from '@mui/material';
-import ErrorIcon from '@mui/icons-material/Error';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
 import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
+import axios from 'axios';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField } from '@mui/material';
+import { Link } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-const BookDashboard = () => {
+const PartnerBookDashboard = () => {
   const [books, setBooks] = useState([]);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
-  const [dataform, setdataform] = useState({
-    title:"",
-    message:""
-});
+  const [searchQuery, setSearchQuery] = useState('');
 
-const decodeToken = (token) => {
+  useEffect(() => {
+    axios.get('http://localhost:5000/book/getbooks')
+      .then(response => setBooks(response.data.data))
+      .catch(error => console.error('Error fetching books:', error));
+  }, []);
+
+  const notify = (message) => {
+    toast.success(message, {
+      autoClose: 2000,
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
+  const handleDelete = async (bookId) => {
     try {
-      const decoded = JSON.parse(atob(token.split('.')[1]));
-      return decoded;
-    } catch (error) {
-      console.error('Error decoding token:', error);
-      return {};
-    }
-  };
-
-  
-const notify = (message) => {
-  toast.success(message, {
-    autoClose: 2000, 
-    position: toast.POSITION.TOP_CENTER,
-  });
-};
-  const handleSubmit = () => {
-    const token = localStorage.getItem('token');
-  
-    if (token) {
-      const decodedToken = decodeToken(token);
-      const requestData = {
-        user: {
-          _id: decodedToken.userId,
-          name: decodedToken.username,
-        },
-        title: dataform.title,
-        message: dataform.message,
-      };
-  
-      axios.post("http://localhost:5000/book/createbook", requestData)
-        .then((res) => {
-          console.log('res', res);
-          notify("Complaint sent successfully!");
-          setdataform({ title: "", message: "" });
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    }
-    else {
-      console.error('Token not available');
-    }
-  };
-
-
-
-  const handleDeleteClick = (book) => {
-    setSelectedBook(book);
-    setDeleteModalOpen(true);
-  };
-
-  const handleConfirmDelete = async () => {
-    try {
-      // Make an API request to delete the book
-      await axios.delete(`http://localhost:5000/book/deletebook/${selectedBook._id}`);
-
-      // Update the books list after deletion
-      setBooks(prevBooks => prevBooks.filter(b => b._id !== selectedBook._id));
-
-      console.log('Book deleted successfully');
+      await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
+      notify('Book deleted successfully');
+      axios.get('http://localhost:5000/book/getbooks')
+        .then(response => setBooks(response.data.data))
+        .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
       console.error('Error deleting book:', error);
-    } finally {
-      // Close the delete modal
-      setDeleteModalOpen(false);
     }
   };
 
-  const handleCancelDelete = () => {
-    // Close the delete modal without deleting the book
-    setDeleteModalOpen(false);
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
-  const handleTitleChange = (e) => {
-    setdataform({ ...dataform, title: e.target.value });
-  };
-
-  const handleMessageChange = (e) => {
-    setdataform({ ...dataform, message: e.target.value });
-  };
+  const filteredBooks = books && books.filter((book) =>
+    book.title && book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    book.author && book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    book.category && book.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    book.isbn && book.isbn.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    book.description && book.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
       <PartnerWebHeader />
       <PartnerSidebar />
-      <div className="home">
-        <div className="components comp">
-          <div className="book-dashboard-container">
-            <h1 className="dashboard-header">Book Dashboard</h1>
-
-            <Link to="/create-book" className="add-book-button">
-              <Button className="link1">Add New Book</Button>
-            </Link>
-
-          <div className="book-table-container">
-          <Table className=' book-table'>
+      <div className='complaintspage'>
+        <div className='complaintcontainer'>
+          <TextField
+            className='searcher'
+            label="Search by title, author, category, ISBN, or description"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            style={{ marginTop: 100, marginLeft: -130 }}
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <Button
+            id='buttonadd'
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            component={Link}
+            to="/add-book"
+            style={{ marginTop: 20, marginLeft: -130 }}
+          ></Button>
+          <TableContainer component={Paper} id='tablecontainer'>
+            <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Image</TableCell>
+                  <TableCell>Library</TableCell>
                   <TableCell>Title</TableCell>
                   <TableCell>Author</TableCell>
-                  <TableCell>Description</TableCell>
                   <TableCell>Category</TableCell>
-                  <TableCell>Price</TableCell>
                   <TableCell>ISBN</TableCell>
-                  <TableCell>Library</TableCell>
+                  <TableCell>Description</TableCell>
                   <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {books.map(book => (
+              {filteredBooks.map((book) => (
                   <TableRow key={book._id}>
-                    <TableCell>
-                      <Link to={`/book/${book.slug}`}>
-                        <img src={book.image} alt={book.title} className="book-image" />
-                      </Link>
-                    </TableCell>
+                    <TableCell> {book.user && book.user.name ? book.user.name : 'N/A'}</TableCell>
                     <TableCell>{book.title}</TableCell>
                     <TableCell>{book.author}</TableCell>
-                    <TableCell>{book.description}</TableCell>
                     <TableCell>{book.category}</TableCell>
-                    <TableCell>{book.price}</TableCell>
                     <TableCell>{book.isbn}</TableCell>
-                    <TableCell>{book.libraryName}</TableCell>
+                    <TableCell>{book.description}</TableCell>
                     <TableCell>
-                    <Link to={`/edit-book/${book._id}`} className="edit-link">
-                       <span>Edit</span>
-                    </Link>{' '}
-                      |{' '}
-                      <Link to="#" className="delete-link">
-                        <span onClick={() => handleDeleteClick(book)}>Delete</span>
-                      </Link>
+                      <IconButton>
+                        <Link to={`/edit-book/${books._id}`}>
+                          <EditIcon />
+                        </Link>
+                      </IconButton>
+                      <IconButton>
+                        <DeleteIcon onClick={() => handleDelete(books._id)} />
+                      </IconButton>
+                      <IconButton>
+                        <Link to={`/singlebook/${books._id}`}>
+                          <ArrowForwardIcon />
+                        </Link>
+                      </IconButton>
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-          </div>
-          </div>
+          </TableContainer>
         </div>
       </div>
-
-      <Dialog open={isDeleteModalOpen} onClose={handleCancelDelete}>
-        <DialogTitle className="title-del">Confirm Deletion</DialogTitle>
-        <ErrorIcon className="error-icon" style={{ fontSize: '60px' }} />
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to delete this book?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCancelDelete}>No, Cancel</Button>
-          <Button onClick={handleConfirmDelete} style={{ color: 'red' }} autoFocus>
-            Yes, I'm sure
-          </Button>
-        </DialogActions>
-      </Dialog>
     </>
   );
-};
+}
 
-export default BookDashboard;
+export default PartnerBookDashboard;

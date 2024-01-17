@@ -25,11 +25,13 @@ const BookDashboard = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
 
+/*
   useEffect(() => {
     axios.get('http://localhost:5000/book/getBooks')
       .then(response => setBooks(response.data.books))
       .catch(error => console.error(error));
   }, []);
+*/
 
   const handleDeleteClick = (book) => {
     setSelectedBook(book);
