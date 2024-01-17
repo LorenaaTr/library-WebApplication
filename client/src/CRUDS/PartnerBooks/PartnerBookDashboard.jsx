@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './BookDashboard.css'
+
 import { Link, useParams } from 'react-router-dom';
 import {
   Button,
@@ -18,19 +18,67 @@ import {
 import ErrorIcon from '@mui/icons-material/Error';
 import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
 import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const BookDashboard = () => {
   const [books, setBooks] = useState([]);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
-  const {libraryName} = useParams();
+  const [dataform, setdataform] = useState({
+    title:"",
+    message:""
+});
 
-  useEffect(() => {
-    axios.get(`http://localhost:5000/book/getBooks?libraryName=${libraryName}`)
-      .then(response => setBooks(response.data.books))
-      .catch(error => console.error(error));
-  }, []);
+const decodeToken = (token) => {
+    try {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      return decoded;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return {};
+    }
+  };
+
+  
+const notify = (message) => {
+  toast.success(message, {
+    autoClose: 2000, 
+    position: toast.POSITION.TOP_CENTER,
+  });
+};
+  const handleSubmit = () => {
+    const token = localStorage.getItem('token');
+  
+    if (token) {
+      const decodedToken = decodeToken(token);
+      const requestData = {
+        user: {
+          _id: decodedToken.userId,
+          name: decodedToken.username,
+        },
+        title: dataform.title,
+        message: dataform.message,
+      };
+  
+      axios.post("http://localhost:5000/book/createbook", requestData)
+        .then((res) => {
+          console.log('res', res);
+          notify("Complaint sent successfully!");
+          setdataform({ title: "", message: "" });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+    else {
+      console.error('Token not available');
+    }
+  };
+
+
 
   const handleDeleteClick = (book) => {
     setSelectedBook(book);
@@ -57,6 +105,14 @@ const BookDashboard = () => {
   const handleCancelDelete = () => {
     // Close the delete modal without deleting the book
     setDeleteModalOpen(false);
+  };
+
+  const handleTitleChange = (e) => {
+    setdataform({ ...dataform, title: e.target.value });
+  };
+
+  const handleMessageChange = (e) => {
+    setdataform({ ...dataform, message: e.target.value });
   };
 
   return (
