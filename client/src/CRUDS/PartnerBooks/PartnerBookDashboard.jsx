@@ -18,7 +18,7 @@ const PartnerBookDashboard = () => {
 
   useEffect(() => {
     axios.get('http://localhost:5000/book/getbooks')
-      .then(response => setBooks(response.data.books)) 
+      .then(response => setBooks(response.data.books))
       .catch(error => console.error('Error fetching books:', error));
   }, []);
 
