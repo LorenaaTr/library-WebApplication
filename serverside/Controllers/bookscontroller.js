@@ -5,7 +5,7 @@ exports.createBook = async (req, res) => {
   try {
     const { title, user, category, author, isbn, description, price, image } = req.body;
 
-    if (!title || !user || !category || !author || !isbn || !description || !price) {
+    if (!title  || !category || !author || !isbn || !description || !price) {
       return res.status(400).send({ error: "Please provide all required fields." });
     }
 
