@@ -45,7 +45,7 @@ exports.login =  async (req, res) => {
   const {username, password} = req.body;
 
   const user = await User.findOne({username});
-  const role = user.role;
+  const role =  user && user.role;
   if(!user){
     return res.json({error:"User not found"});
   }

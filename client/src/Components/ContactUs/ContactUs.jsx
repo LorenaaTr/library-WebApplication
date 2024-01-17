@@ -1,5 +1,5 @@
-import React from 'react'
-import './contactus.css'
+import React from 'react';
+import './contactus.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
@@ -9,8 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ContactUs = () => {
   const [dataform, setdataform] = useState({
-    title:"",
-    message:""
+    title: "",
+    message: ""
   });
 
   const decodeToken = (token) => {
@@ -25,39 +25,10 @@ const ContactUs = () => {
 
   const notify = (message) => {
     toast.success(message, {
-      autoClose: 2000, 
+      autoClose: 2000,
       position: toast.POSITION.TOP_CENTER,
     });
   };
-
-  const handleSubmit = () => {
-      const token = localStorage.getItem('token');
-    
-      if (token) {
-        const decodedToken = decodeToken(token);
-        const requestData = {
-          user: {
-            _id: decodedToken.userId,
-            name: decodedToken.username,
-          },
-          title: dataform.title,
-          message: dataform.message,
-        };
-    
-        axios.post("http://localhost:5000/complaint/addComplaint", requestData)
-          .then((res) => {
-            console.log('res', res);
-            notify("Complaint sent successfully!");
-            setdataform({ title: "", message: "" });
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      }
-      else {
-        console.error('Token not available');
-      }
-    };
 
   const handleTitleChange = (e) => {
     setdataform({ ...dataform, title: e.target.value });
@@ -67,14 +38,42 @@ const ContactUs = () => {
     setdataform({ ...dataform, message: e.target.value });
   };
 
+  const handleSubmit = () => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const decodedToken = decodeToken(token);
+      const requestData = {
+        user: {
+          _id: decodedToken.userId,
+          name: decodedToken.username,
+        },
+        title: dataform.title,
+        message: dataform.message,
+      };
+
+      axios.post("http://localhost:5000/complaint/addComplaint", requestData)
+        .then((res) => {
+          console.log('res', res);
+          notify("Complaint sent successfully!");
+          setdataform({ title: "", message: "" });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      console.error('Token not available');
+    }
+  };
+
   return (
     <div className='contactus'>
-        <div className='text'>
-            <p>If you are having trouble with any of our services,
-             please do not hesitate to reach out to our customer support team for prompt assistance.
-            </p>
-        </div>
-        <div className='form'>
+      <div className='text'>
+        <p>If you are having trouble with any of our services,
+          please do not hesitate to reach out to our customer support team for prompt assistance.
+        </p>
+      </div>
+      <div className='form'>
         <TextField
           className='title'
           label='Title'
@@ -83,7 +82,7 @@ const ContactUs = () => {
           margin='normal'
           value={dataform.title}
           onChange={handleTitleChange}
-          style={{backgroundColor:"grey"}}
+          style={{ backgroundColor: "grey" }}
         />
         <TextField
           className='message'
@@ -95,14 +94,14 @@ const ContactUs = () => {
           margin='normal'
           value={dataform.message}
           onChange={handleMessageChange}
-          style={{backgroundColor:"grey"}}
+          style={{ backgroundColor: "grey" }}
         />
-        <Button variant='contained' color='primary' className='button' onClick={handleSubmit} style={{backgroundColor:"red", marginTop:"20px"}}>
+        <Button variant='contained' color='primary' className='button' onClick={handleSubmit} style={{ backgroundColor: "red", marginTop: "20px" }}>
           Send Complaint
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ContactUs
+export default ContactUs;

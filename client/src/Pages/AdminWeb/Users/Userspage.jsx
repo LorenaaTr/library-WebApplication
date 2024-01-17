@@ -11,6 +11,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './userspage.css'
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 const Userspage = () => {
 
     const [users, setUsers] = useState([]);
@@ -71,6 +73,15 @@ const Userspage = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+      <Button
+            id='buttonadd'
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            component={Link}
+            to="/adduser" 
+            style={{ marginTop: 20, marginLeft: -130 }}
+          ></Button>
         <TableContainer component={Paper} id='tablecontainer'>
             <Table>
                 <TableHead>
