@@ -45,8 +45,6 @@ const PartnerBookDashboard = () => {
     setSearchQuery(event.target.value);
   };
 
-
-
   const filteredBooks = books && books.filter((book) =>
     book.title && book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     book.author && book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
