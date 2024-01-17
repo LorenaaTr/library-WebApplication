@@ -45,7 +45,7 @@ exports.login =  async (req, res) => {
   const {username, password} = req.body;
 
   const partner = await Partner.findOne({username});
-  const role = partner.role;
+  const role = partner && partner.role;
   if(!partner){
     return res.json({error:"Partner not found"});
   }
