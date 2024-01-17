@@ -45,6 +45,9 @@ import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
 import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
 import AddBook from './CRUDS/BooksCrud/AddBook'
 import AddPartner from './CRUDS/Partners/AddPartner';
+import AddBook from './CRUDS/PartnerBooks/AddBook'
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 
 
 const App = () => {
@@ -101,6 +104,8 @@ const App = () => {
           <Route path='/adduser' element={<AddUserForm/>}/>
           <Route path="/add-book" element={<AddBook/>} />
           <Route path="/add-partner" element={<AddPartner/>} />
+          <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
+          <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>
