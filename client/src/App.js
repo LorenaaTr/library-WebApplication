@@ -11,7 +11,6 @@ import Services from './Pages/Services/ourServices';
 import SystemHomePage from './Pages/SystemHomePage/HomePage';
 import LibrariesSystem from './Pages/SystemLibraries/Libraries';
 import BookCategories from './Pages/BookCategories/BookCategories';
-import BookCRUD from '../src/CRUDS/BooksCrud/BookDashboard';
 import CreateBook from '../src/CRUDS/BooksCrud/CreateBook';
 import EditBook from '../src/CRUDS/BooksCrud/EditBook';
 import Cart from './Pages/ShoppingCart/Cart';
@@ -45,6 +44,8 @@ import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
 import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
 import AddBook from './CRUDS/PartnerBooks/AddBook'
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 
 
 const App = () => {
@@ -65,7 +66,6 @@ const App = () => {
           <Route path="/system-libraries" element={<LibrariesSystem />} />
           <Route path="/book-categories" element={<BookCategories />} />
           <Route path="/create-book" element={<CreateBook/>} />
-          <Route path="/dashboard-books" element={<BookCRUD/>} />
           <Route path="/edit-book/:bookId" element={<EditBook/>} /> 
           <Route path='/useraccount' element={<UserAccount/>}/>
           <Route path='/updateusername/:id' element={<ChangeUsername/>}/>
@@ -101,6 +101,8 @@ const App = () => {
           <Route path='/addcomplaint' element={<AddComplaintForm/>}/>
           <Route path='/adduser' element={<AddUserForm/>}/>
           <Route path="/add-book" element={<AddBook/>} />
+          <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
+          <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

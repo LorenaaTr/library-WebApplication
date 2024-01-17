@@ -103,7 +103,7 @@ const PartnerBookDashboard = () => {
               {filteredBooks && filteredBooks.map((book) => (
                   <TableRow key={book._id}>
                     <TableCell> {book.user && book.user.name ? book.user.name : 'N/A'}</TableCell>
-                    <TableCell>{book.image}</TableCell>
+                    <TableCell>{book.image && <img src={book.image} alt={book.title} style={{ maxWidth: '150px', maxHeight: '150px' }} />}</TableCell>
                     <TableCell>{book.title}</TableCell>
                     <TableCell>{book.author}</TableCell>
                     <TableCell>{book.category}</TableCell>
