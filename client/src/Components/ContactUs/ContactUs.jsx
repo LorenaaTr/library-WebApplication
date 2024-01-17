@@ -13,6 +13,32 @@ const ContactUs = () => {
     message:""
   });
 
+const handleSubmit = () => {
+    const token = localStorage.getItem('token');
+  
+    if (token) {
+      const decodedToken = decodeToken(token);
+      const requestData = {
+        user: {
+          _id: decodedToken.userId,
+          name: decodedToken.username,
+        },
+        title: dataform.title,
+        message: dataform.message,
+      };
+  
+      axios.post("http://localhost:5000/book/addComplaint", requestData)
+        .then((res) => {
+          console.log('res', res);
+          notify("Complaint sent successfully!");
+          setdataform({ title: "", message: "" });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+    else {
+      console.error('Token not available');
   const decodeToken = (token) => {
     try {
       const decoded = JSON.parse(atob(token.split('.')[1]));

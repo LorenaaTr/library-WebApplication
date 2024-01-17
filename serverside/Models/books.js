@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
+const librarySchema = require('./partner');
 
 const bookSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  libraryName: {
-    type: String,
-    required: true,
+  user:{
+    type: librarySchema, 
+    required:true
   },
   author: {
     type: String,

@@ -3,9 +3,9 @@ const Books = mongoose.model("Books");
 
 exports.createBook = async (req, res) => {
   try {
-    const { title, libraryName, category, author, isbn, description, price, image } = req.body;
+    const { title, user, category, author, isbn, description, price, image } = req.body;
 
-    if (!title || !libraryName || !category || !author || !isbn || !description || !price) {
+    if (!title || !user || !category || !author || !isbn || !description || !price) {
       return res.status(400).send({ error: "Please provide all required fields." });
     }
 
@@ -13,7 +13,7 @@ exports.createBook = async (req, res) => {
 
     const newBook = await Books.create({
       title,
-      libraryName,
+      user,
       category,
       author,
       isbn,
@@ -28,6 +28,8 @@ exports.createBook = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
 
 exports.getBooks = async (req, res) => {
   try {

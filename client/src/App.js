@@ -36,7 +36,7 @@ import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPa
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
-import PartnerDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
+import PartnerDashboard from './CRUDS/PartnerBooks/PartnerBookDashboard';
 import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplaintPage';
 import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
 import Userspage from './Pages/AdminWeb/Users/Userspage';
