@@ -21,7 +21,7 @@ const PartnerSidebar = ({ children }) => {
       icon: <LocalLibraryIcon />,
     },
     {
-      path: "/dashboard-books",
+      path: "/partner-dashboard",
       name: "Books",
       icon: <AutoStoriesIcon />,
     },

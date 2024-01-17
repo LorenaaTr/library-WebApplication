@@ -36,6 +36,7 @@ import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPa
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
+import PartnerDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
 
 
 const App = () => {
@@ -83,6 +84,8 @@ const App = () => {
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
+          <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
+
         </Routes>
       </BrowserRouter>
     </UsersProvider>

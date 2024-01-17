@@ -36,6 +36,14 @@
     font-size: 14px;
   }
 
+  .books-title{
+    color: white;
+    text-decoration: none;
+  }
+
+  .books-authors{
+    color: rgb(245, 121, 121);
+  }
   @media (max-width: 1440px) {
     .book-card {
       width: calc(100% - 200px);

@@ -50,9 +50,9 @@ const BookPage = () => {
     <SystemSidebar />
     <div className="home">
       <div className="components comp">
+      <h1 className='title-book'>{book && book.title}</h1>
         <div className="book-page">
           <div className="header-container">
-            <h1 className='title-book'>{book && book.title}</h1>
            <div className="category-con">
            <Link to="#">
               <Button className="category-btn">{book && book.category}</Button>
@@ -68,7 +68,7 @@ const BookPage = () => {
               <br />
               <span>ISBN:</span>{book && book.isbn}
               <br />
-              <p className='description'>{book && book.description}</p>
+              <p className='description-con'>{book && book.description}</p>
               <br />
               {book && (
                 <>
