@@ -70,7 +70,10 @@ exports.deletecomplaintById = async (req, res) => {
     try {
       const complaintId = req.params.id;
   
-      await Complaint.findByIdAndRemove(complaintId);
+      const deletedComplaint = await Complaint.findByIdAndDelete(complaintId);
+      if (!deletedComplaint) {
+        return res.status(404).json({ status: 'error', message: 'Complaint not found' });
+      }
   
       res.status(200).json({ status: 'ok', message: 'Complaint deleted successfully' });
     } catch (error) {
