@@ -4,126 +4,121 @@
     height: 100vh;
     font-family: 'Lora', serif;
     z-index: 0;
-    overflow: hidden;
-}
-
-.login .loginimg {
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  .login .loginimg {
     min-width: 100%;
     max-width: 100%;
-    margin:-80px 50px;
-}
-
-.login .form {
+    margin: -80px 50px;
+  }
+  
+  .login .form {
     margin: 0;
-}
-.MuiInput-input::placeholder {
-    color: white; 
+    max-width: 100%;
   }
-
-  .MuiInput-input:hover {
-    color: white; 
-  }
-.input input {
-    color: white; 
-  }
-
-.input input::placeholder {
+  
+  .MuiInput-input::placeholder,
+  .MuiInput-input:hover,
+  .input input,
+  .input input::placeholder {
     color: white;
   }
-
-.input{
-    max-width: 100%;
-}
   
-.login-form{
+  .input {
+    max-width: 100%;
+  }
+  
+  .login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-}
-
-.login .form .form-container {
-    margin: 150px 550px;
-}
-
-.login .form .form-container .login-text {
-    margin-bottom: 50px;
+  }
+  
+  .login .form .form-container {
+    margin: 150px 5%; /* Adjusted margin for responsiveness */
+  }
+  
+  .login .form .form-container .login-text {
+    margin-bottom: 20px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
     color: rgb(245, 121, 121);
-    margin-left: -10px;
     font-size: 50px;
-}
-
-.login .form .form-container .submit-button {
+  }
+  
+  .login .form .form-container .submit-button {
     width: 150px;
-    margin-left: 130px;
-    margin-top: 10px;
-}
-
-.login .form .form-container p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+  
+  .login .form .form-container p {
     font-size: 17px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
-    margin-top: 30px;
-}
-
-.login .form .form-container p a {
+    margin-top: 50px;
+  }
+  
+  .login .form .form-container p a {
     text-decoration: none;
     color: #D32F2F;
     font-family: 'Nunito', sans-serif;
-}
-
-.login .form .form-container p a:hover {
+  }
+  
+  .login .form .form-container p a:hover {
     text-decoration: underline;
     color: #D32F2F;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .login .loginimg {
-        max-height: 100%;
-        max-width: 100%;
-        margin: 100px 40px;
+      max-height: 100%;
+      max-width: 100%;
+      margin: 100px 20px; /* Adjusted margin for responsiveness */
     }
-
+  
     .login .form {
-        margin-left: 180px;
+      margin-left: 20px;
     }
-
-    .form-container .input{
-        max-width: 70%;
-        margin-left: -10px;
+  
+    .form-container .input {
+      max-width: 70%;
+      margin-left: 0;
     }
-
-    .login{
-        margin-top: 100px;
-        margin-left: 15px;
+  
+    .login {
+      margin-top: 50px;
+      margin-left: 10px;
     }
-
-   
+  
     .login .form .form-container {
-        margin: 20px -100px;
+      margin: 20px 0;
     }
-
+  
     .login .form .form-container .welcome-text {
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: bold;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
     }
-
+  
     .login .form .form-container .login-text {
-        margin-bottom: 30px;
-        font-size: 20px;
-        margin-left: -140px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      margin-left: 0;
     }
-
+  
     .login .form .form-container .submit-button {
-        width: 120px;
-        margin-left:20px;
+      width: 120px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
+  
     .login .form .form-container .joinus {
-        max-width: 300px;
-        margin-left: -20px;
+      max-width: 200px;
+      margin-left: 0;
     }
-}
+  }
+  

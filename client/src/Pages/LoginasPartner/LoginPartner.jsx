@@ -1,7 +1,7 @@
 import React, { useState,  useContext  } from 'react';
 import { Grid, TextField, Button, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import './login.css';
+import './loginpartner.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
 import { useUsersContext } from '../../Redux/Products/Products';

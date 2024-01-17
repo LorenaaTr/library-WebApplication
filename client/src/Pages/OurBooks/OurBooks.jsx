@@ -8,7 +8,7 @@ const OurBooks = () => {
       <>
       <Navbar/>
       <div className="page-container">
-        <h1 className="title">OUR BOOKS</h1>
+        <h1 className="title" style={{textAlign:'center'}} >OUR BOOKS</h1>
         <p className="description">EXPLORE ALL TYPES OF BOOKS</p>
         <ul className="book-list">
           <li className="list-item">FICTION</li>

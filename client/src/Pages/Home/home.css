@@ -1,43 +1,47 @@
-.home{
+.home {
     background-color: black;
     color: white;
-    margin: 0 auto;
     font-family: "Droid Sans-Bold", Helvetica;
 }
 
-.homewrapper{
+.homewrapper {
     margin-top: 60px;
 }
 
-.cards-wrapper{
+.cards-wrapper {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.cards-reverse{
+.cards-reverse {
     margin-left: 150px;
 }
 
-.cards-reverse .photo{
+.cards-reverse .photo {
     order: 2;
+   
 }
 
-.moto{
+
+
+.moto {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-.lateststories{
+.lateststories {
     font-weight: bold;
     font-size: 55px;
     letter-spacing: 16px;
     margin-top: 160px;
+    color: white;
 }
 
-.moto p a{
+.moto p a {
     text-decoration: none;
     color: white;
 }
@@ -47,7 +51,7 @@
     border-bottom: 2px solid red;
 }
 
-.redline{
+.redline {
     display: block;
     width: 180px;
     height: 4px;
@@ -56,25 +60,26 @@
     margin-right: 16px;
 }
 
-.cards{
+.cards {
     margin-left: 150px;
+  
 }
 
 .cmore {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     margin: 100px;
 }
 
-.seemore{
+.seemore {
     text-decoration: none;
     color: white;
     font-size: 25px;
     margin-bottom: 18px;
 }
 
-.servicesHeader{
+.servicesHeader {
     display: flex;
     justify-content: center;
     margin-top: 100px;
@@ -89,7 +94,7 @@
     margin-top: -8px;
 }
 
-.ourservices{
+.ourservices {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,80 +102,72 @@
     margin-top: 200px;
 }
 
-.ourservices h1{
+.ourservices h1 {
     font-size: 50px;
 }
 
-.readonline, .learnonline{
+.readonline,
+.learnonline {
     margin-top: 100px;
 }
 
-.readonline{
+.readonline,
+.learnonline {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.readonline h3{
+.readonline h3,
+.learnonline h3 {
     margin-top: 50px;
     font-size: 25px;
 }
 
-.readonline p{
-    margin-top: 30px;
-}
-.learnonline{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.learnonline h3{
-    margin-top: 50px;
-    font-size: 25px;
-}
-
-.learnonline p{
+.readonline p,
+.learnonline p {
     margin-top: 30px;
 }
 
 .circle {
     width: 80px;
     height: 80px;
-    background-color:rgb(241, 46, 46); 
+    background-color: rgb(241, 46, 46);
     border-radius: 50%;
-    color: white; 
-    font-size: 24px; 
+    color: white;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
 }
 
-.signup{
+.signup {
     margin-top: 170px;
     background-image: url('../../assets/images/library2.jpg');
     height: 70vh;
     background-size: cover;
     background-position: center;
     position: relative;
-    padding: 20px; 
+    padding: 20px;
 }
 
-.overlayedcontext{
+.overlayedcontext {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 100px;
 }
 
-.overlayedcontext .first{
+.overlayedcontext .first {
     font-size: 40px;
+    color: white;
 }
 
-.overlayedcontext .second{
+.overlayedcontext .second {
     margin-top: 190px;
     font-size: 25px;
+    color: white;
 }
 
 .overlayedcontext button {
@@ -181,55 +178,53 @@
 }
 
 @media (max-width: 750px) {
-
-    .home{
+    .home {
         background-color: black;
         color: white;
-        margin: 0 auto;
         font-family: "Droid Sans-Bold", Helvetica;
         top: 0;
         left: 0;
         right: 0;
     }
 
-    .moto{
-        margin-left: 20px 100px;
+    .moto {
+        margin-left: 20px;
         line-height: 25px;
     }
-    .lateststories{
+
+    .lateststories {
         font-size: 15px;
     }
 
-    .moto p{
+    .moto p {
         font-size: 10px;
     }
 
-    .redline{
+    .redline {
         width: 100px;
         height: 2px;
     }
 
-    .cards-wrapper{
+    .cards-wrapper {
         display: flex;
         flex-direction: column;
         margin-top: 100px;
         margin-bottom: 100px;
-    }
-    
-    .servicesHeader{
-            font-size: 20px;
-            margin-top: 50px; 
+        justify-content: center;
+        margin-left: 50px;
     }
 
-    .cards{
-        margin-left: 95px;
+    .servicesHeader {
+        font-size: 20px;
+        margin-top: 50px;
     }
 
-    .cards-reverse{
-        margin-left: 95px;
+    .cards,
+    .cards-reverse {
+        margin-left: 20px;
     }
 
-    .cards-reverse .context{
+    .cards-reverse .context {
         order: 2;
     }
 
@@ -237,63 +232,50 @@
         margin-top: -50px;
     }
 
-    .cmore .seemore{
+    .cmore .seemore {
         font-size: 10px;
     }
 
-    .cmore .redline2{
+    .cmore .redline2 {
         width: 30px;
         height: 2px;
     }
 
-    .signup{
+    .signup {
         height: 50vh;
     }
 
-    .overlayedcontext .first{
+    .overlayedcontext .first {
         font-size: 25px;
         text-align: center;
+        color: white;
     }
 
-    .overlayedcontext .second{
+    .overlayedcontext .second {
         font-size: 15px;
+        color: white;
     }
 
-    .ourservices h1{
+    .ourservices h1 {
         font-size: 20px;
         margin-top: 100px;
         margin-bottom: -30px;
     }
 
-    .readonline .circle{
+    .readonline .circle,
+    .learnonline .circle {
         height: 50px;
         width: 50px;
         font-size: 20px;
     }
 
-    .readonline h3{
+    .readonline h3,
+    .learnonline h3 {
         font-size: 20px;
     }
 
-    .readonline p{
-        font-size: 10px;
-        text-align: center;
-        width: 300px;
-        line-height: 20px;
-        margin-top: -10px;
-    }
-
-    .learnonline .circle{
-        height: 50px;
-        width: 50px;
-        font-size: 20px;
-    }
-
-    .learnonline h3{
-        font-size: 20px;
-    }
-
-    .learnonline p{
+    .readonline p,
+    .learnonline p {
         font-size: 10px;
         text-align: center;
         width: 300px;
@@ -301,7 +283,3 @@
         margin-top: -10px;
     }
 }
-  
-
-
-
