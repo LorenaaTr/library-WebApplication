@@ -251,7 +251,7 @@ exports.updateBirthdayById = async (req, res) => {
 
 exports.countUsers = async(req, res) =>{
   try {
-    const userCount = await User.countDocuments({ role: 'user' });
+    const userCount = await User.countDocuments({ role: 'User' });
 
     res.json({ status: 'ok', count: userCount });
   } catch (error) {
@@ -262,8 +262,9 @@ exports.countUsers = async(req, res) =>{
 
 exports.getUsers = async(req,res) =>{
   try {
-    const users = await User.find({ role: 'user' });
+    const users = await User.find({ role: 'User' });
 
+    console.log('Retrieved users:', users);
     res.json({ status: 'ok', data: users });
   } catch (error) {
     console.error(error);

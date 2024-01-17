@@ -43,6 +43,7 @@ import Userspage from './Pages/AdminWeb/Users/Userspage';
 import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
 import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
+import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
 
 
 const App = () => {
@@ -97,6 +98,7 @@ const App = () => {
           <Route path='/singleuser/:id' element={<SingleUser/>}/>
           <Route path='/updateuser/:id' element={<UpdateUserForm/>}/>
           <Route path='/addcomplaint' element={<AddComplaintForm/>}/>
+          <Route path='/adduser' element={<AddUserForm/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>
