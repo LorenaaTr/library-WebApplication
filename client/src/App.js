@@ -93,7 +93,7 @@ const App = () => {
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
-          <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
+          <Route path="/partner-dashboard/:user" element={<PartnerDashboard/>} />
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
           <Route path='/admin-users' element={<Userspage/>}/>

@@ -11,15 +11,20 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useParams } from 'react-router';
 
 const PartnerBookDashboard = () => {
+  const {user} = useParams();
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/book/getbooks')
-      .then(response => setBooks(response.data.book)) // Use response.data.books
-      .catch(error => console.error('Error fetching books:', error));
+    axios.get(`http://localhost:5000/book/getbooksbyuser/${user}`)
+    .then(response => {
+      console.log('API Response:', response.data);
+      setBooks(response.data);
+    })
+    .catch(error => console.error('Error fetching books:', error));
   }, []);
 
   const notify = (message) => {
@@ -33,8 +38,8 @@ const PartnerBookDashboard = () => {
     try {
       await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
       notify('Book deleted successfully');
-      axios.get('http://localhost:5000/book/getbooks')
-        .then(response => setBooks(response.data.book))
+      axios.get(`http://localhost:5000/book/getbooks/${user}`)
+        .then(response => setBooks(response.data.data))
         .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
       console.error('Error deleting book:', error);

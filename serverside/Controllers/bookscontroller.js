@@ -100,3 +100,15 @@ exports.updateBook = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.getbooksbyuser = async(req, res) =>{
+  try {
+    const userId = req.params.user;
+
+    const booksByUser = await Books.find({ 'user.name': userId });
+
+    res.status(200).json(booksByUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
