@@ -36,6 +36,7 @@ import BookstoreOrdersPage from './Pages/PartnerWeb/OrdersPage/BookstoreOrdersPa
 import Complaints from './Pages/AdminWeb/Complaints/Complaints';
 import DisplayBooks from './Pages/DisplayBooks/DisplayBooks';
 import BookPage from './Components/BookPage/BookPage';
+import PartnerDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
 import SingleComplaintPage from './Pages/AdminWeb/SingleComplaint/SingleComplaintPage';
 import UpdateComplaintForm from './Pages/AdminWeb/UpdateComplaint/UpdateComplaint';
 import Userspage from './Pages/AdminWeb/Users/Userspage';
@@ -89,6 +90,7 @@ const App = () => {
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
+          <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
           <Route path='/admin-users' element={<Userspage/>}/>

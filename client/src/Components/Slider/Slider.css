@@ -1,0 +1,40 @@
+/* BookSlider.css */
+.Slider{
+    font-family: "Droid Sans-Bold", Helvetica;
+}
+
+.book-slider-container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .book-slide {
+    outline: none;
+    margin: 0 20px; /* Add a margin between each book */
+    transition: transform 0.3s ease-in-out;
+}
+
+.book-slide img {
+    width: 75%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 8px; /* Add a border radius for rounded corners */
+}
+
+.slick-center .book-slide {
+    transform: scale(1.2); /* Increase the scale for the centered book */
+}
+
+ 
+@media (max-width: 768px) {
+    .bestsellers h1 {
+        font-size: 20px;
+        margin-top: 50px; /* Adjust margin for smaller screens */
+    }
+
+    .book-slide {
+        margin: 0 10px; /* Further reduce margin for smaller screens */
+    }
+}
+  
