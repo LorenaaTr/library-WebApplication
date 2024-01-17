@@ -135,19 +135,6 @@ export default function EditBook() {
               </div>
 
               <div className="form-group">
-              <InputLabel htmlFor="libraryName">Library Name</InputLabel>
-                <OutlinedInput
-                  id="libraryName"
-                  name="libraryName"
-                  style={{ width: '100%' }}
-                  onChange={(e) =>
-                    setFormData({ ...formData, libraryName: e.target.value })
-                  }
-                  value={formData.libraryName}
-                />
-              </div>
-
-              <div className="form-group">
               <InputLabel htmlFor="author"> Author</InputLabel>
                 <OutlinedInput
                   id="author"

@@ -9,24 +9,29 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import { useNavigate } from 'react-router';
 
 const PartnerSidebar = ({ children }) => {
   const [isopen, setisopen] = useState(false);
   const toggle = () => setisopen(!isopen);
 
+  const navigate = useNavigate();
+
+  const user = localStorage.getItem('user');
+
   const menuItem = [
     {
-      path: "/partner-home-page",
+      path: `/partner-home-page`,
       name: "Your Bookstore",
       icon: <LocalLibraryIcon />,
     },
     {
-      path: "/partner-dashboard",
+      path: `/partner-dashboard/${user}`,
       name: "Books",
       icon: <AutoStoriesIcon />,
     },
     {
-      path: "/bookstore-order-page",
+      path: `/bookstore-order-page/${user}`,
       name: "Orders",
       icon: <ShoppingBasketIcon />,
     }
@@ -37,7 +42,7 @@ const PartnerSidebar = ({ children }) => {
       <div className={`sidebar ${isopen ? 'open' : 'notopen'}`}>
         <div className="linkss">
           {menuItem.map((item, index) => (
-            <NavLink to={item.path} key={index} className="link">
+            <NavLink to={item.path} key={index} className="link" >
               <div className="icon">{item.icon}</div>
               <div className="link-text">{item.name}</div>
             </NavLink>

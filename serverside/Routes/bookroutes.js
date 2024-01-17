@@ -7,6 +7,7 @@ router.post('/createbook', booksController.createBook);
 router.get('/getbooks', booksController.getBooks);
 router.delete('/deletebook/:bookId', booksController.deleteBook);
 router.put('/updatebook/:bookId', booksController.updateBook);
+router.get('/getbooksbyuser/:user', booksController.getbooksbyuser);
 
 
 

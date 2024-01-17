@@ -11,15 +11,20 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useParams } from 'react-router';
 
 const PartnerBookDashboard = () => {
+  const {user} = useParams();
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/book/getbooks')
-      .then(response => setBooks(response.data.books))
-      .catch(error => console.error('Error fetching books:', error));
+    axios.get(`http://localhost:5000/book/getbooksbyuser/${user}`)
+    .then(response => {
+      console.log('API Response:', response.data);
+      setBooks(response.data);
+    })
+    .catch(error => console.error('Error fetching books:', error));
   }, []);
 
   const notify = (message) => {
@@ -33,7 +38,7 @@ const PartnerBookDashboard = () => {
     try {
       await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
       notify('Book deleted successfully');
-      axios.get('http://localhost:5000/book/getbooks')
+      axios.get(`http://localhost:5000/book/getbooks/${user}`)
         .then(response => setBooks(response.data.data))
         .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
@@ -85,6 +90,7 @@ const PartnerBookDashboard = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Library</TableCell>
+                  <TableCell>Image</TableCell>
                   <TableCell>Title</TableCell>
                   <TableCell>Author</TableCell>
                   <TableCell>Category</TableCell>
@@ -97,6 +103,7 @@ const PartnerBookDashboard = () => {
               {filteredBooks && filteredBooks.map((book) => (
                   <TableRow key={book._id}>
                     <TableCell> {book.user && book.user.name ? book.user.name : 'N/A'}</TableCell>
+                    <TableCell>{book.image}</TableCell>
                     <TableCell>{book.title}</TableCell>
                     <TableCell>{book.author}</TableCell>
                     <TableCell>{book.category}</TableCell>
