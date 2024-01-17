@@ -43,7 +43,9 @@ const Complaints = () => {
   };
 
   const filteredComplaints = complaints.filter((complaint) =>
-    complaint.user && complaint.user.name && complaint.user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    complaint.user && complaint.user.name && complaint.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    complaint.title && complaint.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    complaint.message && complaint.message.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
 
@@ -55,7 +57,7 @@ const Complaints = () => {
         <div className='acccontainer'>
         <TextField
         className='searcher'
-        label="Search"
+        label="Search by user, title and message"
         variant="outlined"
         fullWidth
         margin="normal"
