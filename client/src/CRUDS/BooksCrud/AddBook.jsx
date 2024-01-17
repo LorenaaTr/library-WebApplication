@@ -3,7 +3,6 @@ import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
 import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
-
 import { Alert, Button } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';

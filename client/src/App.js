@@ -43,9 +43,8 @@ import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
 import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
 import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
-import AddBook from './CRUDS/BooksCrud/AddBook'
 import AddPartner from './CRUDS/Partners/AddPartner';
-import AddBook from './CRUDS/PartnerBooks/AddBook'
+import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 
