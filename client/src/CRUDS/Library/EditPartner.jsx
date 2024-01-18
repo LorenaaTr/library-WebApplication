@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Input from '@mui/material/Input';
 import './editpartner.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-import { app } from '../../firebase';
 import { useNavigate, useParams } from 'react-router';
-import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +10,8 @@ import axios from 'axios';
 import AdminHeader from '../../Components/AdminHeader/AdminHeader';
 import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
 import { Alert, Button,TextField } from '@mui/material';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import { app } from '../../firebase';
 
 
 export default function EditPartner() {
