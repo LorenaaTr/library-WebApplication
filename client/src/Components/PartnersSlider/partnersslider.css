@@ -10,35 +10,35 @@
   
   .partner-slide {
     outline: none;
-    margin: 0 20px; /* Add a margin between each book */
+    margin: 0 20px; 
     transition: transform 0.3s ease-in-out;
 }
 
 .partner-slide img {
-    width: 75%;
+    width: 85%;
     height: 90%;
     object-fit: cover;
-    border-radius: 8px; /* Add a border radius for rounded corners */
+    border-radius: 8px; 
 }
 
 .slick-center .partner-slide {
-    transform: scale(1.2); /* Increase the scale for the centered book */
+    transform: scale(1.2); 
 }
 
 .partners-img{
-    width: 250px;
-    height: 250px;
+    width: 450px;
+    height: 380px;
 }
 
  
 @media (max-width: 768px) {
     .bestsellers h1 {
         font-size: 20px;
-        margin-top: 50px; /* Adjust margin for smaller screens */
+        margin-top: 50px; 
     }
 
     .book-slide {
-        margin: 0 10px; /* Further reduce margin for smaller screens */
+        margin: 0 10px; 
     }
 }
   

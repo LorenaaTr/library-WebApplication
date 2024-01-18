@@ -175,10 +175,14 @@ exports.updatePartnerById = async (req, res) => {
       state,
       street,
       zipcode,
+      password,
       image,
     } = req.body;
 
-    const existingPartner = await Partner.findByIdAndUpdate(
+    // Hash the password if provided
+    const hashedPassword = password ? await bcrypt.hash(password, 10) : undefined;
+
+    const updatedPartner = await Partner.findByIdAndUpdate(
       partnerId,
       {
         username,
@@ -188,12 +192,13 @@ exports.updatePartnerById = async (req, res) => {
         state,
         street,
         zipcode,
+        password: hashedPassword,
         image,
       },
       { new: true }
     );
 
-    if (!existingPartner) {
+    if (!updatedPartner) {
       return res.status(404).json({
         status: 'error',
         message: 'Partner not found',
@@ -202,13 +207,14 @@ exports.updatePartnerById = async (req, res) => {
 
     res.status(200).json({
       status: 'ok',
-      data: existingPartner,
+      data: updatedPartner,
     });
   } catch (error) {
     console.error('Error updating partner:', error.message);
     res.status(500).json({
       status: 'error',
-      message: 'Internal server',
+      message: 'Internal server error',
     });
   }
 };
+

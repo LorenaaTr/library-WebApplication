@@ -110,7 +110,7 @@ const App = () => {
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
-          <Route path='/edit-partner/:partnerId' element={<EditPartner/>}/>
+          <Route path='/edit-partner/:id' element={<EditPartner/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

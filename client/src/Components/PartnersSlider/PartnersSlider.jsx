@@ -6,7 +6,7 @@ import './partnersslider.css';
 
 import partner1Image from '../../assets/images/kombetare.jpg';
 import partner2Image from '../../assets/images/Buzuku.jpg';
-import partner3Image from '../../assets/images/dukagjini.jpg';
+import partner3Image from '../../assets/images/ferizaj.jpg';
 import partner4Image from '../../assets/images/hivzi.jpg';
 
 const StaticPartnerSlider = () => {
