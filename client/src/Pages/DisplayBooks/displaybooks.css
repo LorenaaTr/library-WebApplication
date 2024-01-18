@@ -3,3 +3,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.grid{
+  margin-left: 400px;
+  margin-bottom: 100px;
+}

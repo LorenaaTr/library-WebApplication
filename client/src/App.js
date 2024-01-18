@@ -47,6 +47,11 @@ import AddPartner from './CRUDS/Partners/AddPartner';
 import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
+import Books from './Pages/AdminWeb/Books/Books';
+import Editbooks from './Pages/AdminWeb/UpdateBook/Editbooks';
+import BookSinglePage from './Pages/BookSinglePage/BookSinglePage';
+import MyShelf from './Pages/Myshelf/Myshelf';
+
 
 
 const App = () => {
@@ -87,12 +92,11 @@ const App = () => {
           <Route path='/loginpartner' element={<LoginPartner/>}/>
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
           <Route path='/bookstore-order-page' element={<BookstoreOrdersPage/>}/>
-          <Route path='/system-myshelf' element={<Myshelf/>}/>
+          <Route path='/system-myshelf/:user' element={<MyShelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
           <Route path='/system-recommendations' element={<RecommandedBook/>}/>
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
-          <Route path='/book/:bookSlug' element={<BookPage/>}/>
           <Route path="/partner-dashboard/:user" element={<PartnerDashboard/>} />
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
@@ -105,6 +109,10 @@ const App = () => {
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
+          <Route path='/admin-panel' element={<AdminHome/>}/>
+          <Route path='/admin-books' element={<Books/>}/>
+          <Route path='/update-book/:id' element={<Editbooks/>}/>
+          <Route path='/book/:id' element={<BookSinglePage/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

@@ -28,8 +28,7 @@ const bookSchema = new mongoose.Schema({
     unique: true,
   },
   slug: {
-    type: String,
-    required: true,
+    type: String
   },
   price: {
     type: Number, 

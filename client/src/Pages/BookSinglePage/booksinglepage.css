@@ -1,0 +1,18 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .grid{
+    margin-left: 400px;
+    margin-bottom: 100px;
+  }
+
+  /* Example: Simplified styles */
+.card {
+    background-color: white;
+    margin-left: 700px;
+    margin-top: 150px;
+  }
+  

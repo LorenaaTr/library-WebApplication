@@ -112,3 +112,21 @@ exports.getbooksbyuser = async(req, res) =>{
     res.status(500).json({ error: error.message });
   }
 }
+
+exports.getbookbyid = async (req, res) => {
+  const bookId = req.params.id;
+
+  try {
+    const book = await Books.findById(bookId);
+
+    if (!book) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.json({ book });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
