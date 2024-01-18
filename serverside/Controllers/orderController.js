@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Order = require('../Models/order'); // Make sure to provide the correct path
+const Order = require('../Models/order'); 
 require("../Models/user");
 const User = mongoose.model("Users");
 
@@ -27,12 +27,12 @@ exports.addOrder = async (req, res) => {
   
       const savedOrder = await order.save();
   
-      // Update user's books
+      
       for (const orderedBook of orderedBooks) {
         const userBookIndex = userObj.books.findIndex((ub) => ub._id.equals(orderedBook.book));
   
         if (userBookIndex !== -1) {
-          // Update the counter for the found book
+          
           userObj.books[userBookIndex].counter -= orderedBook.quantity;
         }
       }
