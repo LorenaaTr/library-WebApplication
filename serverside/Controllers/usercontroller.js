@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 require('../Models/user');
 const User = mongoose.model("Users");
+require('../Models/books');
+const Books = mongoose.model("Books")
 
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
@@ -328,6 +330,61 @@ exports.updateUserbyid = async(req, res) =>{
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 }
+
+exports.userbook = async (req, res) => {
+  try {
+    const { username, book } = req.body;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const newBook = {
+      user: book.user,
+      title: book.title,
+      author: book.author,
+      description: book.description,
+      category: book.category,
+      isbn: book.isbn,
+      price: book.price,
+      image: book.image,
+    };
+
+    user.books.push(newBook);
+
+    const updatedUser = await user.save();
+
+    res.json({ user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.getUserBooks = async (req, res) => {
+  try {
+    const { user } = req.params;
+
+    const foundUser = await User.findOne({ username: user });
+
+    if (!foundUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const userBooks = foundUser.books;
+    res.json(userBooks);
+  } catch (error) {
+    console.error('Error fetching user books:', error);
+    res.status(500).json({ error: 'Error fetching user books' });
+  }
+};
+
+
+
+
+
 
 
 

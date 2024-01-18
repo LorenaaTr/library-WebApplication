@@ -16,7 +16,7 @@ import EditBook from '../src/CRUDS/BooksCrud/EditBook';
 import Cart from './Pages/ShoppingCart/Cart';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
-import Myshelf from './Pages/Myshelf/Myshelf';
+import MyShelf from './Pages/Myshelf/Myshelf';
 import FictionBooks from './Pages/FictionBooks/FictionBooks';
 import ChangeUsername from './CRUDS/UsersCrud/UpdateUsername/ChangeUsername';
 import ChangePassword from './CRUDS/UsersCrud/UpdatePassword/ChangePassword';
@@ -47,10 +47,6 @@ import AddPartner from './CRUDS/Library/AddPartner';
 import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
-import LibraryDashboard from './CRUDS/Library/LibraryDashboard'; 
-import EditPartner from '../src/CRUDS/Library/EditPartner';
-
-
 
 
 const App = () => {
@@ -91,14 +87,13 @@ const App = () => {
           <Route path='/loginpartner' element={<LoginPartner/>}/>
           <Route path='/partner-home-page' element={<BookstorePage/>}/>
           <Route path='/bookstore-order-page' element={<BookstoreOrdersPage/>}/>
-          <Route path='/system-myshelf' element={<Myshelf/>}/>
+          <Route path='/system-myshelf/:user' element={<MyShelf/>}/>
           <Route path='/admin-home' element={<AdminHome/>}/>
           <Route path='/system-recommendations' element={<RecommandedBook/>}/>
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
-          <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
-          <Route path="/admin-partners" element={<LibraryDashboard/>} />
+          <Route path="/partner-dashboard/:user" element={<PartnerDashboard/>} />
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
           <Route path='/admin-users' element={<Userspage/>}/>
@@ -110,7 +105,7 @@ const App = () => {
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
-          <Route path='/edit-partner/:id' element={<EditPartner/>}/>
+          <Route path='/edit-partner/:partnerId' element={<EditPartner/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

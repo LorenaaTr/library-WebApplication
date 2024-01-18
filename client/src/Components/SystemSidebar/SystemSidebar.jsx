@@ -7,6 +7,8 @@ const SystemSidebar = ({ children }) => {
   const [isopen, setisopen] = useState(false);
   const toggle = () => setisopen(!isopen);
 
+  const user = localStorage.getItem('user');
+
   const menuItem = [
     {
       path: "/system-home-page",
@@ -29,7 +31,7 @@ const SystemSidebar = ({ children }) => {
       icon: < MdMenuBook/>,
     },
     {
-      path: "/system-myshelf",
+      path: `/system-myshelf/${user}`,
       name: "My Shelf",
       icon: <MdFolderOpen />,
     },
