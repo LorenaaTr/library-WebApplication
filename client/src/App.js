@@ -49,6 +49,7 @@ import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 import EditPartner from './CRUDS/Library/EditPartner';
 import LibraryDashboard from './CRUDS/Library/LibraryDashboard';
+import LibSinglePage from './Pages/LibSinglePage/LibSinglePage';
 
 
 const App = () => {
@@ -109,6 +110,7 @@ const App = () => {
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
           <Route path='/edit-partner/:id' element={<EditPartner/>}/>
           <Route path='/admin-partners' element={<LibraryDashboard/>}/>
+          <Route path='/partner-details/:id' element={<LibSinglePage/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>
