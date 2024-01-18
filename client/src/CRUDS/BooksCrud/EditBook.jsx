@@ -188,6 +188,7 @@ export default function EditBook() {
                   value={formData.price}
                    />
               </div>
+              
                 <div className="form-group fileInput">
                   <Input
                     type="file"

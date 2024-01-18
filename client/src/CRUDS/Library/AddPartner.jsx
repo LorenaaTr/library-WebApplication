@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 
 
-export default function CreatePartner() {
+export default function AddPartner() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -28,7 +28,7 @@ export default function CreatePartner() {
     street: '',
     zipcode: '',
     password: '',
-    role: '',
+    image:''
   });
   const [publishError, setPublishError] = useState(null);
 
@@ -97,27 +97,30 @@ export default function CreatePartner() {
           _id: decodedToken.userId,
           name: decodedToken.username,
         },
-        title: formData.title,
-        author: formData.author,
-        description: formData.description,
-        isbn: formData.isbn,
-        image: formData.image,
-        price: formData.price,
-        category: formData.category,
+        name: formData.name,
+        ceo: formData.ceo,
+        city: formData.city,
+        state: formData.state,
+        street: formData.street,
+        zipcode: formData.zipcode,
+        password: formData.password,
+        image: formData.image
       };
 
-      axios.post("http://localhost:5000/", requestData)
+      axios.post("http://localhost:5000/partner/registerpartner", requestData)
         .then((res) => {
           console.log('res', res);
           notify("Book created successfully!");
           setFormData({
-            title: "",
-            author: "",
-            description: "",
-            isbn: "",
-            category: "",
-            price: "",
-            image: ""
+            username: "",
+            name: "",
+            ceo: "",
+            city: "",
+            state: "",
+            street: "",
+            zipcode: '',
+            password: '',
+            image: "",
           });
           navigate("/partner-dashboard")
         })

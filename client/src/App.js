@@ -43,10 +43,14 @@ import SingleUser from './Pages/AdminWeb/SingleUser/SingleUser';
 import UpdateUserForm from './Pages/AdminWeb/UpdateUser/UpdateUser';
 import AddComplaintForm from './Pages/AdminWeb/AddComplaint/AddComplaint';
 import AddUserForm from './Pages/AdminWeb/AddUser/AddUsers';
-import AddPartner from './CRUDS/Partners/AddPartner';
+import AddPartner from './CRUDS/Library/AddPartner';
 import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
+import LibraryDashboard from './CRUDS/Library/LibraryDashboard'; 
+import EditPartner from '../src/CRUDS/Library/EditPartner';
+
+
 
 
 const App = () => {
@@ -93,7 +97,8 @@ const App = () => {
           <Route path='/admin-complaints' element={<Complaints/>}/>
           <Route path='/all-books' element={<DisplayBooks/>}/>
           <Route path='/book/:bookSlug' element={<BookPage/>}/>
-          <Route path="/partner-dashboard/:user" element={<PartnerDashboard/>} />
+          <Route path="/partner-dashboard" element={<PartnerDashboard/>} />
+          <Route path="/admin-partners" element={<LibraryDashboard/>} />
           <Route path='/singlecomplaint/:id' element={<SingleComplaintPage/>}/>
           <Route path='/updatecomplaint/:id' element={<UpdateComplaintForm/>}/>
           <Route path='/admin-users' element={<Userspage/>}/>
@@ -105,6 +110,7 @@ const App = () => {
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
+          <Route path='/edit-partner/:partnerId' element={<EditPartner/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

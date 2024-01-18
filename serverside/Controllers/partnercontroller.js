@@ -8,7 +8,7 @@ require('../Models/partner');
 const Partner = mongoose.model("Partners");
 
 exports.register = async(req, res) =>{
-    const{username, name, ceo, city, state, street, zipcode, password, confirmpassword, role} = req.body;
+    const{username, name, ceo, city, state, street, zipcode, password, confirmpassword, image,role} = req.body;
     // if (!.includes('@')) {
     //     return res.status(400).send({ error: "Invalid email. Only @ emails are allowed." });
     // }
@@ -31,6 +31,7 @@ exports.register = async(req, res) =>{
         street,
         zipcode,
         password: encryptedPassword,
+        image,
         role: "Partner" 
       });
 
@@ -90,7 +91,8 @@ exports.partnerData = async (req, res) => {
         city: data.city,
         state: data.state,
         street: data.street,
-        zipcode: data.zipcode
+        zipcode: data.zipcode,
+        image: data.image
       };
 
       res.status(200).json({ status: 'ok', data: partnerData });
@@ -101,5 +103,119 @@ exports.partnerData = async (req, res) => {
   } catch (error) {
     console.error('Error Verifying Token:', error.message);
     res.status(401).json({ status: 'error', data: 'invalid token' });
+  }
+};
+
+exports.getAllPartners = async (req, res) => {
+  try {
+    const partners = await Partner.find({});
+
+    res.status(200).json({ status: 'ok', data: partners });
+  } catch (error) {
+    console.error('Error Fetching Partners:', error.message);
+    res.status(500).json({ status: 'error', data: error.message });
+  }
+};
+
+exports.deletePartnerById = async (req, res) => {
+  const partnerId = req.params.id;
+
+  try {
+    const partner = await Partner.findById(partnerId);
+
+    if (!partner) {
+      return res.status(404).json({ status: 'error', message: 'Partner not found' });
+    }
+
+    await Partner.findByIdAndDelete(partnerId);
+
+    return res.status(200).json({ status: 'ok', message: 'Partner deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting partner:', error.message);
+    return res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+};
+
+exports.getPartnerById = async (req, res) => {
+  const partnerId = req.params.partnerId;
+
+  try {
+    const partner = await Partner.findById(partnerId);
+
+    if (!partner) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Partner not found'
+      });
+    }
+
+    res.status(200).json({
+      status: 'ok',
+      data: partner
+    });
+  } catch (error) {
+    console.error('Error Fetching Partner by ID:', error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Internal server error'
+    });
+  }
+};
+
+
+exports.updatePartnerById = async (req, res) => {
+  const partnerId = req.params.id;
+  const {
+    username,
+    name,
+    ceo,
+    city,
+    state,
+    street,
+    zipcode,
+    password,
+    image,
+    role
+  } = req.body;
+
+  try {
+    const existingPartner = await Partner.findById(partnerId);
+
+    if (!existingPartner) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Partner not found'
+      });
+    }
+
+    // Update partner data
+    existingPartner.username = username || existingPartner.username;
+    existingPartner.name = name || existingPartner.name;
+    existingPartner.ceo = ceo || existingPartner.ceo;
+    existingPartner.city = city || existingPartner.city;
+    existingPartner.state = state || existingPartner.state;
+    existingPartner.street = street || existingPartner.street;
+    existingPartner.zipcode = zipcode || existingPartner.zipcode;
+    
+    if (password) {
+      const encryptedPassword = await bcrypt.hash(password, 10);
+      existingPartner.password = encryptedPassword;
+    }
+
+    existingPartner.image = image || existingPartner.image;
+    existingPartner.role = role || existingPartner.role;
+
+    await existingPartner.save();
+
+    res.status(200).json({
+      status: 'ok',
+      message: 'Partner updated successfully'
+    });
+  } catch (error) {
+    console.error('Error updating partner:', error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Internal server error'
+    });
   }
 };
