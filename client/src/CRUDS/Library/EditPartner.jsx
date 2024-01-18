@@ -38,47 +38,7 @@ const EditPartner = () => {
       .catch(error => console.error('Error fetching partner data:', error));
   }, [id]);
 
-  const handleUploadImage = async () => {
-    try {
-      if (!file) {
-        setImageUploadError('Please select an image!');
-        return;
-      }
-      setImageUploadError(null);
-      const storage = getStorage(app);
-      const fileName = new Date().getTime() + '-' + file.name;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageUploadProgress(progress.toFixed(0));
-        },
-        (error) => {
-          setImageUploadError('Image upload failed!');
-          setImageUploadProgress(null);
-        },
-        async () => {
-          try {
-            // Get download URL after successful upload
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            setImageUploadProgress(null);
-            setImageUploadError(null);
-            setFormData({ ...formData, image: downloadURL });
-          } catch (urlError) {
-            console.error('Error getting download URL:', urlError);
-            setImageUploadError('Image upload failed!');
-            setImageUploadProgress(null);
-          }
-        }
-      );
-    } catch (error) {
-      setImageUploadError('Image upload failed!');
-      setImageUploadProgress(null);
-      console.error(error);
-    }
-  };
+
 
   const handleUpdatePartner = () => {
     axios.put(`http://localhost:5000/partner/updatepartner/${id}`, partnerData)
