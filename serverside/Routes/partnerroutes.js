@@ -11,6 +11,7 @@ router.get("/allpartners", partnercontroller.getAllPartners);
 router.get("/allpartners/:partnerId", partnercontroller.getPartnerById);
 router.delete("/deletepartner/:id", partnercontroller.deletePartnerById);
 router.put("/updatepartner/:id", partnercontroller.updatePartnerById);
+router.get("/getpartnercount", partnercontroller.getPartnersCount);
 
 
 

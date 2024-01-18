@@ -43,7 +43,7 @@ export default function CreateBook() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            // Get  URL
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);

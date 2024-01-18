@@ -13,9 +13,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 
-
-
-
 export default function AdminBooks() {
     const [books, setBooks] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');

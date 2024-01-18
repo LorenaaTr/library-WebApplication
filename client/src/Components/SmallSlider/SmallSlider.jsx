@@ -37,11 +37,11 @@ const SmallSlider = () => {
 
   const books = [book1, book2, book3, book4];
 
-  // Ensure the first book is placed at the center
+  
   const rearrangedBooks = [
-    books[1], // Second book (centered)
-    ...books.slice(2), // The rest of the books
-    books[0], // First book
+    books[1], 
+    ...books.slice(2), 
+    books[0], 
   ];
 
   return (

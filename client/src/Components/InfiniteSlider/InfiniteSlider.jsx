@@ -7,30 +7,30 @@ const InfiniteSlider = () => {
     'image1.jpg',
     'image2.jpg',
     'image3.jpg',
-    // Add more image URLs
+    
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // Move to the next slide
+      
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change the interval duration (in milliseconds) as needed
+    }, 3000); 
 
     return () => {
-      // Clear the interval to avoid memory leaks
+      
       clearInterval(intervalId);
     };
   }, [currentIndex, images.length]);
 
   const goToPrevSlide = () => {
-    // Move to the previous slide
+    
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const goToNextSlide = () => {
-    // Move to the next slide
+    
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 

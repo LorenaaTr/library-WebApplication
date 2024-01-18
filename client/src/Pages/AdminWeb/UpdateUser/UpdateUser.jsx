@@ -32,7 +32,7 @@ const UpdateUserForm = () => {
   };
 
   useEffect(() => {
-    // Fetch user data by ID and populate the state
+    // Fetch user data 
     axios.get(`http://localhost:5000/user/getUserByid/${id}`)
       .then(response => setUserData(response.data.data))
       .catch(error => console.error('Error fetching user data:', error));
@@ -43,7 +43,7 @@ const UpdateUserForm = () => {
       .then(response => {
         console.log('User updated successfully:', response.data);
         notify('User updated successfully')
-        navigate('/admin-users'); // Redirect to user list or another page
+        navigate('/admin-users'); 
       })
       .catch(error => console.error('Error updating user:', error));
   };

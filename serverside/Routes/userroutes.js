@@ -18,5 +18,6 @@ router.delete("/deleteuser/:id", usercontroller.deleteuserbyid);
 router.put("/updateuser/:id", usercontroller.updateUserbyid);
 router.post("/userbook", usercontroller.userbook);
 router.get("/getuserbooks/:user", usercontroller.getUserBooks);
+router.delete("/deleteuserbook/:id" , usercontroller.deleteuserbook);
 
 module.exports = router;

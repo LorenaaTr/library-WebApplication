@@ -17,7 +17,6 @@ import Cart from './Pages/ShoppingCart/Cart';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
 import MyShelf from './Pages/Myshelf/Myshelf';
-import FictionBooks from './Pages/FictionBooks/FictionBooks';
 import ChangeUsername from './CRUDS/UsersCrud/UpdateUsername/ChangeUsername';
 import ChangePassword from './CRUDS/UsersCrud/UpdatePassword/ChangePassword';
 import ChangeName from './CRUDS/UsersCrud/UpdateName/ChangeName';
@@ -53,7 +52,8 @@ import LibSinglePage from './Pages/LibSinglePage/LibSinglePage';
 import AdminBooks from './CRUDS/AdminBooks/AdminBooks';
 import AddAdminBooks from './CRUDS/AdminBooks/CreateBook';
 import AdminEditBook from '../src/CRUDS/AdminBooks/EditBook';
-
+import PartnerBookDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
+import SinglBook from './Pages/AdminWeb/SingleBook/SingleBook';
 
 
 const App = () => {
@@ -118,7 +118,8 @@ const App = () => {
           <Route path='/admin-books' element={<AdminBooks/>}/>
           <Route path="/admin-edit-book/:bookId" element={<AdminEditBook/>} /> 
           <Route path='/add-admin-book' element={<AddAdminBooks/>}/>
-
+          <Route path='/admin-panel' element={<AdminHome/>}/>
+          <Route path='/singlebook/:id' element={<SinglBook/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

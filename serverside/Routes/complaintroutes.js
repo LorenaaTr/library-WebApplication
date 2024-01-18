@@ -8,5 +8,6 @@ router.get('/getcomplaints', complaintcontroller.getAllcomplaints);
 router.get('/getcomplaintbyid/:id', complaintcontroller.getcomplaintById);
 router.put('/updatecomplaint/:id', complaintcontroller.updatecomplaintById);
 router.delete('/deletecomplaint/:id',complaintcontroller.deletecomplaintById);
+router.get("/complaintcount", complaintcontroller.getComplaintCount);
 
 module.exports = router;

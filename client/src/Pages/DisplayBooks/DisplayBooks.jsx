@@ -43,7 +43,7 @@ const DisplayBooks = () => {
     if (token) {
       const decodedToken = decodeToken(token);
       const requestData = {
-        username: decodedToken.username,  // Include the username in the request
+        username: decodedToken.username,  
         book: {
           user: book.user,
           title: book.title,

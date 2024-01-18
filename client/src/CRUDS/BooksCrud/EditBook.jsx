@@ -66,7 +66,7 @@ export default function EditBook() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            // Get  URL 
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
@@ -110,6 +110,7 @@ export default function EditBook() {
   };
 
   const handleDescriptionChange = (e) => {
+
     setFormData({ ...formData, description: e.target.value });
   };
 
