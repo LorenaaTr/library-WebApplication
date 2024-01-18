@@ -41,7 +41,7 @@ export default function AdminBooks() {
         await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
         notify('Book deleted successfully');
         axios.get('http://localhost:5000/book/getbooks')
-          .then(response => setBooks(response.data.data))
+          .then(response => setBooks(response.data.books))
           .catch(error => console.error('Error fetching books:', error));
       } catch (error) {
         console.error('Error deleting book:', error);
