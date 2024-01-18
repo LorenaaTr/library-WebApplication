@@ -42,7 +42,7 @@ export default function EditPartner() {
 
   
   useEffect(() => {
-    // Fetch partner data by ID and populate the state
+    // Fetch 
     axios.get(`http://localhost:5000/partner/allpartners/${id}`)
       .then(response => setPartnerData(response.data.data))
       .catch(error => console.error('Error fetching partner data:', error));
@@ -71,7 +71,7 @@ export default function EditPartner() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);

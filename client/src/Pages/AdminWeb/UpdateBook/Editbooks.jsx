@@ -153,7 +153,7 @@ export default function Editbooks() {
                   placeholder="Enter book description"
                   onChange={(e) => handleDescriptionChange(e)}
                   value={formData.description}
-                  style={{ width: '100%' }} // Set the width to 100% to fill the container
+                  style={{ width: '100%' }} 
                 />
               </div>
 

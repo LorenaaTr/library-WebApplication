@@ -22,7 +22,7 @@ const ChangeName = () => {
     e.preventDefault();
     console.log('Button Clicked');
     console.log('Request Payload:', dataForm); 
-    axios.put(`http://localhost:5000/user/updateName/${id}`, dataForm) // Use the id from useParams
+    axios.put(`http://localhost:5000/user/updateName/${id}`, dataForm) 
       .then((res) => {
         console.log('res', res);
         alert("Name changed succesfully")
