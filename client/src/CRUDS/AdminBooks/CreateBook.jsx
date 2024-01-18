@@ -79,7 +79,7 @@ export default function CreateBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/all-books')
+        navigate('/admin-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');

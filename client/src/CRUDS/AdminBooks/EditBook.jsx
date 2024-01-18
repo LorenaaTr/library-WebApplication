@@ -1,24 +1,46 @@
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
+import React, { useEffect, useState } from 'react';
 import Input from '@mui/material/Input';
 import '../BooksCrud/createbook.css';
-import { Alert, Button } from '@mui/material';
+import { Alert, Button, InputLabel, OutlinedInput, TextareaAutosize } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
 import AdminHeader from '../../Components/AdminHeader/AdminHeader';
+import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
 
-export default function CreateBook() {
+export default function EditBook() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
+  const { bookId } = useParams();
 
   const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    try {
+      const fetchBook = async () =>{
+      const res = await fetch(`http://localhost:5000/book/getbooks?bookId=${bookId}`);
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message);
+        setPublishError(data.message);
+        return;
+      }
+      if(res.ok){
+        setPublishError(null);
+        setFormData(data.books[0]);
+      }
+      };
+      fetchBook();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [bookId]);
 
   const handleUploadImage = async () => {
     try {
@@ -65,8 +87,8 @@ export default function CreateBook() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/book/createbook', {
-        method: 'POST',
+      const res = await fetch(`http://localhost:5000/book/updatebook/${formData._id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -79,11 +101,16 @@ export default function CreateBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/all-books')
+        navigate('/admin-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
     }
+  };
+
+  const handleDescriptionChange = (e) => {
+    // Update the state when the value changes
+    setFormData({ ...formData, description: e.target.value });
   };
 
   return (
@@ -92,96 +119,76 @@ export default function CreateBook() {
       <AdminSidebar />
       <div className="home">
         <div className="components comp">
-          <h1>Add BOOK</h1>
+          <h1>Update BOOK</h1>
           <div className="create-book-form">
             <div className="div1">
               <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <TextField
+              <InputLabel htmlFor="title" >Book Title</InputLabel>
+                <OutlinedInput
                   id="title"
                   name="title"
-                  label="Book Title"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, title: e.target.value })
-                  }
+                  style={{ width: '100%' }}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  value={formData.title}
                 />
               </div>
 
               <div className="form-group">
-                <TextField
-                  id="libraryName"
-                  name="libraryName"
-                  label="Library Name"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, libraryName: e.target.value })
-                  }
-                />
-              </div>
-
-              <div className="form-group">
-                <TextField
+              <InputLabel htmlFor="author"> Author</InputLabel>
+                <OutlinedInput
                   id="author"
                   label="Author"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, author: e.target.value })
-                  }
+                  style={{ width: '100%' }}
+                  onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                  value={formData.author}
                 />
               </div>
 
               <div className="form-group">
-                <TextField
+              <label htmlFor="description">Description</label>
+              <br />
+                <TextareaAutosize
                   id="description"
-                  label="Description"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
-                  }
+                  aria-label="minimum height"
+                  minRows={3}
+                  placeholder="Enter book description"
+                  onChange={(e) => handleDescriptionChange(e)}
+                  value={formData.description}
+                  style={{ width: '100%' }} // Set the width to 100% to fill the container
                 />
               </div>
 
               <div className="form-group">
-                <TextField
+              <InputLabel htmlFor="category">Category</InputLabel>
+                <OutlinedInput
                   id="category"
-                  label="Category"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  value={formData.category}
+                  style={{ width: '100%' }}
                 />
               </div>
 
               <div className="form-group">
-                <TextField
+              <InputLabel htmlFor="isbn">ISBN</InputLabel>
+                <OutlinedInput
                   id="isbn"
-                  label="ISBN"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, isbn: e.target.value })
-                  }
+                  style={{ width: '100%' }}
+                  onChange={(e) => setFormData({ ...formData, isbn: e.target.value })}
+                  value={formData.isbn}
                 />
               </div>
 
               <div className="form-group">
-                <TextField
+              <InputLabel htmlFor="price">Price</InputLabel>
+                <OutlinedInput
                   id="price"
-                  label="Price"
-                  type="number"
-                  variant="outlined"
-                  fullWidth
-                  onChange={(e) =>
-                    setFormData({ ...formData, price: Number(e.target.value) })
-                  }
-                />
+                  style={{ width: '100%' }}
+                  onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                  value={formData.price}
+                   />
               </div>
+              
                 <div className="form-group fileInput">
                   <Input
                     type="file"
@@ -218,7 +225,7 @@ export default function CreateBook() {
                     color="error"
                     className="book-button"
                   >
-                    Create Book
+                    Update Book
                   </Button>
                   <br />
                   {publishError && <Alert color="error">{publishError}</Alert>}
