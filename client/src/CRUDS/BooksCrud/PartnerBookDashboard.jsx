@@ -9,9 +9,9 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from 'react-router';
+import { Navigate, useParams } from 'react-router-dom';
 
 const PartnerBookDashboard = () => {
   const {user} = useParams();
@@ -25,7 +25,7 @@ const PartnerBookDashboard = () => {
       setBooks(response.data);
     })
     .catch(error => console.error('Error fetching books:', error));
-  }, []);
+  }, [user]);
 
   const notify = (message) => {
     toast.success(message, {
@@ -38,8 +38,8 @@ const PartnerBookDashboard = () => {
     try {
       await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
       notify('Book deleted successfully');
-      axios.get(`http://localhost:5000/book/getbooks/${user}`)
-        .then(response => setBooks(response.data.data))
+      axios.get('http://localhost:5000/book/getbooks')
+        .then(response => setBooks(response.data.books))
         .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
       console.error('Error deleting book:', error);
@@ -80,7 +80,7 @@ const PartnerBookDashboard = () => {
             color="primary"
             startIcon={<AddIcon />}
             component={Link}
-            to="/add-book"
+            to={`/add-book/${user}`}
             style={{ marginTop: 20, marginLeft: -130 }}
           ></Button>
           <TableContainer component={Paper} id='tablecontainer'>

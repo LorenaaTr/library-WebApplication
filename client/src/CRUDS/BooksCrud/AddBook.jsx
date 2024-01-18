@@ -54,7 +54,7 @@ export default function AddBook() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
@@ -91,7 +91,7 @@ export default function AddBook() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent the default form submission
+    e.preventDefault(); 
     const token = localStorage.getItem('token');
 
     if (token) {

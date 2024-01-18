@@ -8,6 +8,8 @@ import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
+import AdminHeader from '../../Components/AdminHeader/AdminHeader';
 
 const UserAccount = () => {
   const [dataform, setdataform] = useState({});
@@ -40,8 +42,18 @@ const UserAccount = () => {
   
   return (
     <>
-      <SystemHeader />
-      <SystemSidebar />
+      {isadmin ?(
+        <AdminHeader/>
+      ):(
+        <SystemHeader />
+      )}
+      <>
+      {isadmin ?(
+        <AdminSidebar/>
+      ):(
+        <SystemSidebar />
+      )}
+      </>
       <div className="useracc">
         <div className="acccontainer">
           <div className='userdata'>

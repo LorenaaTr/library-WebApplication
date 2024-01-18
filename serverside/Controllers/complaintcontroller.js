@@ -92,4 +92,13 @@ exports.getAllcomplaints = async (req, res) => {
   }
 }
 
+exports.getComplaintCount= async(req, res)=>{
+  try {
+    const complaints = await mongoose.model('Complaints').find();
+    res.json(complaints);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 

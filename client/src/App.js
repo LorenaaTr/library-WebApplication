@@ -17,7 +17,6 @@ import Cart from './Pages/ShoppingCart/Cart';
 import { UsersProvider } from './Redux/Products/Products';
 import UserAccount from './Pages/UserAccount/UserAccount';
 import MyShelf from './Pages/Myshelf/Myshelf';
-import FictionBooks from './Pages/FictionBooks/FictionBooks';
 import ChangeUsername from './CRUDS/UsersCrud/UpdateUsername/ChangeUsername';
 import ChangePassword from './CRUDS/UsersCrud/UpdatePassword/ChangePassword';
 import ChangeName from './CRUDS/UsersCrud/UpdateName/ChangeName';
@@ -51,6 +50,10 @@ import EditPartner from './CRUDS/Library/EditPartner';
 import LibraryDashboard from './CRUDS/Library/LibraryDashboard';
 import LibSinglePage from './Pages/LibSinglePage/LibSinglePage';
 import AdminBooks from './CRUDS/AdminBooks/AdminBooks';
+import AddAdminBooks from './CRUDS/AdminBooks/CreateBook';
+import AdminEditBook from '../src/CRUDS/AdminBooks/EditBook';
+import PartnerBookDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
+import SinglBook from './Pages/AdminWeb/SingleBook/SingleBook';
 
 
 const App = () => {
@@ -105,7 +108,7 @@ const App = () => {
           <Route path='/updateuser/:id' element={<UpdateUserForm/>}/>
           <Route path='/addcomplaint' element={<AddComplaintForm/>}/>
           <Route path='/adduser' element={<AddUserForm/>}/>
-          <Route path="/add-book" element={<AddBook/>} />
+          <Route path="/add-book/:user" element={<AddBook/>} />
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
@@ -113,7 +116,10 @@ const App = () => {
           <Route path='/admin-partners' element={<LibraryDashboard/>}/>
           <Route path='/partner-details/:id' element={<LibSinglePage/>}/>
           <Route path='/admin-books' element={<AdminBooks/>}/>
-
+          <Route path="/admin-edit-book/:bookId" element={<AdminEditBook/>} /> 
+          <Route path='/add-admin-book' element={<AddAdminBooks/>}/>
+          <Route path='/admin-panel' element={<AdminHome/>}/>
+          <Route path='/singlebook/:id' element={<SinglBook/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

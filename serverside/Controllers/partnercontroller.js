@@ -218,3 +218,13 @@ exports.updatePartnerById = async (req, res) => {
   }
 };
 
+exports.getPartnersCount = async(req, res) =>{
+  try {
+    const partners = await mongoose.model('Partners').find();
+    res.json(partners);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+

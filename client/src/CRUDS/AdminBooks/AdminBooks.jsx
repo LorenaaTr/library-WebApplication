@@ -13,9 +13,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 
-
-
-
 export default function AdminBooks() {
     const [books, setBooks] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -84,7 +81,7 @@ export default function AdminBooks() {
             color="primary"
             startIcon={<AddIcon />}
             component={Link}
-            to="/add-book"
+            to="/add-admin-book"
             style={{ marginTop: 20, marginLeft: -130 }}
           ></Button>
           <TableContainer component={Paper} id='tablecontainer'>
@@ -113,7 +110,7 @@ export default function AdminBooks() {
             <TableCell>{book.description}</TableCell>
             <TableCell>
                 <IconButton>
-                    <Link to={`/edit-book/${book._id}`}>
+                    <Link to={`/admin-edit-book/${book._id}`}>
                         <EditIcon />
                     </Link>
                 </IconButton>
