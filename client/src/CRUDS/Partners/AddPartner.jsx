@@ -8,6 +8,12 @@ import { useNavigate } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './addpartner.css';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { app } from '../../firebase';
+import 'react-toastify/dist/ReactToastify.css';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+
 
 export default function CreatePartner() {
   const [file, setFile] = useState(null);
@@ -70,6 +76,16 @@ export default function CreatePartner() {
     }
   };
 
+  const decodeToken = (token) => {
+    try {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      return decoded;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return {};
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault(); 
     const token = localStorage.getItem('token');
@@ -111,6 +127,13 @@ export default function CreatePartner() {
     } else {
       console.error('Token not available');
     }
+  };
+
+  const notify = (message) => {
+    toast.success(message, {
+      autoClose: 2000,
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   return (
