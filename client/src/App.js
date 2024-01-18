@@ -50,6 +50,7 @@ import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 import EditPartner from './CRUDS/Library/EditPartner';
 import LibraryDashboard from './CRUDS/Library/LibraryDashboard';
 import LibSinglePage from './Pages/LibSinglePage/LibSinglePage';
+import AdminBooks from './CRUDS/AdminBooks/AdminBooks';
 
 
 const App = () => {
@@ -111,6 +112,8 @@ const App = () => {
           <Route path='/edit-partner/:id' element={<EditPartner/>}/>
           <Route path='/admin-partners' element={<LibraryDashboard/>}/>
           <Route path='/partner-details/:id' element={<LibSinglePage/>}/>
+          <Route path='/admin-books' element={<AdminBooks/>}/>
+
         </Routes>
       </BrowserRouter>
     </UsersProvider>
