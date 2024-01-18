@@ -21,11 +21,6 @@ const SystemSidebar = ({ children }) => {
       icon: <MdLibraryBooks />,
     },
     {
-      path: "/book-categories",
-      name: "Book Categories",
-      icon: <MdBook />,
-    },
-    {
       path: "/all-books",
       name: "Books",
       icon: < MdMenuBook/>,
@@ -34,12 +29,7 @@ const SystemSidebar = ({ children }) => {
       path: `/system-myshelf/${user}`,
       name: "My Shelf",
       icon: <MdFolderOpen />,
-    },
-    {
-      path: "/system-recommendations",
-      name: "Recommendations",
-      icon: <MdThumbUp />,
-    },
+    }
   ];
 
   return (

@@ -18,8 +18,6 @@ const SystemHomePage = () => {
         <Slider/>
         <h1>New Partners</h1>
         <PartnersSlider/>
-        <h1>New Book Events</h1>
-        <h1>Try Our Quizes</h1>
         <h1>Contact Us</h1>
         <ContactUs/>
         <h1>Our Offices</h1>

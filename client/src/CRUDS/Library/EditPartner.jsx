@@ -1,42 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
+import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
+import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
+
+import { Alert, Button } from '@mui/material';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { app } from '../../firebase';
+import { useNavigate } from 'react-router';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import axios from 'axios';
-import { TextField, Button, Paper, Typography, Box } from '@mui/material';
-import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
-import AdminHeader from '../../Components/AdminHeader/AdminHeader';
-import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const EditPartner = () => {
-  const { id } = useParams();
-  const [partnerData, setPartnerData] = useState({
-    username: '',
-    name: '',
-    ceo: '',
-    city: '',
-    state: '',
-    street: '',
-    zipcode: '',
-    password: '',
-    image: '',
+export default function AddBook() {
+  const [file, setFile] = useState(null);
+  const [imageUploadProgress, setImageUploadProgress] = useState(null);
+  const [imageUploadError, setImageUploadError] = useState(null);
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    description: "",
+    isbn: "",
+    category: "",
+    price: "",
+    image: ""
   });
+  const [publishError, setPublishError] = useState(null);
 
   const navigate = useNavigate();
-
-  const notify = (message) => {
-    toast.success(message, {
-      autoClose: 2000,
-      position: toast.POSITION.TOP_CENTER,
-    });
-  };
-
-  useEffect(() => {
-    // Fetch partner data by ID and populate the state
-    axios.get(`http://localhost:5000/partner/allpartners/${id}`)
-      .then(response => setPartnerData(response.data.data))
-      .catch(error => console.error('Error fetching partner data:', error));
-  }, [id]);
 
   const handleUploadImage = async () => {
     try {
@@ -80,117 +73,228 @@ const EditPartner = () => {
     }
   };
 
-  const handleUpdatePartner = () => {
-    axios.put(`http://localhost:5000/partner/updatepartner/${id}`, partnerData)
-      .then(response => {
-        console.log('Partner updated successfully:', response.data);
-        notify('Partner updated successfully');
-        navigate('/admin-partners');
-      })
-      .catch(error => {
-        console.error('Error updating partner:', error);
-      });
+  const decodeToken = (token) => {
+    try {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      return decoded;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return {};
+    }
   };
 
-  const handleInputChange = (e) => {
-    setPartnerData({
-      ...partnerData,
-      [e.target.name]: e.target.value,
+  const notify = (message) => {
+    toast.success(message, {
+      autoClose: 2000,
+      position: toast.POSITION.TOP_CENTER,
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent the default form submission
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const decodedToken = decodeToken(token);
+      const requestData = {
+        user: {
+          _id: decodedToken.userId,
+          name: decodedToken.username,
+        },
+        title: formData.title,
+        author: formData.author,
+        description: formData.description,
+        isbn: formData.isbn,
+        image: formData.image,
+        price: formData.price,
+        category: formData.category,
+      };
+
+      axios.post("http://localhost:5000/book/createbook", requestData)
+        .then((res) => {
+          console.log('res', res);
+          notify("Book created successfully!");
+          setFormData({
+            title: "",
+            author: "",
+            description: "",
+            isbn: "",
+            category: "",
+            price: "",
+            image: ""
+          });
+          navigate("/partner-dashboard")
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      console.error('Token not available');
+    }
+  };
+
+  const handleTitleChange = (e) => {
+    setFormData({ ...formData, title: e.target.value });
+  };
+
+  const handleAuthorChange = (e) => {
+    setFormData({ ...formData, author: e.target.value });
+  };
+
+  const handleDescriptionChange = (e) => {
+    setFormData({ ...formData, description: e.target.value });
+  };
+
+  const handleCategoryChange = (e) => {
+    setFormData({ ...formData, category: e.target.value });
+  };
+  const handleIsbnChange = (e) => {
+    setFormData({ ...formData, isbn: e.target.value });
+  };
+
+  const handlePriceChange = (e) => {
+    setFormData({ ...formData, price: e.target.value });
   };
 
   return (
     <>
-      <AdminHeader />
-      <AdminSidebar />
-      <div className='singlepage'>
-        <div className='singlepagecontainer'>
-          <Box id='box'>
-            <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: 'auto', marginTop: '20px' }}>
-              <Typography variant="h6" gutterBottom>
-                Update Partner
-              </Typography>
-              <TextField
-                label="Username"
-                name="username"
-                value={partnerData.username}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="Name"
-                name="name"
-                value={partnerData.name}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="CEO"
-                name="ceo"
-                value={partnerData.ceo}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="City"
-                name="city"
-                value={partnerData.city}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="State"
-                name="state"
-                value={partnerData.state}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="Street"
-                name="street"
-                value={partnerData.street}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="Zipcode"
-                name="zipcode"
-                value={partnerData.zipcode}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                label="Password"
-                name="password"
-                type="password"
-                value={partnerData.password}
-                onChange={handleInputChange}
-                fullWidth
-                margin="normal"
-              />
-              {/* Add additional fields as needed based on your partner model */}
-              
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleUpdatePartner}
-                style={{ marginTop: '20px' }}
-              >
-                Update Partner
-              </Button>
-            </Paper>
-          </Box>
+      <PartnerWebHeader />
+      <PartnerSidebar />
+      <div className="home">
+        <div className="components comp">
+          <h1>Create BOOK</h1>
+          <div className="create-book-form">
+            <div className="div1">
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <TextField
+                    id="title"
+                    name="title"
+                    label="Book Title"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleTitleChange}
+                    value={formData.title}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    id="author"
+                    label="Author"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleAuthorChange}
+                    value={formData.author}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    id="description"
+                    label="Description"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleDescriptionChange}
+                    value={formData.description}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    id="category"
+                    label="Category"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleCategoryChange}
+                    value={formData.category}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    id="isbn"
+                    label="ISBN"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleIsbnChange}
+                    value={formData.isbn}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    id="price"
+                    label="Price"
+                    type="number"
+                    variant="outlined"
+                    fullWidth
+                    onChange={handlePriceChange}
+                    value={formData.price}
+                  />
+                </div>
+                <div className="form-group fileInput">
+                  <Input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                  <label htmlFor="image">
+                    <Button
+                      variant="contained"
+                      component="span"
+                      onClick={handleUploadImage}
+                      disabled={imageUploadProgress ? true : false}
+                      className="upload-btn"
+                    >
+                      {imageUploadProgress ? (
+                        <div className="upload">
+                          <CircularProgressbar
+                            value={imageUploadProgress}
+                            text={`${imageUploadProgress || 0}%`}
+                          />
+                        </div>
+                      ) : (
+                        'Upload Image'
+                      )}
+                    </Button>
+                  </label>
+                </div>
+
+                <div className="button-div">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="error"
+                    className="book-button"
+                  >
+                    Create Book
+                  </Button>
+                  <br />
+                  {publishError && <Alert color="error">{publishError}</Alert>}
+                </div>
+              </form>
+            </div>
+            <br />
+
+            <div className="div2">
+              {imageUploadError && (
+                <Alert severity="error" className="erro">
+                  {imageUploadError}
+                </Alert>
+              )}
+              {formData.image && (
+                <img
+                  src={formData.image}
+                  alt="upload"
+                  className="book-picture"
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
-};
-
-export default EditPartner;
+}

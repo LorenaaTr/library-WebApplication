@@ -381,6 +381,33 @@ exports.getUserBooks = async (req, res) => {
   }
 };
 
+exports.deleteuserbook = async(req, res) =>{
+  try {
+    const { username, bookId } = req.params;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const bookIndex = user.books.findIndex(book => book._id.toString() === bookId);
+
+    if (bookIndex === -1) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    user.books.splice(bookIndex, 1);
+
+    const updatedUser = await user.save();
+
+    res.json({ user: updatedUser, message: 'Book deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 
 
 

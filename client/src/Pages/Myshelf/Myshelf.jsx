@@ -18,6 +18,8 @@ const MyShelf = () => {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [order, setorder] = useState('');
+
   const user = localStorage.getItem('user');
   console.log('User:', user);
 
@@ -45,22 +47,67 @@ const MyShelf = () => {
 
   const handleDelete = async (bookId) => {
     try {
-      await axios.delete(`http://localhost:5000/book/deletebook/${bookId}`);
+      await axios.delete(`http://localhost:5000/user/deleteuserbook/${bookId}`);
       notify('Book deleted successfully');
-      axios.get(`http://localhost:5000/book/getbooks/${user}`)
-        .then(response => setBooks(response.data.data))
+      axios.get(`http://localhost:5000/book/getuserbooks/${user}`)
+        .then(response => setBooks(response.data))
         .catch(error => console.error('Error fetching books:', error));
     } catch (error) {
       console.error('Error deleting book:', error);
     }
   };
 
-  const handleOrderClick = () => {
-    // Add your order logic here
-    // This function will be called when the "Order" button is clicked
-    console.log('Order button clicked!');
+  const fetchUserBooks = () => {
+    axios.get(`http://localhost:5000/user/getuserbooks/${user}`)
+      .then(response => setBooks(response.data))
+      .catch(error => console.error('Error fetching books:', error));
   };
 
+  const handleOrderClick = async () => {
+    try {
+      console.log('Fetching user books...');
+      const response = await axios.get(`http://localhost:5000/user/getuserbooks/${user}`);
+      console.log('User books:', response.data);
+  
+      const userBooks = response.data;
+  
+      const orderData = {
+        user: localStorage.getItem('user'),
+        books: userBooks.map(book => ({
+          book: book._id,
+          quantity: 1,
+        })),
+        totalAmount: 0,
+        shippingAddress: {
+          address: '123 Street',
+          city: 'City',
+          houseNumber: '1',
+        },
+      };
+  
+      axios.post('http://localhost:5000/orders/addorder', orderData)
+        .then((res) => {
+          console.log('Order response:', res);
+          if (res ) {
+            notify("Order placed successfully!");
+            console.log('Response:', res.data);
+          } else {
+            console.error('Invalid response structure:', res);
+            notify("Error placing order. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error('Error placing order:', error);
+          notify("Error placing order. Please try again.");
+        });
+    } catch (error) {
+      console.error('Error fetching user books:', error);
+    }
+  };
+  
+  
+  
+  
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -98,17 +145,7 @@ const MyShelf = () => {
                     <TableCell>{book.description}</TableCell>
                     <TableCell>
                       <IconButton>
-                        <Link to={`/edit-book/${book._id}`}>
-                          <EditIcon />
-                        </Link>
-                      </IconButton>
-                      <IconButton>
                         <DeleteIcon onClick={() => handleDelete(book._id)} />
-                      </IconButton>
-                      <IconButton>
-                        <Link to={`/singlebook/${book._id}`}>
-                          <ArrowForwardIcon />
-                        </Link>
                       </IconButton>
                     </TableCell>
                   </TableRow>

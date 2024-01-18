@@ -47,6 +47,7 @@ import AddPartner from './CRUDS/Library/AddPartner';
 import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
+import EditPartner from './CRUDS/Library/EditPartner';
 
 
 const App = () => {
