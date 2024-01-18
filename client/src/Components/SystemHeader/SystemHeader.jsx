@@ -116,7 +116,7 @@ const SystemHeader = () => {
             <MenuItem key={book._id} onClick={handleBookMenuClose} style={{width:600}}>
 
               <Link to={`/books/${book.slug}`} style={{ textDecoration: "none", color: "black" }}>
-                <img src={book.image} alt={book.title} style={{ maxWidth: '150px', maxHeight: '150px' }} />{book.title}
+                <img src={book.image} alt={book.title} style={{ maxWidth: '150px', maxHeight: '150px' }} /><p style={{marginTop:-100, marginBottom:80, marginLeft:150}}>{book.title}</p>
               </Link>
             </MenuItem>
           ))}

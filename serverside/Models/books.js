@@ -38,7 +38,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
     default: "https://firebasestorage.googleapis.com/v0/b/shelfshare-3835c.appspot.com/o/1705068521443-cover.jpg?alt=media&token=ee5cf97b-8de2-4c5c-9dc4-eb6e1df08565",
   },
-  counter: { type: Number, default: 1 },
+  counter: { type: Number, default: 0 },
 }, { timestamps: true },
 {
   collection:"Books"

@@ -77,7 +77,6 @@ const MyShelf = () => {
           book: book._id,
           quantity: 1,
         })),
-        totalAmount: 0,
         shippingAddress: {
           address: '123 Street',
           city: 'City',
