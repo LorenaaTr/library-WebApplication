@@ -110,7 +110,7 @@ export default function AddPartner() {
       axios.post("http://localhost:5000/partner/registerpartner", requestData)
         .then((res) => {
           console.log('res', res);
-          notify("Book created successfully!");
+          notify("Partner created successfully!");
           setFormData({
             username: "",
             name: "",
@@ -122,7 +122,7 @@ export default function AddPartner() {
             password: '',
             image: "",
           });
-          navigate("/partner-dashboard")
+          navigate("/admin-partners")
         })
         .catch((error) => {
           console.error('Error:', error);

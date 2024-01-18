@@ -43,12 +43,10 @@ export default function EditPartner() {
 
   
   useEffect(() => {
+    // Fetch partner data by ID and populate the state
     axios.get(`http://localhost:5000/partner/allpartners/${partnerId}`)
-      .then((response) => {
-        console.log('Fetched Partner Data:', response.data);
-        setPartnerData(response.data.data);
-      })
-      .catch((error) => console.error('Error fetching partner data:', error));
+      .then(response => setPartnerData(response.data.data))
+      .catch(error => console.error('Error fetching partner data:', error));
   }, [partnerId]);
 
   const handleUploadImage = async () => {
@@ -102,7 +100,8 @@ export default function EditPartner() {
 
   
   const handleUpdatePartner = () => {
-    axios.put(`http://localhost:5000/partner/updatepartner/${partnerData._id}`, partnerData)
+    
+    axios.put(`http://localhost:5000/partner/updatepartner/${partnerId}`, partnerData)
       .then(response => {
         console.log('Partner updated successfully:', response.data);
         notify('Partner updated successfully');
@@ -126,7 +125,7 @@ export default function EditPartner() {
                 <TextField
                   label="Username"
                   name="username"
-                  value={partnerData.username}
+                  value={partnerData.username || ''}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -210,17 +209,17 @@ export default function EditPartner() {
                 </div>
 
                 <div className="button-div">
-                  <Button
-                    type="submit"
+                    <Button
+                    type="button"
                     variant="contained"
                     color="error"
                     className="book-button"
                     onClick={handleUpdatePartner}
-                  >
+                    >
                     Update Partner
-                  </Button>
-                  <br />
-                  {publishError && <Alert color="error">{publishError}</Alert>}
+                    </Button>
+                    <br />
+                    {publishError && <Alert color="error">{publishError}</Alert>}
                 </div>
               </form>
             </div>

@@ -2,13 +2,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './bestsellers.css'; 
+import './Slider.css'; 
 import book1 from '../../assets/images/harrypotterbookcover.jpg';
 import book2 from '../../assets/images/bestseller2.jpg';
 import book3 from '../../assets/images/bestseller3.jpg';
 import book4 from '../../assets/images/bestseller4.jpg';
 
-const Slider = () => {
+const SmallSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -62,4 +62,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default SmallSlider;

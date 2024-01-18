@@ -2,9 +2,10 @@ import React from 'react'
 import SystemHeader from '../../Components/SystemHeader/SystemHeader';
 import SystemSidebar from '../../Components/SystemSidebar/SystemSidebar';
 import './homepage.css'
-import InfiniteSlider from '../../Components/InfiniteSlider/InfiniteSlider';
 import ContactUs from '../../Components/ContactUs/ContactUs';
 import OurOffices from '../../Components/OurOffices/OurOffices';
+import Slider from '../../Components/SmallSlider/SmallSlider'
+import PartnersSlider from '../../Components/PartnersSlider/PartnersSlider';
 
 const SystemHomePage = () => {
   return (
@@ -14,7 +15,9 @@ const SystemHomePage = () => {
     <div className="home">
       <div className="components">
         <h1>New Books</h1>
+        <Slider/>
         <h1>New Partners</h1>
+        <PartnersSlider/>
         <h1>New Book Events</h1>
         <h1>Try Our Quizes</h1>
         <h1>Contact Us</h1>

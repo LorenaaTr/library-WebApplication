@@ -137,9 +137,10 @@ exports.deletePartnerById = async (req, res) => {
 };
 
 exports.getPartnerById = async (req, res) => {
-  const partnerId = req.params.partnerId;
+ 
 
   try {
+    const partnerId = req.params.partnerId;
     const partner = await Partner.findById(partnerId);
 
     if (!partner) {
@@ -164,58 +165,50 @@ exports.getPartnerById = async (req, res) => {
 
 
 exports.updatePartnerById = async (req, res) => {
-  const partnerId = req.params.id;
-  const {
-    username,
-    name,
-    ceo,
-    city,
-    state,
-    street,
-    zipcode,
-    password,
-    image,
-    role
-  } = req.body;
-
   try {
-    const existingPartner = await Partner.findById(partnerId);
+    const partnerId = req.params.id;
+    const {
+      username,
+      name,
+      ceo,
+      city,
+      state,
+      street,
+      zipcode,
+      image,
+    } = req.body;
+
+    const existingPartner = await Partner.findByIdAndUpdate(
+      partnerId,
+      {
+        username,
+        name,
+        ceo,
+        city,
+        state,
+        street,
+        zipcode,
+        image,
+      },
+      { new: true }
+    );
 
     if (!existingPartner) {
       return res.status(404).json({
         status: 'error',
-        message: 'Partner not found'
+        message: 'Partner not found',
       });
     }
 
-    // Update partner data
-    existingPartner.username = username || existingPartner.username;
-    existingPartner.name = name || existingPartner.name;
-    existingPartner.ceo = ceo || existingPartner.ceo;
-    existingPartner.city = city || existingPartner.city;
-    existingPartner.state = state || existingPartner.state;
-    existingPartner.street = street || existingPartner.street;
-    existingPartner.zipcode = zipcode || existingPartner.zipcode;
-    
-    if (password) {
-      const encryptedPassword = await bcrypt.hash(password, 10);
-      existingPartner.password = encryptedPassword;
-    }
-
-    existingPartner.image = image || existingPartner.image;
-    existingPartner.role = role || existingPartner.role;
-
-    await existingPartner.save();
-
     res.status(200).json({
       status: 'ok',
-      message: 'Partner updated successfully'
+      data: existingPartner,
     });
   } catch (error) {
     console.error('Error updating partner:', error.message);
     res.status(500).json({
       status: 'error',
-      message: 'Internal server error'
+      message: 'Internal server',
     });
   }
 };
