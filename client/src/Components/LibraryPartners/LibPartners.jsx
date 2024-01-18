@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './libPartners.css';
+import styled from '@emotion/styled';
 
 const LibPartners = () => {
   const [partners, setPartners] = useState([]);
@@ -22,7 +23,11 @@ const LibPartners = () => {
             <div className="library-details">
               <h3 className="library-name">{partner.name}</h3>
               <button className="have-a-look-button">
-                <Link to={`/partner-details/${partner._id}`}>HAVE A LOOK</Link>
+              <Link to={`/partner-details/${partner._id}`}
+              style={{ textDecoration: 'none', color: 'white' }}
+                >
+                  HAVE A LOOK
+                </Link>
               </button>
             </div>
           </div>
