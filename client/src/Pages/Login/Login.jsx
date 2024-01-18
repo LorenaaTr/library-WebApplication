@@ -47,7 +47,7 @@ const Login = () => {
           const role = localStorage.getItem("role");
 
           if (role === "Admin") {
-            navigate('/admin-home');
+            navigate('/admin-panel');
           } else if (role === "User") {
             navigate('/system-home-page');
           } else {

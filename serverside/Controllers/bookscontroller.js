@@ -130,3 +130,13 @@ exports.getbookbyid = async (req, res) => {
   }
 }
 
+exports.getBooksCount = async(req, res) =>{
+  try {
+    const bookCount = await mongoose.model('Books').countDocuments();
+    res.json({ count: bookCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
