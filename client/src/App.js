@@ -48,6 +48,10 @@ import AddBook from './CRUDS/BooksCrud/AddBook'
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import CookiePolicy from './Pages/CookiePolicy/CookiePolicy';
 import EditPartner from './CRUDS/Library/EditPartner';
+import LibraryDashboard from './CRUDS/Library/LibraryDashboard';
+import LibSinglePage from './Pages/LibSinglePage/LibSinglePage';
+import AdminBooks from './CRUDS/AdminBooks/AdminBooks';
+import PartnerBookDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
 
 
 const App = () => {
@@ -106,7 +110,12 @@ const App = () => {
           <Route path="/add-partner" element={<AddPartner/>} />
           <Route path='/cookiepolicy' element={<CookiePolicy/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
-          <Route path='/edit-partner/:partnerId' element={<EditPartner/>}/>
+          <Route path='/edit-partner/:id' element={<EditPartner/>}/>
+          <Route path='/admin-partners' element={<LibraryDashboard/>}/>
+          <Route path='/partner-details/:id' element={<LibSinglePage/>}/>
+          <Route path='/admin-books' element={<AdminBooks/>}/>
+          <Route path='/partner-dashboard' element={<PartnerBookDashboard/>}/>
+          <Route path='/admin-panel' element={<AdminHome/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

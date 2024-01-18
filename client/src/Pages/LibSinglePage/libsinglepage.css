@@ -1,0 +1,33 @@
+/* libsinglepage.css */
+
+/* Set the background color to black and text color to white */
+body {
+    background-color: black;
+    color: white;
+  }
+  
+ 
+  
+  .partner-image-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .partner-image {
+    max-width: 100%; /* Make the image responsive */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Add styles for text color and font size */
+  .partner-card,
+  .partner-card h4,
+  .partner-card p {
+    color: white;
+  }
+  
+  /* Add styles for the divider */
+  .partner-card hr {
+    border-color: white;
+  }
+  
