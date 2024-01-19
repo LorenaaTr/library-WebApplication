@@ -118,7 +118,7 @@ const Books = () => {
                         <DeleteIcon onClick={() => handleDelete(book._id)}/>
                         </IconButton>
                         <IconButton>
-                            <Link to={`/singlecomplaint/${book._id}`}>
+                            <Link to={`/singlebooks/${book._id}`}>
                         <ArrowForwardIcon />
                         </Link>
                         </IconButton>

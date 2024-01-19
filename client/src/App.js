@@ -53,6 +53,7 @@ import AdminBooks from './CRUDS/AdminBooks/AdminBooks';
 import PartnerBookDashboard from './CRUDS/BooksCrud/PartnerBookDashboard';
 import SinglBook from './Pages/AdminWeb/SingleBook/SingleBook';
 import SinglePartnerPage from './Pages/AdminWeb/SinglePartner/SinglePartnerPage';
+import PartnerBookSingle from './CRUDS/BooksCrud/ParnterBookSingle';
 
 
 const App = () => {
@@ -119,6 +120,7 @@ const App = () => {
           <Route path='/admin-panel' element={<AdminHome/>}/>
           <Route path='/singlebook/:id' element={<SinglBook/>}/>
           <Route path='/singlepartner/:id' element={<SinglePartnerPage/>}/>
+          <Route path='/partnersinglebook/:id' element={<PartnerBookSingle/>}/>
         </Routes>
       </BrowserRouter>
     </UsersProvider>

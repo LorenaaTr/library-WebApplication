@@ -6,13 +6,13 @@
     color: white;
     font-family: "Droid Sans-Bold", Helvetica;
     padding: 20px; /* Add padding to create space for content */
-    height: 270vh;
+    height: 200vh;
 }
 
-.overlay-content h1 {
+.overlay-content .titlep {
     position: absolute;
-    top: 5%;
-    left: 50%;
+    margin-top: 50px;
+    margin-left: 700px;
     font-size: 50px;
     transform: translate(-50%, -50%);
 }

@@ -10,27 +10,28 @@
 }
 
 .libraryphoto img{
-    height: 80%;
-    width: 70%;
+    width: 100px; /* Set your desired width */
+    height: 100px; 
     margin-left: 18px;
     margin-top: 18px;
+    object-fit: cover;
 }
 
 h5 {
     font-size: 25px; /* Reduce the heading text size */
+    margin-left: 30px;
 }
 
-p {
-    margin-top: -25px;
-    font-size: 18px; /* Reduce the paragraph text size */
-}
 
 button{
     background-color: rgb(250, 79, 79);
     border: none;
     padding: 10px 15px;
     color: white;
+    margin-left: -300px;
 }
+
+
 
 button:hover{
     background-color: rgb(201, 33, 33);

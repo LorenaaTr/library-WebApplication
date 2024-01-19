@@ -117,7 +117,7 @@ const PartnerBookDashboard = () => {
                         <DeleteIcon onClick={() => handleDelete(book._id)} />
                       </IconButton>
                       <IconButton>
-                        <Link to={`/singlebook/${book._id}`}>
+                        <Link to={`/partnersinglebook/${book._id}`}>
                           <ArrowForwardIcon />
                         </Link>
                       </IconButton>

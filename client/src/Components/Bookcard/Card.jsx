@@ -6,11 +6,11 @@ const Card = (prop) => {
   return (
     <div className='card'>
         <div className='photo'>
-            <img src={harry} alt="harry" />
+            <img src={image} alt={`${title}`} />
         </div>
         <div className='context' style={{ textAlign: 'left' }}>
-            <h3 className='title'>ACTION</h3>
-            <p className='description'>Lorem ipsum dolor haaaaaaaaa hahahahahahahahah hahaha ahahah , sit amet consectetur adipisicing elit. Fugiat, veritatis!</p>
+            <h3 className='title'>{title}</h3>
+            <p className='description'>{description}</p>
         </div>
     </div>
   )
