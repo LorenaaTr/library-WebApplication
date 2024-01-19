@@ -23,7 +23,7 @@ const Footer = () => {
           <Link to='/privacypolicy'>PRIVACY POLICY</Link>
           <Link to='/cookiepolicy'>COOKIE POLICY</Link>
         </div>
-        <div className='ourservices'>
+        <div className='ourservices' style={{marginTop:-30}}>
           <p>OUR SERVICES</p>
           <Link to='/ourservices' className='read'>READ ONLINE</Link>
           <Link to='/ourservices'>LEARN ONLINE</Link>
