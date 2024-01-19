@@ -21,7 +21,7 @@ const SystemHeader = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch books from the API when the component mounts
+    // Fetch books from the API 
     axios.get('http://localhost:5000/book/getbooks')
       .then(response => {
         setBooks(response.data.books);

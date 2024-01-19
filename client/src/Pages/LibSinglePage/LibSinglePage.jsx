@@ -19,7 +19,7 @@ export default function LibSinglePage() {
   }, [id]);
 
   if (!partnerDetails) {
-    return <p className="loading">Loading...</p>; // Add loading indicator or message
+    return <p className="loading">Loading...</p>; 
   }
 
   return (

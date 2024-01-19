@@ -5,7 +5,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 
-// ... (previous imports and code)
+
 
 const AdminHome = () => {
   const [chartData, setChartData] = useState([]);
@@ -61,7 +61,7 @@ const AdminHome = () => {
                   endAngle: 180,
                   cx: 150,
                   cy: 150,
-                  colors: chartColors, // Apply the colors directly to the series
+                  colors: chartColors, 
                   labelKey: 'name',
                   colorKey: 'value',
                 },

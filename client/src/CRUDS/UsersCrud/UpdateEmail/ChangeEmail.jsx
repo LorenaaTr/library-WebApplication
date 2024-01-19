@@ -21,7 +21,7 @@ const ChangeEmail = () => {
     e.preventDefault();
     console.log('Button Clicked');
     console.log('Request Payload:', dataForm); 
-    axios.put(`http://localhost:5000/user/updateEmail/${id}`, dataForm) // Use the id from useParams
+    axios.put(`http://localhost:5000/user/updateEmail/${id}`, dataForm) 
       .then((res) => {
         console.log('res', res);
         alert("E-mail changed succesfully")

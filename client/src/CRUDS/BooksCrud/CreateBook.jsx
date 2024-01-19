@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import PartnerWebHeader from '../../Components/PartnerWebHeader/PartnerHeader';
-import PartnerSidebar from '../../Components/PartnerSidebar/PartnerSidebar';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
-import './createbook.css';
+import '../BooksCrud/createbook.css';
 import { Alert, Button } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../../firebase';
 import { useNavigate } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
+import AdminHeader from '../../Components/AdminHeader/AdminHeader';
 
 export default function CreateBook() {
   const [file, setFile] = useState(null);
@@ -43,7 +43,7 @@ export default function CreateBook() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            // Get  URL
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
@@ -79,7 +79,7 @@ export default function CreateBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/dashboard-books')
+        navigate('/all-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -88,11 +88,11 @@ export default function CreateBook() {
 
   return (
     <>
-      <PartnerWebHeader />
-      <PartnerSidebar />
+      <AdminHeader />
+      <AdminSidebar />
       <div className="home">
         <div className="components comp">
-          <h1>Create BOOK</h1>
+          <h1>Add BOOK</h1>
           <div className="create-book-form">
             <div className="div1">
               <form onSubmit={handleSubmit}>

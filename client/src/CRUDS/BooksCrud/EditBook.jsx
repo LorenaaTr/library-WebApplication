@@ -17,6 +17,7 @@ export default function EditBook() {
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
   const { bookId } = useParams();
+  const user = localStorage.getItem('user');
 
   const navigate = useNavigate();
 
@@ -65,7 +66,7 @@ export default function EditBook() {
         },
         async () => {
           try {
-            // Get download URL after successful upload
+            // Get  URL 
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
@@ -101,7 +102,7 @@ export default function EditBook() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/partner-dashboard')
+        navigate(`/partner-dashboard/${user}`);
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -109,7 +110,7 @@ export default function EditBook() {
   };
 
   const handleDescriptionChange = (e) => {
-    // Update the state when the value changes
+
     setFormData({ ...formData, description: e.target.value });
   };
 

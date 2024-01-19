@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Input from '@mui/material/Input';
+import '../BooksCrud/createbook.css';
 import { Alert, Button, InputLabel, OutlinedInput, TextareaAutosize } from '@mui/material';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-import { app } from '../../../firebase';
+import { app } from '../../firebase';
 import { useNavigate, useParams } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import AdminHeader from '../../../Components/AdminHeader/AdminHeader';
-import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar';
+import AdminHeader from '../../Components/AdminHeader/AdminHeader';
+import AdminSidebar from '../../Components/AdminSidebar/AdminSidebar';
 
-export default function Editbooks() {
+export default function EditBook() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -100,7 +101,7 @@ export default function Editbooks() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate('/partner-dashboard')
+        navigate('/admin-books')
       }
     } catch (error) {
       setPublishError('Something went wrong!');
@@ -108,6 +109,7 @@ export default function Editbooks() {
   };
 
   const handleDescriptionChange = (e) => {
+    // Update the state when the value changes
     setFormData({ ...formData, description: e.target.value });
   };
 
@@ -153,7 +155,7 @@ export default function Editbooks() {
                   placeholder="Enter book description"
                   onChange={(e) => handleDescriptionChange(e)}
                   value={formData.description}
-                  style={{ width: '100%' }} 
+                  style={{ width: '100%' }} // Set the width to 100% to fill the container
                 />
               </div>
 
@@ -186,6 +188,7 @@ export default function Editbooks() {
                   value={formData.price}
                    />
               </div>
+              
                 <div className="form-group fileInput">
                   <Input
                     type="file"
