@@ -1,7 +1,7 @@
 # library-WebApplication
 
 Libraries of Kosovo
-This project is a platform for the administration and management of books in libraries across Kosovo. Users have the ability to browse and search for books, as well as register to borrow books.
+This project is a platform for the administration and management of books in libraries across Kosovo. Users have the ability to search for books, as well as register to save books.
 
 Technologies
 Backend: NodeJS
@@ -79,6 +79,4 @@ Bleonit Shillova
 # SCRUM BOARDS
 https://dev.azure.com/rg55960/LibraryService-ShelfShare/_boards/board/t/LibraryService-ShelfShare%20Team/Issues
 
-# GIT
-https://github.com/LorenaaTr/library-WebApplication
 
